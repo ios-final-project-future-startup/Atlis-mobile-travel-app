@@ -16,7 +16,7 @@
 		E05B5943207DBB930047B41E /* AdviceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5942207DBB930047B41E /* AdviceVC.swift */; };
 		E05B5945207DBC470047B41E /* SendScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5944207DBC470047B41E /* SendScreenVC.swift */; };
 		E05B5947207E5B320047B41E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E05B5946207E5B310047B41E /* Podfile */; };
-		E05B5949207E5FA50047B41E /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = E05B5948207E5FA50047B41E /* GoogleService-Info (1).plist */; };
+		E05B5949207E5FA50047B41E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E05B5948207E5FA50047B41E /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		E05B5942207DBB930047B41E /* AdviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceVC.swift; sourceTree = "<group>"; };
 		E05B5944207DBC470047B41E /* SendScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendScreenVC.swift; sourceTree = "<group>"; };
 		E05B5946207E5B310047B41E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		E05B5948207E5FA50047B41E /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
+		E05B5948207E5FA50047B41E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EEEB3DB8C2FDCD0C795D8892 /* Pods-iosfinal2018.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosfinal2018.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +95,7 @@
 				E05B5937207DB16B0047B41E /* Assets.xcassets */,
 				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
 				E05B593C207DB16B0047B41E /* Info.plist */,
-				E05B5948207E5FA50047B41E /* GoogleService-Info (1).plist */,
+				E05B5948207E5FA50047B41E /* GoogleService-Info.plist */,
 			);
 			path = iosfinal2018;
 			sourceTree = "<group>";
@@ -163,7 +163,7 @@
 			files = (
 				E05B593B207DB16B0047B41E /* LaunchScreen.storyboard in Resources */,
 				E05B5938207DB16B0047B41E /* Assets.xcassets in Resources */,
-				E05B5949207E5FA50047B41E /* GoogleService-Info (1).plist in Resources */,
+				E05B5949207E5FA50047B41E /* GoogleService-Info.plist in Resources */,
 				E05B5947207E5B320047B41E /* Podfile in Resources */,
 				E05B5936207DB1680047B41E /* Main.storyboard in Resources */,
 			);
@@ -402,7 +402,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NPF7TA6L62;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nyu.iosfinal2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -418,7 +421,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NPF7TA6L62;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nyu.iosfinal2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
