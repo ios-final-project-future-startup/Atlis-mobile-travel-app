@@ -1,0 +1,9 @@
+platform :ios, '9.0'
+source 'https://github.com/CocoaPods/Specs.git'
+target 'iosfinal2018' do
+use_frameworks!
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+pod 'Firebase/Core'
+pod 'Firebase/Firestore'
+end
