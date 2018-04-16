@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,24 +19,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQ1-Yx-w5d">
-                                <rect key="frame" x="164" y="598" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="cng-z7-ubl" kind="presentation" id="tmO-dQ-v0n"/>
-                                </connections>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HoS-MR-3hM">
+                                <rect key="frame" x="0.0" y="44" width="375" height="591.33333333333337"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="83" id="0Al-Ww-fIT">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="83"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Al-Ww-fIT" id="vHE-ik-0WO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82.666666666666671"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.86940711739999998" green="0.70803493920000005" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGT-7M-1CY">
+                                <rect key="frame" x="0.0" y="635.33333333333337" width="375" height="93.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nGT-7M-1CY" secondAttribute="height" multiplier="4:1" id="Jcr-1E-fh1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="27"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" red="0.4861509282" green="0.63836908449999996" blue="0.92795473340000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aEB-qy-W9J" firstAttribute="trailing" secondItem="HoS-MR-3hM" secondAttribute="trailing" id="G9S-0P-QvT"/>
+                            <constraint firstItem="HoS-MR-3hM" firstAttribute="leading" secondItem="aEB-qy-W9J" secondAttribute="leading" id="HSJ-dX-PLx"/>
+                            <constraint firstItem="aEB-qy-W9J" firstAttribute="trailing" secondItem="nGT-7M-1CY" secondAttribute="trailing" id="Z5D-bc-yVa"/>
+                            <constraint firstItem="HoS-MR-3hM" firstAttribute="top" secondItem="aEB-qy-W9J" secondAttribute="top" id="fVH-E8-gDV"/>
+                            <constraint firstItem="nGT-7M-1CY" firstAttribute="leading" secondItem="aEB-qy-W9J" secondAttribute="leading" id="ho9-eM-4vp"/>
+                            <constraint firstItem="nGT-7M-1CY" firstAttribute="top" secondItem="HoS-MR-3hM" secondAttribute="bottom" id="qsh-cq-uj2"/>
+                            <constraint firstItem="nGT-7M-1CY" firstAttribute="width" secondItem="vCR-1O-dJC" secondAttribute="width" id="sx4-4b-Hjc"/>
+                            <constraint firstItem="aEB-qy-W9J" firstAttribute="bottom" secondItem="nGT-7M-1CY" secondAttribute="bottom" id="xdc-Ce-Cxz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aEB-qy-W9J"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Advice" id="YyD-7K-tI2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="contactsTableView" destination="HoS-MR-3hM" id="ZtC-Mz-bmb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzK-WH-y5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="-329"/>
+            <point key="canvasLocation" x="744.79999999999995" y="-329.55665024630542"/>
         </scene>
         <!--Advice-->
         <scene sceneID="xUq-Gg-I3p">
@@ -44,16 +75,6 @@
                     <view key="view" contentMode="scaleToFill" id="WWa-W4-zCp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVK-js-tzf">
-                                <rect key="frame" x="35" y="70" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="2XP-oy-Nyq" kind="presentation" id="rfq-Xx-1h8"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="1FX-Vu-cUC"/>
                     </view>
@@ -71,10 +92,24 @@
                     <view key="view" contentMode="scaleToFill" id="7Bd-R0-oel">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gkp-ZA-3Sz">
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gkp-ZA-3Sz" firstAttribute="leading" secondItem="VBb-fB-1Zb" secondAttribute="leading" id="03L-b6-wUY"/>
+                            <constraint firstItem="gkp-ZA-3Sz" firstAttribute="top" secondItem="VBb-fB-1Zb" secondAttribute="top" id="Md0-KF-c6E"/>
+                            <constraint firstItem="gkp-ZA-3Sz" firstAttribute="trailing" secondItem="VBb-fB-1Zb" secondAttribute="trailing" id="e8g-S8-s2g"/>
+                            <constraint firstItem="gkp-ZA-3Sz" firstAttribute="bottom" secondItem="VBb-fB-1Zb" secondAttribute="bottom" id="xRi-WG-14G"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VBb-fB-1Zb"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" id="9la-13-JcM"/>
+                    <connections>
+                        <outlet property="map" destination="gkp-ZA-3Sz" id="vNr-I8-ONh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deB-sH-5zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -99,7 +134,4 @@
             <point key="canvasLocation" x="-204" y="-656"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="rfq-Xx-1h8"/>
-    </inferredMetricsTieBreakers>
 </document>
