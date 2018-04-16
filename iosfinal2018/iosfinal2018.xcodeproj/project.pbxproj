@@ -13,6 +13,7 @@
 		DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */; };
 		DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE074EC208524AF00D06CEF /* LoginViewController.swift */; };
 		E05304542085068200597236 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05304532085068200597236 /* Contact.swift */; };
+		E05304562085343700597236 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05304552085343700597236 /* ContactCell.swift */; };
 		E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5930207DB1680047B41E /* AppDelegate.swift */; };
 		E05B5933207DB1680047B41E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5932207DB1680047B41E /* MapVC.swift */; };
 		E05B5936207DB1680047B41E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05B5934207DB1680047B41E /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhoneViewController.swift; sourceTree = "<group>"; };
 		DCE074EC208524AF00D06CEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E05304532085068200597236 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		E05304552085343700597236 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		E05B592D207DB1680047B41E /* iosfinal2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosfinal2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05B5930207DB1680047B41E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05B5932207DB1680047B41E /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				E05B5942207DBB930047B41E /* AdviceVC.swift */,
 				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
 				E05B5932207DB1680047B41E /* MapVC.swift */,
+				E05304552085343700597236 /* ContactCell.swift */,
 				E05B5934207DB1680047B41E /* Main.storyboard */,
 				E05B5937207DB16B0047B41E /* Assets.xcassets */,
 				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
@@ -316,8 +319,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */,
 				DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */,
+				E05304562085343700597236 /* ContactCell.swift in Sources */,
+
 				E05B5945207DBC470047B41E /* SendScreenVC.swift in Sources */,
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
 				DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */,

@@ -11,20 +11,6 @@ import Contacts
 
 class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
-        
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        let contactToDisplay = contacts[indexPath.row]
-        cell.textLabel?.text = contactToDisplay.first + " " + contactToDisplay.last
-        cell.detailTextLabel?.text = contactToDisplay.number
-        return cell
-    }
-    
-    
     @IBOutlet weak var contactsTableView: UITableView!
     
     var contactStore = CNContactStore()
@@ -43,9 +29,9 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         })
         
        fetchContacts()
-        for contact in contacts{
-            print(contact.first + " " + contact.last)
-        }
+       
+        //self.contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
+
 
     }
 
@@ -65,15 +51,36 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         contactsTableView.reloadData()
       
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return contacts.count
+        
     }
-    */
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        if let cell: ContactCell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell{
+            let contact = contacts[indexPath.row]
+            cell.nameLbl.text = contact.first + " " + contact.last
+            return cell
+        }
+        else {
+            return UITableViewCell()
+        }
+        
+        
+//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+//        let contactToDisplay = contacts[indexPath.row]
+//        cell.textLabel?.text = contactToDisplay.first + " " + contactToDisplay.last
+//        cell.detailTextLabel?.text = contactToDisplay.number
+//        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = contactsTableView.cellForRow(at: indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+
+    }
+    
 
 }
