@@ -81,41 +81,48 @@
 		DC97BD5E20852F11009F5B95 /* Utilities, Extensions, Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				DC370AF0208525AC0066120A /* iosfinal2018.entitlements */,
 				DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */,
 			);
 			path = "Utilities, Extensions, Protocols";
 			sourceTree = "<group>";
 		};
-		DCE074EB2085248D00D06CEF /* Arjun */ = {
+		DC97BD6520854BC2009F5B95 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				DC97BD5E20852F11009F5B95 /* Utilities, Extensions, Protocols */,
-				DCE074EC208524AF00D06CEF /* LoginViewController.swift */,
 				DC97BD6120853024009F5B95 /* Login.storyboard */,
+				E05B5934207DB1680047B41E /* Main.storyboard */,
+				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DC97BD6620854BED009F5B95 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */,
+				DCE074EC208524AF00D06CEF /* LoginViewController.swift */,
+				E05B5942207DBB930047B41E /* AdviceVC.swift */,
+				E05B5932207DB1680047B41E /* MapVC.swift */,
+				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
 			);
-			path = Arjun;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		E0266E662084F31900A9CE3F /* Model */ = {
+		DC97BD6720854C0E009F5B95 /* View */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E0266E672084F31F00A9CE3F /* View */ = {
-			isa = PBXGroup;
-			children = (
+				E05304552085343700597236 /* ContactCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		E0266E682084F32400A9CE3F /* Controller */ = {
+		DC97BD6820854C37009F5B95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E05304532085068200597236 /* Contact.swift */,
 			);
-			path = Controller;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E05B5924207DB1680047B41E = {
@@ -140,22 +147,15 @@
 		E05B592F207DB1680047B41E /* iosfinal2018 */ = {
 			isa = PBXGroup;
 			children = (
-				DC370AF0208525AC0066120A /* iosfinal2018.entitlements */,
-				DCE074EB2085248D00D06CEF /* Arjun */,
-				E0266E682084F32400A9CE3F /* Controller */,
-				E0266E672084F31F00A9CE3F /* View */,
-				E0266E662084F31900A9CE3F /* Model */,
 				E05B5930207DB1680047B41E /* AppDelegate.swift */,
-				E05B5942207DBB930047B41E /* AdviceVC.swift */,
-				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
-				E05B5932207DB1680047B41E /* MapVC.swift */,
-				E05304552085343700597236 /* ContactCell.swift */,
-				E05B5934207DB1680047B41E /* Main.storyboard */,
+				DC97BD5E20852F11009F5B95 /* Utilities, Extensions, Protocols */,
+				DC97BD6820854C37009F5B95 /* Model */,
+				DC97BD6720854C0E009F5B95 /* View */,
+				DC97BD6620854BED009F5B95 /* Controller */,
+				DC97BD6520854BC2009F5B95 /* Storyboards */,
 				E05B5937207DB16B0047B41E /* Assets.xcassets */,
-				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
 				E05B593C207DB16B0047B41E /* Info.plist */,
 				E05B5948207E5FA50047B41E /* GoogleService-Info.plist */,
-				E05304532085068200597236 /* Contact.swift */,
 			);
 			path = iosfinal2018;
 			sourceTree = "<group>";
@@ -319,11 +319,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */,
 				DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */,
 				E05304562085343700597236 /* ContactCell.swift in Sources */,
-
 				E05B5945207DBC470047B41E /* SendScreenVC.swift in Sources */,
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
 				DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */,
