@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A976413C6AD26F1BFCB9F094 /* Pods_iosfinal2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */; };
+		E05304542085068200597236 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05304532085068200597236 /* Contact.swift */; };
 		E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5930207DB1680047B41E /* AppDelegate.swift */; };
 		E05B5933207DB1680047B41E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5932207DB1680047B41E /* MapVC.swift */; };
 		E05B5936207DB1680047B41E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05B5934207DB1680047B41E /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		1FCFD2729F005FF850930173 /* Pods-iosfinal2018.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosfinal2018.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018.debug.xcconfig"; sourceTree = "<group>"; };
 		8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosfinal2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E05304532085068200597236 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		E05B592D207DB1680047B41E /* iosfinal2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosfinal2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05B5930207DB1680047B41E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05B5932207DB1680047B41E /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -31,7 +33,7 @@
 		E05B593C207DB16B0047B41E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E05B5942207DBB930047B41E /* AdviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceVC.swift; sourceTree = "<group>"; };
 		E05B5944207DBC470047B41E /* SendScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendScreenVC.swift; sourceTree = "<group>"; };
-		E05B5946207E5B310047B41E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		E05B5946207E5B310047B41E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E05B5948207E5FA50047B41E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EEEB3DB8C2FDCD0C795D8892 /* Pods-iosfinal2018.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosfinal2018.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +67,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E0266E662084F31900A9CE3F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E0266E672084F31F00A9CE3F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E0266E682084F32400A9CE3F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E05B5924207DB1680047B41E = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +110,9 @@
 		E05B592F207DB1680047B41E /* iosfinal2018 */ = {
 			isa = PBXGroup;
 			children = (
+				E0266E682084F32400A9CE3F /* Controller */,
+				E0266E672084F31F00A9CE3F /* View */,
+				E0266E662084F31900A9CE3F /* Model */,
 				E05B5930207DB1680047B41E /* AppDelegate.swift */,
 				E05B5942207DBB930047B41E /* AdviceVC.swift */,
 				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
@@ -96,6 +122,7 @@
 				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
 				E05B593C207DB16B0047B41E /* Info.plist */,
 				E05B5948207E5FA50047B41E /* GoogleService-Info.plist */,
+				E05304532085068200597236 /* Contact.swift */,
 			);
 			path = iosfinal2018;
 			sourceTree = "<group>";
@@ -253,6 +280,7 @@
 			files = (
 				E05B5945207DBC470047B41E /* SendScreenVC.swift in Sources */,
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
+				E05304542085068200597236 /* Contact.swift in Sources */,
 				E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */,
 				E05B5943207DBB930047B41E /* AdviceVC.swift in Sources */,
 			);
