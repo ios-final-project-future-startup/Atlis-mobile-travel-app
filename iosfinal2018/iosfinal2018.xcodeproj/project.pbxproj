@@ -31,7 +31,7 @@
 		E05B593C207DB16B0047B41E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E05B5942207DBB930047B41E /* AdviceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceVC.swift; sourceTree = "<group>"; };
 		E05B5944207DBC470047B41E /* SendScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendScreenVC.swift; sourceTree = "<group>"; };
-		E05B5946207E5B310047B41E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		E05B5946207E5B310047B41E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E05B5948207E5FA50047B41E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EEEB3DB8C2FDCD0C795D8892 /* Pods-iosfinal2018.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosfinal2018.release.xcconfig"; path = "Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +65,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E0266E662084F31900A9CE3F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E0266E672084F31F00A9CE3F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E0266E682084F32400A9CE3F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		E05B5924207DB1680047B41E = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +108,9 @@
 		E05B592F207DB1680047B41E /* iosfinal2018 */ = {
 			isa = PBXGroup;
 			children = (
+				E0266E682084F32400A9CE3F /* Controller */,
+				E0266E672084F31F00A9CE3F /* View */,
+				E0266E662084F31900A9CE3F /* Model */,
 				E05B5930207DB1680047B41E /* AppDelegate.swift */,
 				E05B5942207DBB930047B41E /* AdviceVC.swift */,
 				E05B5944207DBC470047B41E /* SendScreenVC.swift */,

@@ -30,13 +30,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aEB-qy-W9J"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Advice" id="dZj-Op-HbN"/>
+                    <tabBarItem key="tabBarItem" title="Advice" id="YyD-7K-tI2"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzK-WH-y5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="745" y="-329"/>
         </scene>
-        <!--Send ScreenVC-->
+        <!--Advice-->
         <scene sceneID="xUq-Gg-I3p">
             <objects>
                 <viewController id="cng-z7-ubl" customClass="SendScreenVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,6 +57,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="1FX-Vu-cUC"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Advice" id="ecW-R8-whG"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3S-SF-aHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -75,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deB-sH-5zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="-983"/>
+            <point key="canvasLocation" x="744.79999999999995" y="-983.49753694581284"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Pm3-YH-rHG">
