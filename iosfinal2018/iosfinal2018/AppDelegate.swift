@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       FirebaseApp.configure()
 //
 //        //Google DSK keys given here
-      GMSServices.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
-      GMSPlacesClient.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
+//      GMSServices.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
+//      GMSPlacesClient.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
       
       // Check if user is authorized
       Auth.auth().addStateDidChangeListener() { auth, user in
@@ -55,6 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
       }
       return true
+        //        GMSServices.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
+//        GMSPlacesClient.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
+     
+        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

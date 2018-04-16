@@ -14,16 +14,37 @@ import GooglePlaces
 import MapKit
 
 
-class MapVC: UIViewController {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var map: MKMapView!
-    
 
+    
+    fileprivate var annotation: MKAnnotation!
+    fileprivate var locationManager: CLLocationManager!
+
+    fileprivate var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //Configure Firebase app
+        if locationManager == nil {
+            locationManager = CLLocationManager()
+        }
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
         
+
+//
+        map.delegate = self
+        map.mapType = .hybrid
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
         
     }
 
@@ -32,29 +53,33 @@ class MapVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        activityIndicator.center = self.view.center
+    }
     
-    //temp google maps method, do not use
-//    override func loadView() {
-//
-//        // Create a GMSCameraPosition that tells the map to display the
-//        // coordinate -33.86,151.20 at zoom level 6.
-//        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//        view = mapView
-//
-//        // Creates a marker in the center of the map.
-//        let marker = GMSMarker()
-//        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-//        marker.title = "Sydney"
-//        marker.snippet = "Australia"
-//        marker.map = mapView
-//
-//        //adds button on top of map
-//        let button = UIButton(frame: CGRect(x: 30, y: 30, width: 50, height: 50))
-//        button.backgroundColor = .blue
-//        button.setTitle("Btn", for: .normal)
-//        self.view.addSubview(button)
-//    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        self.map.setRegion(region, animated: true)
+        
+        if self.map.annotations.count != 0 {
+            annotation = self.map.annotations[0]
+            self.map.removeAnnotation(annotation)
+        }
+        
+        let pointAnnotation = MKPointAnnotation()
+        pointAnnotation.coordinate = location!.coordinate
+        pointAnnotation.title = ""
+        map.addAnnotation(pointAnnotation)
+    }
+
+    
     
     
 
