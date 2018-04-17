@@ -72,6 +72,7 @@
 		E0266E662084F31900A9CE3F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E05304532085068200597236 /* Contact.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -79,6 +80,7 @@
 		E0266E672084F31F00A9CE3F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E05304552085343700597236 /* ContactCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -86,6 +88,9 @@
 		E0266E682084F32400A9CE3F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E05B5942207DBB930047B41E /* AdviceVC.swift */,
+				E05B5932207DB1680047B41E /* MapVC.swift */,
+				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -116,16 +121,11 @@
 				E0266E672084F31F00A9CE3F /* View */,
 				E0266E662084F31900A9CE3F /* Model */,
 				E05B5930207DB1680047B41E /* AppDelegate.swift */,
-				E05B5942207DBB930047B41E /* AdviceVC.swift */,
-				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
-				E05B5932207DB1680047B41E /* MapVC.swift */,
-				E05304552085343700597236 /* ContactCell.swift */,
 				E05B5934207DB1680047B41E /* Main.storyboard */,
 				E05B5937207DB16B0047B41E /* Assets.xcassets */,
 				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
 				E05B593C207DB16B0047B41E /* Info.plist */,
 				E05B5948207E5FA50047B41E /* GoogleService-Info.plist */,
-				E05304532085068200597236 /* Contact.swift */,
 			);
 			path = iosfinal2018;
 			sourceTree = "<group>";

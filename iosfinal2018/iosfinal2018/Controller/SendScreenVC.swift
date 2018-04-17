@@ -8,12 +8,19 @@
 
 import UIKit
 
+
 class SendScreenVC: UIViewController {
+    
+    //list of contacts who we are sending to
+    var contacts = [ContactCell]()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        
+        //self.viewControllers = [AdviceVC(),MapVC()]
+        
     }
 
     override func didReceiveMemoryWarning() {

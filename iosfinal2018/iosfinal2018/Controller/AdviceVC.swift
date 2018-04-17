@@ -59,21 +59,16 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        if let cell: ContactCell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as! ContactCell{
+        if let cell: ContactCell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as? ContactCell{
             let contact = contacts[indexPath.row]
             cell.nameLbl.text = contact.first + " " + contact.last
+            cell.phoneNumberLbl.text = contact.number
             return cell
         }
         else {
             return UITableViewCell()
         }
-        
-        
-//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-//        let contactToDisplay = contacts[indexPath.row]
-//        cell.textLabel?.text = contactToDisplay.first + " " + contactToDisplay.last
-//        cell.detailTextLabel?.text = contactToDisplay.number
-//        return cell
+
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -81,6 +76,27 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         cell?.accessoryType = UITableViewCellAccessoryType.checkmark
 
     }
+    
+    @IBAction func sendBtnPressed(_ sender: Any) {
+        var contactsSelected = [ContactCell]()
+        for cell in contactsTableView.visibleCells as! [ContactCell]{
+            if(cell.isSelected){
+                contactsSelected.append(cell)
+            }
+        }
+        
+        performSegue(withIdentifier: "SendScreenVC", sender: contactsSelected)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? SendScreenVC{
+            if let chosen = sender as! [ContactCell]?{
+                destination.contacts = chosen
+            }
+        }
+    }
+    
     
 
 }
