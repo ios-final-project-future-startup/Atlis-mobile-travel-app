@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        try! FIRAuth.auth()!.signOut()
       */
       
-      try! Auth.auth().signOut()
+      //try! Auth.auth().signOut()
       
       // Check if user is authorized
       if Auth.auth().currentUser == nil {
