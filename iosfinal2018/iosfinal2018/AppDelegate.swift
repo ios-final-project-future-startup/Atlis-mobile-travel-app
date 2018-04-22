@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        //Google DSK keys given here
 //      GMSServices.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
 //      GMSPlacesClient.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
+<<<<<<< HEAD
       
       /*
        Testing:
@@ -33,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       */
       
       try! Auth.auth().signOut()
+=======
+>>>>>>> master
       
       // Check if user is authorized
       if Auth.auth().currentUser == nil {
