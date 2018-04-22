@@ -23,33 +23,31 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         contactsTableView.dataSource = self
         
         contactStore.requestAccess(for: .contacts, completionHandler: { (success, error) in
-            if(success){
-                print("Authorization successful")
+            if ( success ) {
+              print("Authorization successful")
+              self.fetchContacts()
             }
         })
-        
-       fetchContacts()
-       
-        //self.contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
-
+      
+        contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "A")
 
     }
 
     func fetchContacts(){
-        let key = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
-        
-        let request = CNContactFetchRequest(keysToFetch: key)
-        
-        try! contactStore.enumerateContacts(with: request, usingBlock: { (contact, stoppablePointer) in
-            let name = contact.givenName
-            let familyname = contact.familyName
-            let number = contact.phoneNumbers.first?.value.stringValue
-            
-            let contactToAppend = Contact(first: name, last: familyname, number: number!)
-            self.contacts.append(contactToAppend)
-        })
-        contactsTableView.reloadData()
+      let key = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
       
+      let request = CNContactFetchRequest(keysToFetch: key)
+      
+      try! contactStore.enumerateContacts(with: request, usingBlock: { (contact, stoppablePointer) in
+        let name = contact.givenName
+        let familyname = contact.familyName
+        let number = contact.phoneNumbers.first?.value.stringValue
+        if ( name != "" && number != nil ) {
+          let contactToAppend = Contact(first: name, last: familyname, number: number!)
+          self.contacts.append(contactToAppend)
+        }
+      })
+      DispatchQueue.main.async { self.contactsTableView.reloadData() } // execute this once block finishes
     }
     
     
