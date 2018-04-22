@@ -92,9 +92,12 @@
 		DC97BD6520854BC2009F5B95 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+
 				DC97BD6120853024009F5B95 /* Login.storyboard */,
 				E05B5934207DB1680047B41E /* Main.storyboard */,
 				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
+				E05304552085343700597236 /* ContactCell.swift */,
+
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -102,6 +105,7 @@
 		DC97BD6620854BED009F5B95 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+
 				DCE074EC208524AF00D06CEF /* LoginViewController.swift */,
 				DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */,
 				DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */,
@@ -156,6 +160,7 @@
 				DC97BD6720854C0E009F5B95 /* View */,
 				DC97BD6620854BED009F5B95 /* Controller */,
 				DC97BD6520854BC2009F5B95 /* Storyboards */,
+				E05B5934207DB1680047B41E /* Main.storyboard */,
 				E05B5937207DB16B0047B41E /* Assets.xcassets */,
 				E05B593C207DB16B0047B41E /* Info.plist */,
 				E05B5948207E5FA50047B41E /* GoogleService-Info.plist */,

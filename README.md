@@ -11,7 +11,7 @@ First Time
 To check to see what branch you are in ... > git branch 
 
 To make changes to your branch 
-git add .
+git add . (add the files individually and always avoid adding the iosfinal2018/iosfinal2018.xcodeproj/project.pbxproj to avoid our different Team Name problem)
 git commit -am "message"
 git push origin branchname 
 
