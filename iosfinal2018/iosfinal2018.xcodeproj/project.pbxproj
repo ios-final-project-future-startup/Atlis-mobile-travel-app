@@ -83,8 +83,12 @@
 		DC97BD5E20852F11009F5B95 /* Utilities, Extensions, Protocols */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				DC370AF0208525AC0066120A /* iosfinal2018.entitlements */,
 				DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */,
+=======
+				E05304532085068200597236 /* Contact.swift */,
+>>>>>>> c5019e8d4fecc4281d39343656216419caa8f20b
 			);
 			path = "Utilities, Extensions, Protocols";
 			sourceTree = "<group>";
@@ -92,9 +96,13 @@
 		DC97BD6520854BC2009F5B95 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				DC97BD6120853024009F5B95 /* Login.storyboard */,
 				E05B5934207DB1680047B41E /* Main.storyboard */,
 				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
+=======
+				E05304552085343700597236 /* ContactCell.swift */,
+>>>>>>> c5019e8d4fecc4281d39343656216419caa8f20b
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -102,9 +110,12 @@
 		DC97BD6620854BED009F5B95 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				DCE074EC208524AF00D06CEF /* LoginViewController.swift */,
 				DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */,
 				DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */,
+=======
+>>>>>>> c5019e8d4fecc4281d39343656216419caa8f20b
 				E05B5942207DBB930047B41E /* AdviceVC.swift */,
 				E05B5932207DB1680047B41E /* MapVC.swift */,
 				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
@@ -151,11 +162,15 @@
 			isa = PBXGroup;
 			children = (
 				E05B5930207DB1680047B41E /* AppDelegate.swift */,
+<<<<<<< HEAD
 				DC97BD5E20852F11009F5B95 /* Utilities, Extensions, Protocols */,
 				DC97BD6820854C37009F5B95 /* Model */,
 				DC97BD6720854C0E009F5B95 /* View */,
 				DC97BD6620854BED009F5B95 /* Controller */,
 				DC97BD6520854BC2009F5B95 /* Storyboards */,
+=======
+				E05B5934207DB1680047B41E /* Main.storyboard */,
+>>>>>>> c5019e8d4fecc4281d39343656216419caa8f20b
 				E05B5937207DB16B0047B41E /* Assets.xcassets */,
 				E05B593C207DB16B0047B41E /* Info.plist */,
 				E05B5948207E5FA50047B41E /* GoogleService-Info.plist */,
