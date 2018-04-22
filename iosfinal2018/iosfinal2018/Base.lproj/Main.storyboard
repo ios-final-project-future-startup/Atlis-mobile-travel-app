@@ -139,36 +139,6 @@
             </objects>
             <point key="canvasLocation" x="2746.4000000000001" y="-166.25615763546799"/>
         </scene>
-        <!--Map-->
-        <scene sceneID="HdQ-27-0hI">
-            <objects>
-                <viewController id="vLI-MA-ori" customClass="MapVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7Bd-R0-oel">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gkp-ZA-3Sz">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="gkp-ZA-3Sz" firstAttribute="leading" secondItem="VBb-fB-1Zb" secondAttribute="leading" id="03L-b6-wUY"/>
-                            <constraint firstItem="gkp-ZA-3Sz" firstAttribute="top" secondItem="7Bd-R0-oel" secondAttribute="top" id="TyE-LJ-Y8B"/>
-                            <constraint firstItem="gkp-ZA-3Sz" firstAttribute="trailing" secondItem="VBb-fB-1Zb" secondAttribute="trailing" id="e8g-S8-s2g"/>
-                            <constraint firstItem="gkp-ZA-3Sz" firstAttribute="bottom" secondItem="VBb-fB-1Zb" secondAttribute="bottom" id="xRi-WG-14G"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="VBb-fB-1Zb"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="9la-13-JcM"/>
-                    <connections>
-                        <outlet property="map" destination="gkp-ZA-3Sz" id="vNr-I8-ONh"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="deB-sH-5zt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="744.79999999999995" y="-983.49753694581284"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Pm3-YH-rHG">
             <objects>
@@ -179,7 +149,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vLI-MA-ori" kind="relationship" relationship="viewControllers" id="oaA-65-Ovx"/>
+                        <segue destination="5TK-MI-5t1" kind="relationship" relationship="viewControllers" id="uE4-Rl-bmu"/>
                         <segue destination="pDT-gP-D42" kind="relationship" relationship="viewControllers" id="gSp-dL-rFK"/>
                     </connections>
                 </tabBarController>
@@ -205,6 +175,61 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Rr-3W-QdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="744.79999999999995" y="-165.51724137931035"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PGe-wT-UTG">
+            <objects>
+                <viewController id="zaG-KJ-XqK" customClass="ViewController" customModule="Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ilo-as-1cd"/>
+                        <viewControllerLayoutGuide type="bottom" id="qRO-JO-eRJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L3X-Ou-COz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-oW-aWT">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zaG-KJ-XqK" id="mOp-HH-1aZ"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ya5-oW-aWT" firstAttribute="top" secondItem="ilo-as-1cd" secondAttribute="bottom" constant="-20" id="G5y-gM-Y8T"/>
+                            <constraint firstItem="Ya5-oW-aWT" firstAttribute="leading" secondItem="L3X-Ou-COz" secondAttribute="leading" id="aMl-aq-thq"/>
+                            <constraint firstAttribute="trailing" secondItem="Ya5-oW-aWT" secondAttribute="trailing" id="pAt-Cx-BgE"/>
+                            <constraint firstItem="qRO-JO-eRJ" firstAttribute="top" secondItem="Ya5-oW-aWT" secondAttribute="bottom" id="vVL-gA-vd4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7K9-rr-bvB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DRX-1t-5h2"/>
+                    <connections>
+                        <outlet property="mapView" destination="Ya5-oW-aWT" id="uhS-1y-Nf9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRP-an-JZR" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="311"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="7u6-4p-fco">
+            <objects>
+                <navigationController id="5TK-MI-5t1" customClass="MapVc" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="8ku-u4-0Dh"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4c4-et-7Nk">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zaG-KJ-XqK" kind="relationship" relationship="rootViewController" id="bXU-Vp-ObT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1er-Wc-ley" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-518" y="306"/>
         </scene>
     </scenes>
     <resources>
