@@ -189,8 +189,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-oW-aWT">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-oW-aWT">
+                                <rect key="frame" x="0.0" y="68" width="375" height="661"/>
                                 <connections>
                                     <outlet property="delegate" destination="zaG-KJ-XqK" id="mOp-HH-1aZ"/>
                                 </connections>
@@ -209,12 +209,12 @@
                     <navigationItem key="navigationItem" id="DRX-1t-5h2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mapView" destination="Ya5-oW-aWT" id="RQa-T3-KEC"/>
+                        <outlet property="map" destination="Ya5-oW-aWT" id="35B-nn-K0m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRP-an-JZR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="311"/>
+            <point key="canvasLocation" x="319" y="674"/>
         </scene>
         <!--Map-->
         <scene sceneID="7u6-4p-fco">
@@ -232,7 +232,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1er-Wc-ley" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-518" y="306"/>
+            <point key="canvasLocation" x="-519" y="674"/>
         </scene>
     </scenes>
     <resources>
