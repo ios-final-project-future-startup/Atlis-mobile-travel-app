@@ -11,14 +11,12 @@ import FirebaseAuth
 
 class ConfirmPhoneViewController: UIViewController {
   // Variables
-  var correctConfirmationCode : String?
-  var userConfirmationCode : String?
+  var phoneNumber : String?
   // Outlets
   @IBOutlet weak var confirmationCodeTextfield: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    //let verificationCode = 
   }
   
   func userSignIn(credential: AuthCredential) {
@@ -28,7 +26,7 @@ class ConfirmPhoneViewController: UIViewController {
         return
       }
       // User is signed in
-      self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+      self.performSegue(withIdentifier: "goToFinishSignUpVC", sender: nil)
     }
   }
   
@@ -45,6 +43,10 @@ class ConfirmPhoneViewController: UIViewController {
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     // Send data
+    if segue.identifier == "goToFinishSignUpVC" {
+      let destVC = segue.destination as! FinishSignUpVC
+      destVC.phoneNumber = phoneNumber
+    }
   }
   
 

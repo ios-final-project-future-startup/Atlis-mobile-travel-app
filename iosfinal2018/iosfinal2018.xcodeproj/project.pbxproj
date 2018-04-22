@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A976413C6AD26F1BFCB9F094 /* Pods_iosfinal2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */; };
+		DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */; };
 		DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */; };
 		DC97BD6220853024009F5B95 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC97BD6120853024009F5B95 /* Login.storyboard */; };
 		DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */; };
@@ -29,6 +30,7 @@
 		1FCFD2729F005FF850930173 /* Pods-iosfinal2018.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosfinal2018.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018.debug.xcconfig"; sourceTree = "<group>"; };
 		8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosfinal2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC370AF0208525AC0066120A /* iosfinal2018.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosfinal2018.entitlements; sourceTree = "<group>"; };
+		DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSignUpVC.swift; sourceTree = "<group>"; };
 		DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utilties + Extensions.swift"; sourceTree = "<group>"; };
 		DC97BD6120853024009F5B95 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhoneViewController.swift; sourceTree = "<group>"; };
@@ -100,8 +102,9 @@
 		DC97BD6620854BED009F5B95 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */,
 				DCE074EC208524AF00D06CEF /* LoginViewController.swift */,
+				DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */,
+				DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */,
 				E05B5942207DBB930047B41E /* AdviceVC.swift */,
 				E05B5932207DB1680047B41E /* MapVC.swift */,
 				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
@@ -284,6 +287,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
@@ -297,6 +301,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
@@ -326,6 +331,7 @@
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
 				DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */,
 				E05304542085068200597236 /* Contact.swift in Sources */,
+				DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */,
 				E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */,
 				E05B5943207DBB930047B41E /* AdviceVC.swift in Sources */,
 			);
@@ -472,16 +478,16 @@
 			baseConfigurationReference = 1FCFD2729F005FF850930173 /* Pods-iosfinal2018.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = iosfinal2018/iosfinal2018.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -492,16 +498,16 @@
 			baseConfigurationReference = EEEB3DB8C2FDCD0C795D8892 /* Pods-iosfinal2018.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = iosfinal2018/iosfinal2018.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

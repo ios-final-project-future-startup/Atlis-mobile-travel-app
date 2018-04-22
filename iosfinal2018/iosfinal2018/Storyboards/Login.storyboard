@@ -82,12 +82,30 @@
                     </view>
                     <connections>
                         <outlet property="confirmationCodeTextfield" destination="D3L-nt-MhQ" id="ee1-wm-mFd"/>
-                        <segue destination="Ciy-HM-pCM" kind="presentation" identifier="goToMainVC" id="oUN-5A-hvm"/>
+                        <segue destination="Lmw-PT-z2T" kind="show" identifier="goToFinishSignUpVC" id="ouc-2w-ewQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="luU-Ih-heb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="661.60000000000002" y="158.77061469265368"/>
+        </scene>
+        <!--Finish Sign UpVC-->
+        <scene sceneID="JTV-2b-SGo">
+            <objects>
+                <viewController id="Lmw-PT-z2T" customClass="FinishSignUpVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Jg-R1-i5v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xaY-ZW-ak4"/>
+                    </view>
+                    <connections>
+                        <segue destination="Ciy-HM-pCM" kind="presentation" identifier="goToMainVC" id="yVH-HS-37M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JVH-N7-7iO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1402" y="158"/>
         </scene>
         <!--Main-->
         <scene sceneID="sVg-0Z-hiY">
@@ -95,7 +113,7 @@
                 <viewControllerPlaceholder storyboardName="Main" id="Ciy-HM-pCM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7nX-fA-dDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1308" y="158"/>
+            <point key="canvasLocation" x="1947" y="158"/>
         </scene>
     </scenes>
 </document>

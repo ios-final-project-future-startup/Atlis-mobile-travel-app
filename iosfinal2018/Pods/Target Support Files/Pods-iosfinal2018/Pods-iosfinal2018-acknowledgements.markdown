@@ -11,7 +11,9 @@ Contributors to BoringSSL are required to follow the CLA rules for Chromium:
 https://cla.developers.google.com/clas
 
 Some files from Intel are under yet another license, which is also included
-underneath.
+underneath. Files in third_party/ have their own licenses, as described
+therein. The MIT license, for third_party/fiat, which, unlike other third_party
+directories, is compiled into non-test libraries, is included below.
 
 The OpenSSL toolkit stays under a dual license, i.e. both the conditions of the
 OpenSSL License and the original SSLeay license apply to the toolkit. See below
@@ -197,6 +199,56 @@ Some files from Intel carry the following license:
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+The code in third_party/fiat carries the MIT license:
+
+Copyright (c) 2015-2016 the fiat-crypto authors (see
+https://github.com/mit-plv/fiat-crypto/blob/master/AUTHORS).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+## Eureka
+
+The MIT License (MIT)
+
+Copyright (c) 2015 XMARTLABS
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
 ## Firebase
 
 Copyright 2018 Google
@@ -210,6 +262,10 @@ Copyright 2018 Google
 Copyright 2018 Google
 
 ## FirebaseCore
+
+Copyright 2018 Google
+
+## FirebaseDatabase
 
 Copyright 2018 Google
 
@@ -429,11 +485,11 @@ Copyright 2018 Google
 
 ## GoogleMaps
 
-Copyright 2017 Google
+Copyright 2018 Google
 
 ## GooglePlaces
 
-Copyright 2017 Google
+Copyright 2018 Google
 
 ## GoogleToolboxForMac
 

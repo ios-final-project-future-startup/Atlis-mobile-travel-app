@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
+  var phoneNumber: String?
   
   @IBOutlet weak var phoneNumberTextfield: UITextField!
   
@@ -21,8 +22,8 @@ class LoginViewController: UIViewController {
   
   @IBAction func getConfirmationBtnTapped(_ sender: Any) {
     if ( phoneNumberTextfield.text != nil && (phoneNumberTextfield.text?.count)! == 10) {
-      let phoneNumber = "+1" + phoneNumberTextfield.text!
-      PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
+      phoneNumber = "+1" + phoneNumberTextfield.text!
+      PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber!, uiDelegate: nil) { (verificationID, error) in
         if let error = error {
           self.showAlert(withTitle: "Error", message: error.localizedDescription)
           return
@@ -36,8 +37,8 @@ class LoginViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //let destVC = segue.destination as! ConfirmPhoneViewController
-    //destVC.correctConfirmationCode
+    let destVC = segue.destination as! ConfirmPhoneViewController
+    destVC.phoneNumber = phoneNumber
   }
   
   
