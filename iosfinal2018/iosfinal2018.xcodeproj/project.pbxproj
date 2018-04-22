@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65BE4C5F208D067F00515768 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BE4C5E208D067F00515768 /* ContactCell.swift */; };
 		A976413C6AD26F1BFCB9F094 /* Pods_iosfinal2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */; };
 		DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */; };
 		DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */; };
@@ -14,7 +15,6 @@
 		DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */; };
 		DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE074EC208524AF00D06CEF /* LoginViewController.swift */; };
 		E05304542085068200597236 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05304532085068200597236 /* Contact.swift */; };
-		E05304562085343700597236 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05304552085343700597236 /* ContactCell.swift */; };
 		E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5930207DB1680047B41E /* AppDelegate.swift */; };
 		E05B5933207DB1680047B41E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5932207DB1680047B41E /* MapVC.swift */; };
 		E05B5936207DB1680047B41E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05B5934207DB1680047B41E /* Main.storyboard */; };
@@ -28,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		1FCFD2729F005FF850930173 /* Pods-iosfinal2018.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosfinal2018.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018.debug.xcconfig"; sourceTree = "<group>"; };
+		65BE4C5E208D067F00515768 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosfinal2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC370AF0208525AC0066120A /* iosfinal2018.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosfinal2018.entitlements; sourceTree = "<group>"; };
 		DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSignUpVC.swift; sourceTree = "<group>"; };
@@ -36,7 +37,6 @@
 		DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhoneViewController.swift; sourceTree = "<group>"; };
 		DCE074EC208524AF00D06CEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E05304532085068200597236 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		E05304552085343700597236 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		E05B592D207DB1680047B41E /* iosfinal2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosfinal2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05B5930207DB1680047B41E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05B5932207DB1680047B41E /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -92,12 +92,9 @@
 		DC97BD6520854BC2009F5B95 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-
-				DC97BD6120853024009F5B95 /* Login.storyboard */,
 				E05B5934207DB1680047B41E /* Main.storyboard */,
+				DC97BD6120853024009F5B95 /* Login.storyboard */,
 				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
-				E05304552085343700597236 /* ContactCell.swift */,
-
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -105,7 +102,6 @@
 		DC97BD6620854BED009F5B95 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-
 				DCE074EC208524AF00D06CEF /* LoginViewController.swift */,
 				DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */,
 				DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */,
@@ -119,7 +115,7 @@
 		DC97BD6720854C0E009F5B95 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E05304552085343700597236 /* ContactCell.swift */,
+				65BE4C5E208D067F00515768 /* ContactCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,7 +156,6 @@
 				DC97BD6720854C0E009F5B95 /* View */,
 				DC97BD6620854BED009F5B95 /* Controller */,
 				DC97BD6520854BC2009F5B95 /* Storyboards */,
-				E05B5934207DB1680047B41E /* Main.storyboard */,
 				E05B5937207DB16B0047B41E /* Assets.xcassets */,
 				E05B593C207DB16B0047B41E /* Info.plist */,
 				E05B5948207E5FA50047B41E /* GoogleService-Info.plist */,
@@ -331,10 +326,10 @@
 			files = (
 				DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */,
 				DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */,
-				E05304562085343700597236 /* ContactCell.swift in Sources */,
 				E05B5945207DBC470047B41E /* SendScreenVC.swift in Sources */,
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
 				DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */,
+				65BE4C5F208D067F00515768 /* ContactCell.swift in Sources */,
 				E05304542085068200597236 /* Contact.swift in Sources */,
 				DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */,
 				E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */,
@@ -486,16 +481,13 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-
 				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
-
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
-
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -512,15 +504,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-
 				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
-
-				INFOPLIST_FILE = iosfinal2018/Info.plist;
-
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-
-				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
-
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
