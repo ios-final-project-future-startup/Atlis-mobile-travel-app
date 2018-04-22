@@ -16,8 +16,8 @@ import MapKit
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
 
-    @IBOutlet weak var map: MKMapView!
 
+    @IBOutlet weak var map: MKMapView!
     
     fileprivate var annotation: MKAnnotation!
     fileprivate var locationManager: CLLocationManager!
@@ -40,7 +40,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
 
 //
         map.delegate = self
-        map.mapType = .hybrid
+        //map.mapType = .hybrid
         
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         activityIndicator.hidesWhenStopped = true
@@ -78,11 +78,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         pointAnnotation.title = ""
         map.addAnnotation(pointAnnotation)
     }
-
-    
-    
-    
-
 
 }
 
