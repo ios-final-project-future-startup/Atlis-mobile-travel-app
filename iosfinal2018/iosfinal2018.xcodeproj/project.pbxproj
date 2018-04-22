@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		A976413C6AD26F1BFCB9F094 /* Pods_iosfinal2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */; };
+		DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */; };
+		DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */; };
+		DC97BD6220853024009F5B95 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC97BD6120853024009F5B95 /* Login.storyboard */; };
+		DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */; };
+		DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE074EC208524AF00D06CEF /* LoginViewController.swift */; };
 		E05304542085068200597236 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05304532085068200597236 /* Contact.swift */; };
+		E05304562085343700597236 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05304552085343700597236 /* ContactCell.swift */; };
 		E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5930207DB1680047B41E /* AppDelegate.swift */; };
 		E05B5933207DB1680047B41E /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5932207DB1680047B41E /* MapVC.swift */; };
 		E05B5936207DB1680047B41E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05B5934207DB1680047B41E /* Main.storyboard */; };
@@ -23,7 +29,14 @@
 /* Begin PBXFileReference section */
 		1FCFD2729F005FF850930173 /* Pods-iosfinal2018.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosfinal2018.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018.debug.xcconfig"; sourceTree = "<group>"; };
 		8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosfinal2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC370AF0208525AC0066120A /* iosfinal2018.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosfinal2018.entitlements; sourceTree = "<group>"; };
+		DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSignUpVC.swift; sourceTree = "<group>"; };
+		DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utilties + Extensions.swift"; sourceTree = "<group>"; };
+		DC97BD6120853024009F5B95 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhoneViewController.swift; sourceTree = "<group>"; };
+		DCE074EC208524AF00D06CEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E05304532085068200597236 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		E05304552085343700597236 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		E05B592D207DB1680047B41E /* iosfinal2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosfinal2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05B5930207DB1680047B41E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05B5932207DB1680047B41E /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -67,25 +80,52 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E0266E662084F31900A9CE3F /* Model */ = {
+		DC97BD5E20852F11009F5B95 /* Utilities, Extensions, Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				DC370AF0208525AC0066120A /* iosfinal2018.entitlements */,
+				DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */,
 			);
-			path = Model;
+			path = "Utilities, Extensions, Protocols";
 			sourceTree = "<group>";
 		};
-		E0266E672084F31F00A9CE3F /* View */ = {
+		DC97BD6520854BC2009F5B95 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				DC97BD6120853024009F5B95 /* Login.storyboard */,
+				E05B5934207DB1680047B41E /* Main.storyboard */,
+				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DC97BD6620854BED009F5B95 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DCE074EC208524AF00D06CEF /* LoginViewController.swift */,
+				DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */,
+				DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */,
+				E05B5942207DBB930047B41E /* AdviceVC.swift */,
+				E05B5932207DB1680047B41E /* MapVC.swift */,
+				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DC97BD6720854C0E009F5B95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E05304552085343700597236 /* ContactCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		E0266E682084F32400A9CE3F /* Controller */ = {
+		DC97BD6820854C37009F5B95 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E05304532085068200597236 /* Contact.swift */,
 			);
-			path = Controller;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E05B5924207DB1680047B41E = {
@@ -110,19 +150,15 @@
 		E05B592F207DB1680047B41E /* iosfinal2018 */ = {
 			isa = PBXGroup;
 			children = (
-				E0266E682084F32400A9CE3F /* Controller */,
-				E0266E672084F31F00A9CE3F /* View */,
-				E0266E662084F31900A9CE3F /* Model */,
 				E05B5930207DB1680047B41E /* AppDelegate.swift */,
-				E05B5942207DBB930047B41E /* AdviceVC.swift */,
-				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
-				E05B5932207DB1680047B41E /* MapVC.swift */,
-				E05B5934207DB1680047B41E /* Main.storyboard */,
+				DC97BD5E20852F11009F5B95 /* Utilities, Extensions, Protocols */,
+				DC97BD6820854C37009F5B95 /* Model */,
+				DC97BD6720854C0E009F5B95 /* View */,
+				DC97BD6620854BED009F5B95 /* Controller */,
+				DC97BD6520854BC2009F5B95 /* Storyboards */,
 				E05B5937207DB16B0047B41E /* Assets.xcassets */,
-				E05B5939207DB16B0047B41E /* LaunchScreen.storyboard */,
 				E05B593C207DB16B0047B41E /* Info.plist */,
 				E05B5948207E5FA50047B41E /* GoogleService-Info.plist */,
-				E05304532085068200597236 /* Contact.swift */,
 			);
 			path = iosfinal2018;
 			sourceTree = "<group>";
@@ -162,6 +198,11 @@
 				TargetAttributes = {
 					E05B592C207DB1680047B41E = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -190,6 +231,7 @@
 			files = (
 				E05B593B207DB16B0047B41E /* LaunchScreen.storyboard in Resources */,
 				E05B5938207DB16B0047B41E /* Assets.xcassets in Resources */,
+				DC97BD6220853024009F5B95 /* Login.storyboard in Resources */,
 				E05B5949207E5FA50047B41E /* GoogleService-Info.plist in Resources */,
 				E05B5947207E5B320047B41E /* Podfile in Resources */,
 				E05B5936207DB1680047B41E /* Main.storyboard in Resources */,
@@ -245,6 +287,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
@@ -257,6 +301,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
@@ -278,9 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */,
+				DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */,
+				E05304562085343700597236 /* ContactCell.swift in Sources */,
 				E05B5945207DBC470047B41E /* SendScreenVC.swift in Sources */,
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
+				DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */,
 				E05304542085068200597236 /* Contact.swift in Sources */,
+				DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */,
 				E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */,
 				E05B5943207DBB930047B41E /* AdviceVC.swift in Sources */,
 			);
@@ -427,15 +478,16 @@
 			baseConfigurationReference = 1FCFD2729F005FF850930173 /* Pods-iosfinal2018.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NPF7TA6L62;
+				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nyu.iosfinal2018;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -446,15 +498,16 @@
 			baseConfigurationReference = EEEB3DB8C2FDCD0C795D8892 /* Pods-iosfinal2018.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NPF7TA6L62;
+				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nyu.iosfinal2018;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -18,16 +18,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        //Configure Firebase app
-        FirebaseApp.configure()
+      // Override point for customization after application launch.
+      
+      //Configure Firebase app
+      FirebaseApp.configure()
 //
 //        //Google DSK keys given here
-        GMSServices.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
-        GMSPlacesClient.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
-     
-        return true
+      GMSServices.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
+      GMSPlacesClient.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
+      
+      /*
+       Testing:
+       try! FIRAuth.auth()!.signOut()
+      */
+      
+      try! Auth.auth().signOut()
+      
+      // Check if user is authorized
+      if Auth.auth().currentUser == nil {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        // Access the storyboard and fetch an instance of the view controller
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let viewController: LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        // Then push that view controller onto the navigation stack
+        self.window!.rootViewController = navigationController
+        self.window!.makeKeyAndVisible()
+      } else {
+        // Access the storyboard and fetch an instance of the view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mapVC: MapVC = storyboard.instantiateViewController(withIdentifier: "MapVC") as! MapVC
+        let adviceVC: AdviceVC = storyboard.instantiateViewController(withIdentifier: "AdviceVC") as! AdviceVC
+        let tabBarController = UITabBarController()
+        let vcArray = [mapVC, adviceVC]
+        tabBarController.setViewControllers(vcArray, animated: false)
+        
+        // Then push that view controller onto the navigation stack
+        self.window!.rootViewController = tabBarController
+        self.window!.makeKeyAndVisible()
+      }
+      return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
