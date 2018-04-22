@@ -82,6 +82,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aEB-qy-W9J"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Advice" image="collaboration" id="ldd-pm-BkM"/>
                     <navigationItem key="navigationItem" title="Request advice from who?" id="Dpx-dQ-rCK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -143,7 +144,7 @@
         <scene sceneID="Pm3-YH-rHG">
             <objects>
                 <tabBarController id="upm-3Q-d2w" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="47d-hG-tQz">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="47d-hG-tQz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -174,12 +175,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Rr-3W-QdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="744.79999999999995" y="-165.51724137931035"/>
+            <point key="canvasLocation" x="806" y="-508"/>
         </scene>
-        <!--MapVC-->
+        <!--Map-->
         <scene sceneID="PGe-wT-UTG">
             <objects>
-                <viewController storyboardIdentifier="MapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zaG-KJ-XqK" customClass="MapVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapVC" title="Map" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zaG-KJ-XqK" customClass="MapVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
+
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ilo-as-1cd"/>
                         <viewControllerLayoutGuide type="bottom" id="qRO-JO-eRJ"/>
@@ -204,9 +206,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7K9-rr-bvB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="uFw-6P-Dc7"/>
                     <navigationItem key="navigationItem" id="DRX-1t-5h2"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="map" destination="Ya5-oW-aWT" id="0cS-lg-tga"/>
+                        <outlet property="mapView" destination="Ya5-oW-aWT" id="RQa-T3-KEC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRP-an-JZR" sceneMemberID="firstResponder"/>
