@@ -41,14 +41,16 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
-        let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(ViewController.searchButtonAction(_:)))
-        self.navigationItem.rightBarButtonItem = searchButton
+        
+//        let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MapVC.searchButtonAction(_:)))
+//        self.navigationItem.rightBarButtonItem = searchButton
 
         map.delegate = self
         
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
+        self.locationManager.stopUpdatingLocation()
         
     }
     
@@ -62,7 +64,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         activityIndicator.center = self.view.center
     }
     
-    
+   
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         
@@ -82,11 +84,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         pointAnnotation.title = ""
         map.addAnnotation(pointAnnotation)
     }
-    
-    
-    
-    
-    
     
 }
 

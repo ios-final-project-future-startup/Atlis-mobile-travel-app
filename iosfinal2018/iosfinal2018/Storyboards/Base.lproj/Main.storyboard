@@ -181,7 +181,6 @@
         <scene sceneID="PGe-wT-UTG">
             <objects>
                 <viewController storyboardIdentifier="MapVC" title="Map" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zaG-KJ-XqK" customClass="MapVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
-
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ilo-as-1cd"/>
                         <viewControllerLayoutGuide type="bottom" id="qRO-JO-eRJ"/>
@@ -190,8 +189,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-oW-aWT">
-                                <rect key="frame" x="0.0" y="68" width="375" height="661"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-oW-aWT">
+                                <rect key="frame" x="0.0" y="68" width="375" height="603"/>
                                 <connections>
                                     <outlet property="delegate" destination="zaG-KJ-XqK" id="mOp-HH-1aZ"/>
                                 </connections>
