@@ -34,21 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        try! FIRAuth.auth()!.signOut()
       */
       
-      //try! Auth.auth().signOut()
-      
       // Check if user is authorized
-      if Auth.auth().currentUser == nil {
+      if Auth.auth().currentUser == nil { // there is no current user
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        // Access the storyboard and fetch an instance of the view controller
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController: LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         let navigationController = UINavigationController(rootViewController: viewController)
-        
         // Then push that view controller onto the navigation stack
         self.window!.rootViewController = navigationController
         self.window!.makeKeyAndVisible()
-      } else {
-        // Access the storyboard and fetch an instance of the view controller
+      } else { // there is a user already
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mapVC: MapVC = storyboard.instantiateViewController(withIdentifier: "MapVC") as! MapVC
         let nav1 = UINavigationController(rootViewController: mapVC)
@@ -59,8 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let vcArray = [nav1, nav2]
         tabBarController.setViewControllers(vcArray, animated: false)
-        
-        // Then push that view controller onto the navigation stack
         self.window!.rootViewController = tabBarController
         self.window!.makeKeyAndVisible()
       }

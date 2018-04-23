@@ -152,8 +152,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         }
     }
     
-
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         
@@ -167,12 +165,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             annotation = self.map.annotations[0]
             self.map.removeAnnotation(annotation)
         }
-        
         let pointAnnotation = MKPointAnnotation()
         pointAnnotation.coordinate = location!.coordinate
         pointAnnotation.title = ""
         map.addAnnotation(pointAnnotation)
-    }
-    
+    }    
 }
 

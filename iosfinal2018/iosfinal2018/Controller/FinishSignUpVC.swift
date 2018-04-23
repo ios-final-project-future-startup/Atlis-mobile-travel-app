@@ -72,10 +72,10 @@ class FinishSignUpVC: FormViewController {
       return
     }
     
-    // Save user information
+    // Create user object
     let userData = ["name": nameString, "email": emailString, "phoneNumber": self.phoneNumber] as [String : Any]
     if let user = Auth.auth().currentUser {
-      Database.database().reference().child("users").child((user.uid)).updateChildValues(userData)
+      Database.database().reference().child("users").child((user.uid)).updateChildValues(userData) // send to firebase
       self.performSegue(withIdentifier: "goToMainVC", sender: nil)
     }
     
