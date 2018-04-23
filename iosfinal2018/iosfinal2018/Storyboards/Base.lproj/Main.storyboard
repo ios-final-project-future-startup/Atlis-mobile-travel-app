@@ -180,8 +180,7 @@
         <!--Map-->
         <scene sceneID="PGe-wT-UTG">
             <objects>
-                <viewController storyboardIdentifier="MapVC" title="Map" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zaG-KJ-XqK" customClass="MapVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
-
+                <viewController storyboardIdentifier="MapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zaG-KJ-XqK" customClass="MapVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ilo-as-1cd"/>
                         <viewControllerLayoutGuide type="bottom" id="qRO-JO-eRJ"/>
@@ -190,8 +189,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-oW-aWT">
-                                <rect key="frame" x="0.0" y="68" width="375" height="661"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-oW-aWT">
+                                <rect key="frame" x="0.0" y="160" width="375" height="510"/>
                                 <connections>
                                     <outlet property="delegate" destination="zaG-KJ-XqK" id="mOp-HH-1aZ"/>
                                 </connections>
@@ -210,23 +209,25 @@
                     <navigationItem key="navigationItem" id="DRX-1t-5h2"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mapView" destination="Ya5-oW-aWT" id="RQa-T3-KEC"/>
+                        <outlet property="map" destination="Ya5-oW-aWT" id="35B-nn-K0m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRP-an-JZR" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="319" y="674"/>
+            <point key="canvasLocation" x="317.60000000000002" y="673.89162561576359"/>
         </scene>
         <!--Map-->
         <scene sceneID="7u6-4p-fco">
             <objects>
                 <navigationController id="5TK-MI-5t1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="8ku-u4-0Dh"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4c4-et-7Nk">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ynz-jC-uY6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="zaG-KJ-XqK" kind="relationship" relationship="rootViewController" id="bXU-Vp-ObT"/>
                     </connections>

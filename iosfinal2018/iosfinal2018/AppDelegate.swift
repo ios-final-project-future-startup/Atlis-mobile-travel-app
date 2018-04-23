@@ -51,9 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Access the storyboard and fetch an instance of the view controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mapVC: MapVC = storyboard.instantiateViewController(withIdentifier: "MapVC") as! MapVC
+        let nav1 = UINavigationController(rootViewController: mapVC)
+        
         let adviceVC: AdviceVC = storyboard.instantiateViewController(withIdentifier: "AdviceVC") as! AdviceVC
+        let nav2 = UINavigationController(rootViewController: adviceVC)
+        
         let tabBarController = UITabBarController()
-        let vcArray = [mapVC, adviceVC]
+        let vcArray = [nav1, nav2]
         tabBarController.setViewControllers(vcArray, animated: false)
         
         // Then push that view controller onto the navigation stack
