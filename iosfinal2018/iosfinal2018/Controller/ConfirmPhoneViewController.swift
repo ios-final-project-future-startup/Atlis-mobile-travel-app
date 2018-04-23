@@ -31,7 +31,7 @@ class ConfirmPhoneViewController: UIViewController {
   }
   
   @IBAction func confirmBtnTapped(_ sender: Any) {
-    let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
+    let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") // value is stored to disk
     if let code = confirmationCodeTextfield.text {
       let credential = PhoneAuthProvider.provider().credential(
         withVerificationID: verificationID!,

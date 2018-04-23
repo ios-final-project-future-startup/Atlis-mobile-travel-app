@@ -60,8 +60,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-        
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -72,12 +70,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             annotation = self.map.annotations[0]
             self.map.removeAnnotation(annotation)
         }
-        
         let pointAnnotation = MKPointAnnotation()
         pointAnnotation.coordinate = location!.coordinate
         pointAnnotation.title = ""
         map.addAnnotation(pointAnnotation)
     }
-
 }
 
