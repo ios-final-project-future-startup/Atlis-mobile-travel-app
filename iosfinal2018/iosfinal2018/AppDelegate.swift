@@ -46,9 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       } else { // there is a user already
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mapVC: MapVC = storyboard.instantiateViewController(withIdentifier: "MapVC") as! MapVC
+        let nav1 = UINavigationController(rootViewController: mapVC)
+        
         let adviceVC: AdviceVC = storyboard.instantiateViewController(withIdentifier: "AdviceVC") as! AdviceVC
+        let nav2 = UINavigationController(rootViewController: adviceVC)
+        
         let tabBarController = UITabBarController()
-        let vcArray = [mapVC, adviceVC]
+        let vcArray = [nav1, nav2]
         tabBarController.setViewControllers(vcArray, animated: false)
         self.window!.rootViewController = tabBarController
         self.window!.makeKeyAndVisible()
