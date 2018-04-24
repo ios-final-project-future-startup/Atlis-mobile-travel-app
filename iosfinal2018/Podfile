@@ -5,6 +5,7 @@ use_frameworks!
 pod 'Eureka'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
+pod 'Alamofire', '~> 4.7'
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'

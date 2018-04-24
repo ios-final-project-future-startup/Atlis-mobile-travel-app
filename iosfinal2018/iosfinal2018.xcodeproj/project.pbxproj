@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		65BE4C5F208D067F00515768 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BE4C5E208D067F00515768 /* ContactCell.swift */; };
 		A976413C6AD26F1BFCB9F094 /* Pods_iosfinal2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */; };
+		DC59C2BE208E7718005B9E41 /* TwilioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC59C2BD208E7718005B9E41 /* TwilioManager.swift */; };
 		DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */; };
 		DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */; };
 		DC97BD6220853024009F5B95 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC97BD6120853024009F5B95 /* Login.storyboard */; };
@@ -31,6 +32,7 @@
 		65BE4C5E208D067F00515768 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosfinal2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC370AF0208525AC0066120A /* iosfinal2018.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosfinal2018.entitlements; sourceTree = "<group>"; };
+		DC59C2BD208E7718005B9E41 /* TwilioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwilioManager.swift; sourceTree = "<group>"; };
 		DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSignUpVC.swift; sourceTree = "<group>"; };
 		DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utilties + Extensions.swift"; sourceTree = "<group>"; };
 		DC97BD6120853024009F5B95 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		DC8E1EB7208D20B3002D5D84 /* Twillio */ = {
 			isa = PBXGroup;
 			children = (
+				DC59C2BD208E7718005B9E41 /* TwilioManager.swift */,
 			);
 			path = Twillio;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -308,6 +312,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -338,6 +343,7 @@
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
 				DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */,
 				65BE4C5F208D067F00515768 /* ContactCell.swift in Sources */,
+				DC59C2BE208E7718005B9E41 /* TwilioManager.swift in Sources */,
 				E05304542085068200597236 /* Contact.swift in Sources */,
 				DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */,
 				E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */,
