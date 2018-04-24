@@ -16,9 +16,7 @@ class AdviceAnnotation: NSObject, MKAnnotation{
     var address: String?
     var image: UIImage?
     
-    init(coordinate: CLLocationCoordinate2D, friend: String, recomendation: String) {
+    init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
-        self.friend = friend
-        self.recomendation = recomendation
     }
 }
