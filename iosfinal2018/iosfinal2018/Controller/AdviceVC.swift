@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import Contacts
 
 class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
@@ -15,23 +16,44 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     var contactStore = CNContactStore()
     var contacts = [Contact]()
+    var userRef: DatabaseReference!
     
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        contactsTableView.delegate = self
-        contactsTableView.dataSource = self
-        
-        contactStore.requestAccess(for: .contacts, completionHandler: { (success, error) in
-            if ( success ) {
-              print("Authorization successful")
-              self.fetchContacts()
-            }
-        })
+      super.viewDidLoad()
+      contactsTableView.delegate = self
+      contactsTableView.dataSource = self
       
-        contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "A")
-
+      contactStore.requestAccess(for: .contacts, completionHandler: { (success, error) in
+          if ( success ) {
+            print("Authorization successful")
+            self.fetchContacts()
+          }
+      })
+    
+      contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "A")
+      
+      testTwilio()
+      
     }
+  
+  func testTwilio() {
+    var userName: String?
+    let user = Auth.auth().currentUser
+    userRef = Database.database().reference().child("users").child((user?.uid)!)
+    userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+      // Get user value
+      let value = snapshot.value as? NSDictionary
+      userName = value?["name"] as? String ?? ""
+      let twilioManager = TwilioManager(userID: (user?.uid)!, userName: userName!, city: "Tokyo")
+      twilioManager.sendMessage()
+    }) { (error) in
+      print(error.localizedDescription)
+    }
+    
+    
+    
+  }
 
     func fetchContacts(){
       let key = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
