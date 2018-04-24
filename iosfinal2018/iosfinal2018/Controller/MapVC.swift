@@ -27,6 +27,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     var activityIndicator: UIActivityIndicatorView!
     
+    let places = Place.getPlaces()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.definesPresentationContext = true
@@ -50,6 +52,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
         self.locationManager.stopUpdatingLocation()
+        
+        //addAnnotations()
         
     }
     
@@ -102,6 +106,24 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             self!.map.addAnnotation(pinAnnotationView.annotation!)
         }
     }
+    func addAnnotations() {
+        mapView?.delegate = self
+        mapView?.addAnnotations(places)
+    }
+    
+    //MARK: - Add multiple Annotations
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+            
+        else {
+            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
+            annotationView.image = UIImage(named: "place icon")
+            return annotationView
+        }
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
