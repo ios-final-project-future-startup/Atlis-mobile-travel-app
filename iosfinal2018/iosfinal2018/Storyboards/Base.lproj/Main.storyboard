@@ -119,6 +119,7 @@
                                 </state>
                                 <connections>
                                     <action selector="sendBtnPressed:" destination="2XP-oy-Nyq" eventType="touchUpInside" id="OlE-oI-Mr4"/>
+                                    <action selector="sendBtnTapped:" destination="eub-IC-P9t" eventType="touchUpInside" id="awz-Uc-f66"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -135,6 +136,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="62m-ms-03X"/>
                     </view>
+                    <connections>
+                        <outlet property="whereAreYouGoingTextField" destination="oXS-cw-IDC" id="MKO-in-jTc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jg3-Md-xvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
