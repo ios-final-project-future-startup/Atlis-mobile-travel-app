@@ -118,8 +118,7 @@
                                     <color key="titleColor" red="0.4861509282" green="0.63836908449999996" blue="0.92795473340000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="sendBtnPressed:" destination="2XP-oy-Nyq" eventType="touchUpInside" id="OlE-oI-Mr4"/>
-                                    <action selector="sendBtnTapped:" destination="eub-IC-P9t" eventType="touchUpInside" id="awz-Uc-f66"/>
+                                    <action selector="sendBtnTapped:" destination="eub-IC-P9t" eventType="touchUpInside" id="wen-nq-ckD"/>
                                 </connections>
                             </button>
                         </subviews>
