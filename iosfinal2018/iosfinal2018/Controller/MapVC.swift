@@ -21,10 +21,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     var localSearchRequest: MKLocalSearchRequest!
     var localSearch: MKLocalSearch!
     var localSearchResponse: MKLocalSearchResponse!
-    
     var annotation: MKAnnotation!
     var locationManager: CLLocationManager!
-    
     var activityIndicator: UIActivityIndicatorView!
     
     var places: [Place]
