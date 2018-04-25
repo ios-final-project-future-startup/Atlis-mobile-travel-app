@@ -30,9 +30,10 @@ exports.sendMessage = functions.https.onRequest((req,res)=> {
 //we are given the body of the message, and from 
 // lets search through our logs and find all that are 'to' the from number and are from the same city, if we find a match, then we know the number of who sent it
 exports.receiveMessage = functions.https.onRequest((req,res)=> {
-    const text = req.query.text.split(","); //text is sent in with a comma to separate between name and city  
-	const nameOfPlace = text[0]; 
-	const city = text[1];
+	console.log("Received!");
+	const body = req.query.body.split(","); //text is sent in with a comma to separate between name and city  
+	const nameOfPlace = body[0]; 
+	const city = body[1];
 
 	//tells us the number of who sent it 
 	const whoFrom = req.query.from; 
@@ -55,9 +56,9 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 
 
 	//respond back to sender thanking them for their response 
-	const questionText = 'Ah. ' + text + ' is a fine recommendation. Thank you.' 
+	const responseText = 'Ah. ' + nameOfPlace + ' is a sick recommendation. Thank you.' 
 	const textMessage = {
-		body: questionText,
+		body: responseText,
 		to: whoFrom,
 		from: twilioPhoneNumber
 	}
