@@ -30,24 +30,27 @@ exports.sendMessage = functions.https.onRequest((req,res)=> {
 //we are given the body of the message, and from 
 // lets search through our logs and find all that are 'to' the from number and are from the same city, if we find a match, then we know the number of who sent it
 exports.receiveMessage = functions.https.onRequest((req,res)=> {
-	console.log("Received!");
-	const body = req.query.body.split(","); //text is sent in with a comma to separate between name and city  
-	const nameOfPlace = body[0]; 
-	const city = body[1];
-
-	//tells us the number of who sent it 
+	console.log(req.query);
+	const recommendation = req.query.recommendation
+	const city = req.query.city
 	const whoFrom = req.query.from; 
+
+	console.log(recommendation + ":" + city);
+	
 
 	const filterOpts = {
 		to: whoFrom,
 	  };
 	
-	const messages = client.messages.each(filterOpts, (message) => console.log(message.body));
+	var messages = []; 
+	client.messages.each(filterOpts, (message) => messages.append(message.body));
+	client.messages.each(filterOpts, (message) => console.log(message.body));
+
 
 	//loop through the messages in the log that were sent to our number that responded, for every message that sent out 
-	// with a matching city, then we know where to store 
-
-	var matches = []; 
+	// with a matching city, we must loop through the rec_requests in firebase, find our phone number, loop through there
+	// and find all keys with matching city, and store this response in "openRequests parameter in user"
+	//must edit below ... 
 	for(var i=0; i<messages.length; i++){
 		if(messages.body.includes(city)){ //will caps be an issue here? 
 			matches.push(messages.from); 
@@ -56,7 +59,7 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 
 
 	//respond back to sender thanking them for their response 
-	const responseText = 'Ah. ' + nameOfPlace + ' is a sick recommendation. Thank you.' 
+	const responseText = 'Ah. ' + recommendation + ' is a sick recommendation. Thank you.' 
 	const textMessage = {
 		body: responseText,
 		to: whoFrom,
