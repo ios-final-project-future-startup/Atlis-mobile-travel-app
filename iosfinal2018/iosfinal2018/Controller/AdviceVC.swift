@@ -45,8 +45,8 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
       // Get user value
       let value = snapshot.value as? NSDictionary
       userName = value?["name"] as? String ?? ""
-      let twilioManager = TwilioManager(userID: (user?.uid)!, userName: userName!, city: "Tokyo")
-      twilioManager.sendMessage()
+      let twilioManager = TwilioManager()
+      twilioManager.sendMessage(userName: userName!, city: "Tokyo")
     }) { (error) in
       print(error.localizedDescription)
     }
