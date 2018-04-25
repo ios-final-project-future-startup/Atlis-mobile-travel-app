@@ -8,36 +8,32 @@
 
 import MapKit
 
-@objc class Place: NSObject {
+class Place: NSObject {
     var coordinate: CLLocationCoordinate2D
-    var friend: String!
+    var userid: String! //will link to a friend and be the subtitle of the annotation
     var title: String?
     var subtitle: String?
-    var recomendation: String!
     var address: String?
     var image: UIImage?
     
-    init(title: String?, recomendation: String!, coordinate: CLLocationCoordinate2D,
-         friend: String!, address: String?, subtitle: String?) {
+    init(title: String?, coordinate: CLLocationCoordinate2D,
+         userid: String!) {
         self.title = title
-        self.subtitle = subtitle
         self.coordinate = coordinate
-        self.recomendation = recomendation
-        self.friend = friend
-        self.address = address
+        self.userid = userid
     }
     
-    static func getPlaces() -> [Place] {
-        //guard let path =
-        
-        var places = [Place]()
-        
-        for item in array {
-           
-        }
-        
-        return places as [Place]
-    }
+//    static func getPlaces() -> [Place] {
+//        //guard let path =
+//        
+//        var places = [Place]()
+//        
+////        for item in array {
+////           
+////        }
+//        
+//        return places as [Place]
+//    }
 }
 
 extension Place: MKAnnotation { }

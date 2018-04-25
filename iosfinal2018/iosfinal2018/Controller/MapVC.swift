@@ -27,6 +27,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     var activityIndicator: UIActivityIndicatorView!
     
+    var places: [Place]
+    
     //let places = Place.getPlaces()
     
     override func viewDidLoad() {
@@ -53,7 +55,22 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.view.addSubview(activityIndicator)
         self.locationManager.stopUpdatingLocation()
         
+        //get places from firebase
+        let place1 = Place(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees, longitude: <#T##CLLocationDegrees#>), userid: "Fred")
+        
+        
         //addAnnotations()
+        for place in places {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = place.coordinate
+            annotation.title = place.title
+            annotation.subtitle = getFriendInfo(userid: place.userid)
+            map.addAnnotation(annotation)
+        }
+    }
+    
+    //MARK: - Get friend info from database
+    func getFriendInfo(userid: String) -> String{
         
     }
     
@@ -106,10 +123,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             self!.map.addAnnotation(pinAnnotationView.annotation!)
         }
     }
-    func addAnnotations() {
-        //mapView?.delegate = self
-        //mapView?.addAnnotations(places)
-    }
+//    func addAnnotations() {
+//        mapView?.delegate = self
+//        mapView?.addAnnotations(places)
+//    }
     
     //MARK: - Add multiple Annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
