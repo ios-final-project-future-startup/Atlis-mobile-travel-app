@@ -16,6 +16,7 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     var contactStore = CNContactStore()
     var contacts = [Contact]()
+    var selectedContacts = [Contact]()
     
 
     override func viewDidLoad() {
@@ -74,26 +75,28 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         
         let cell = contactsTableView.cellForRow(at: indexPath)
         cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+        
+        let contact = contacts[indexPath.row] // use the value of the indexPath to get contact
+        selectedContacts.append(contact)
 
     }
     
     @IBAction func sendBtnPressed(_ sender: Any) {
-        var contactsSelected = [ContactCell]()
-        for cell in contactsTableView.visibleCells as! [ContactCell]{
-            if(cell.isSelected){
-                contactsSelected.append(cell)
-            }
-        }
-        
-        performSegue(withIdentifier: "SendScreenVC", sender: contactsSelected)
+        //var contactsSelected = [ContactCell]()
+//        for cell in contactsTableView.visibleCells as! [ContactCell]{
+//            if(cell.isSelected){
+//                contactsSelected.append(cell)
+//            }
+//        }
+        self.performSegue(withIdentifier: "SendScreenVC", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let destination = segue.destination as? SendScreenVC{
-            if let chosen = sender as! [ContactCell]?{
-                destination.contacts = chosen
-            }
+        if let destination = segue.destination as? SendScreenVC {
+            destination.selectedContacts = self.selectedContacts
+//            if let chosen = sender as! [ContactCell]?{
+//                destination.contacts = chosen
+//            }
         }
     }
     
