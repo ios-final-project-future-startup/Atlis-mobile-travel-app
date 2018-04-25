@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       /*
        Testing:
-       try! FIRAuth.auth()!.signOut()
+       try! Auth.auth().signOut()
       */
       
       // Check if user is authorized

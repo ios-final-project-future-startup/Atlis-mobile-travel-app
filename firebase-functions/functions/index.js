@@ -12,6 +12,21 @@ const client = new twilio(accountSid, authToken);
 
 const twilioPhoneNumber = '+16506812714' // phone number that twilio gives us
 
+exports.sendMessage = functions.https.onRequest((req,res)=> {
+	const userName = req.body.userName; 
+	const city = req.body.city;
+	const questionText = 'Hey! This is ' + userName + "'s personal travel bot. " + userName + " is taking a trip to " + city + " soon and wanted a recommendation from you. What's your favorite 'hidden gem' of " + city + "? Just respond back with the name!" 
+	const phoneNumber = '+19739862294'
+	const textMessage = {
+		body: questionText,
+		to: phoneNumber,
+		from: twilioPhoneNumber
+	}
+	return client.messages.create(textMessage)
+	.then(message => console.log(message.sid, 'success'))
+	.catch(err => console.log(err))
+});
+
 //we are given the body of the message, and from 
 // lets search through our logs and find all that are 'to' the from number and are from the same city, if we find a match, then we know the number of who sent it
 exports.receiveMessage = functions.https.onRequest((req,res)=> {

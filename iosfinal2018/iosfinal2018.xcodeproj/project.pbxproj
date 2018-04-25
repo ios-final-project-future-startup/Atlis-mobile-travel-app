@@ -32,7 +32,7 @@
 		65BE4C5E208D067F00515768 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosfinal2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC370AF0208525AC0066120A /* iosfinal2018.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosfinal2018.entitlements; sourceTree = "<group>"; };
-		DC59C2BD208E7718005B9E41 /* TwilioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwilioManager.swift; sourceTree = "<group>"; };
+		DC59C2BD208E7718005B9E41 /* TwilioManager.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = TwilioManager.swift; sourceTree = "<group>"; tabWidth = 4; };
 		DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSignUpVC.swift; sourceTree = "<group>"; };
 		DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utilties + Extensions.swift"; sourceTree = "<group>"; };
 		DC97BD6120853024009F5B95 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
