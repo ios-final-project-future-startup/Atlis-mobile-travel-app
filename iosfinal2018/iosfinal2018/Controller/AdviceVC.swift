@@ -16,7 +16,6 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     var contactStore = CNContactStore()
     var contacts = [Contact]()
-    var userRef: DatabaseReference!
     
 
     override func viewDidLoad() {
@@ -33,27 +32,8 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
       contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "A")
       
-      testTwilio()
       
     }
-  
-  func testTwilio() {
-    var userName: String?
-    let user = Auth.auth().currentUser
-    userRef = Database.database().reference().child("users").child((user?.uid)!)
-    userRef.observeSingleEvent(of: .value, with: { (snapshot) in
-      // Get user value
-      let value = snapshot.value as? NSDictionary
-      userName = value?["name"] as? String ?? ""
-      let twilioManager = TwilioManager()
-      twilioManager.sendMessage(userName: userName!, city: "Tokyo")
-    }) { (error) in
-      print(error.localizedDescription)
-    }
-    
-    
-    
-  }
 
     func fetchContacts(){
       let key = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]

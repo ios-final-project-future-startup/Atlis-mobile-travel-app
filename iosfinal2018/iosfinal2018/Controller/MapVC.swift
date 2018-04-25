@@ -27,7 +27,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     var activityIndicator: UIActivityIndicatorView!
     
-    let places = Place.getPlaces()
+    //let places = Place.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,8 +107,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         }
     }
     func addAnnotations() {
-        mapView?.delegate = self
-        mapView?.addAnnotations(places)
+        //mapView?.delegate = self
+        //mapView?.addAnnotations(places)
     }
     
     //MARK: - Add multiple Annotations

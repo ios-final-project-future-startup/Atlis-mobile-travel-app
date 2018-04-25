@@ -1,5 +1,6 @@
 {
   "projects": {
-    "staging": "ios-finalproject-2018"
+    "staging": "ios-finalproject-2018",
+    "default": "ios-finalproject-2018"
   }
 }
