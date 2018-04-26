@@ -5,7 +5,38 @@
 //
 //  Created by Zachary Kimelheim on 4/10/18.
 //  Copyright © 2018 Zachary Kimelheim. All rights reserved.
-//
+//{
+//    "outgoing_requests" : {
+//        "+12158023985" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
+//        "+13476456317" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
+//        "+15105060380" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
+//        "+15107018459" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
+//        "+16155121301" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
+//        "+16785253741" : "9teq2RwlKuZrYMAbIVMzZitvSNY2"
+//    },
+//    "users" : {
+//        "9teq2RwlKuZrYMAbIVMzZitvSNY2" : {
+//            "email" : "arjun.madgavkar@gmail.com",
+//            "full_name" : "Arjun Madgavkar",
+//            "number" : "+19739862294",
+//            "requesting_to" : {
+//                "+12158023985" : "Zack Kimelheim"
+//            },
+//            "saved_recommendations" : {
+//                "0ed4fa342e8c59111d07d80b81f5c08cd6b84934" : {
+//                    "address" : "7 Carmine St, New York, NY 10014, USA",
+//                    "from" : "Zack Kimelheim",
+//                    "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+//                    "lat" : 40.73058760000001,
+//                    "lon" : -74.002141,
+//                    "name" : "Joe's Pizza",
+//                    "price_level" : 1,
+//                    "rating" : 4.4
+//                }
+//            }
+//        }
+//    }
+
 import UIKit
 import Firebase
 import GoogleMaps
@@ -13,9 +44,12 @@ import GooglePlaces
 import MapKit
 
 
-class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate  {
     
+    //MARK: Firebase Properties
+   // FIRApp.configure()
     @IBOutlet weak var map: MKMapView!
+        var user: User!
     
     var searchController: UISearchController!
     var localSearchRequest: MKLocalSearchRequest!
@@ -25,15 +59,14 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     var locationManager: CLLocationManager!
     var activityIndicator: UIActivityIndicatorView!
     
-    var places: [Place]
-    
-    //let places = Place.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.definesPresentationContext = true
         
+        user = Auth.auth().currentUser
         //Configure Firebase app
+        
         if locationManager == nil {
             locationManager = CLLocationManager()
         }
@@ -53,23 +86,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.view.addSubview(activityIndicator)
         self.locationManager.stopUpdatingLocation()
         
-        //get places from firebase
-        let place1 = Place(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees, longitude: <#T##CLLocationDegrees#>), userid: "Fred")
+        displayAllMarkers()
         
-        
-        //addAnnotations()
-        for place in places {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = place.coordinate
-            annotation.title = place.title
-            annotation.subtitle = getFriendInfo(userid: place.userid)
-            map.addAnnotation(annotation)
-        }
-    }
-    
-    //MARK: - Get friend info from database
-    func getFriendInfo(userid: String) -> String{
-        
+        map.showAnnotations(map.annotations, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -121,24 +140,27 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             self!.map.addAnnotation(pinAnnotationView.annotation!)
         }
     }
-//    func addAnnotations() {
-//        mapView?.delegate = self
-//        mapView?.addAnnotations(places)
-//    }
-    
-    //MARK: - Add multiple Annotations
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
-        }
-            
-        else {
-            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
-            annotationView.image = UIImage(named: "place icon")
-            return annotationView
-        }
-    }
-    
+    func displayAllMarkers(){ Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.childAdded, with: { (snapshot) in
+      //  print(self.user.uid)
+        let value = snapshot.value as? [String:Any]
+       print(value)
+        let latitude = value?["lat"] as? Double ?? 0
+        let longitude = value?["long"] as? Double ?? 0
+//          let address = value["address"] as? String
+            let friend = value?["from"] as? String ?? ""
+            let name = value?["name"] as? String ?? ""
+//                let price = value["price"] as? NSInteger
+//                let rating = value["rating"] as? Double
+        
+        print(latitude," ", longitude, " ", friend, " ", name)
+                //make annotation
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                annotation.title = name
+                annotation.subtitle = friend
+                self.map.addAnnotation(annotation)
+
+        })}
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -153,10 +175,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             annotation = self.map.annotations[0]
             self.map.removeAnnotation(annotation)
         }
-        let pointAnnotation = MKPointAnnotation()
-        pointAnnotation.coordinate = location!.coordinate
-        pointAnnotation.title = ""
-        map.addAnnotation(pointAnnotation)
     }    
 }
 
