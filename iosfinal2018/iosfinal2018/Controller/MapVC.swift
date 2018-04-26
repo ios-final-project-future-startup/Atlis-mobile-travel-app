@@ -1,42 +1,3 @@
-
-//
-//  ViewController.swift
-//  iosfinal2018
-//
-//  Created by Zachary Kimelheim on 4/10/18.
-//  Copyright © 2018 Zachary Kimelheim. All rights reserved.
-//{
-//    "outgoing_requests" : {
-//        "+12158023985" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
-//        "+13476456317" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
-//        "+15105060380" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
-//        "+15107018459" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
-//        "+16155121301" : "9teq2RwlKuZrYMAbIVMzZitvSNY2",
-//        "+16785253741" : "9teq2RwlKuZrYMAbIVMzZitvSNY2"
-//    },
-//    "users" : {
-//        "9teq2RwlKuZrYMAbIVMzZitvSNY2" : {
-//            "email" : "arjun.madgavkar@gmail.com",
-//            "full_name" : "Arjun Madgavkar",
-//            "number" : "+19739862294",
-//            "requesting_to" : {
-//                "+12158023985" : "Zack Kimelheim"
-//            },
-//            "saved_recommendations" : {
-//                "0ed4fa342e8c59111d07d80b81f5c08cd6b84934" : {
-//                    "address" : "7 Carmine St, New York, NY 10014, USA",
-//                    "from" : "Zack Kimelheim",
-//                    "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
-//                    "lat" : 40.73058760000001,
-//                    "lon" : -74.002141,
-//                    "name" : "Joe's Pizza",
-//                    "price_level" : 1,
-//                    "rating" : 4.4
-//                }
-//            }
-//        }
-//    }
-
 import UIKit
 import Firebase
 import GoogleMaps
@@ -46,8 +7,6 @@ import MapKit
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate  {
     
-    //MARK: Firebase Properties
-   // FIRApp.configure()
     @IBOutlet weak var map: MKMapView!
         var user: User!
     
@@ -65,7 +24,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.definesPresentationContext = true
         
         user = Auth.auth().currentUser
-        //Configure Firebase app
         
         if locationManager == nil {
             locationManager = CLLocationManager()
@@ -88,7 +46,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         
         displayAllMarkers()
         
-        map.showAnnotations(map.annotations, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,6 +57,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         super.viewWillAppear(animated)
         activityIndicator.center = self.view.center
     }
+    // MARK: - UISearchBarDelegate
+    
     @objc func searchButtonAction(_ button: UIBarButtonItem) {
         if searchController == nil {
             searchController = UISearchController(searchResultsController: nil)
@@ -108,9 +67,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
     }
-    
-    // MARK: - UISearchBarDelegate
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         dismiss(animated: true, completion: nil)
@@ -141,9 +98,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         }
     }
     func displayAllMarkers(){ Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.childAdded, with: { (snapshot) in
-      //  print(self.user.uid)
         let value = snapshot.value as? [String:Any]
-       print(value)
         let latitude = value?["lat"] as? Double ?? 0
         let longitude = value?["long"] as? Double ?? 0
 //          let address = value["address"] as? String
@@ -163,7 +118,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         })}
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
