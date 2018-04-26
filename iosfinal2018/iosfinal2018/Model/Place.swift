@@ -10,30 +10,17 @@ import MapKit
 
 class Place: NSObject {
     var coordinate: CLLocationCoordinate2D
-    var userid: String! //will link to a friend and be the subtitle of the annotation
-    var title: String?
-    var subtitle: String?
+    var title: String? //name of place
     var address: String?
-    var image: UIImage?
+    var subtitle: String? //will link to a friend and be the subtitle of the annotation
+    var icon: String?
+    var name: String?
+    var price_level: Double?
+    var rating: Double?
     
-    init(title: String?, coordinate: CLLocationCoordinate2D,
-         userid: String!) {
-        self.title = title
+    init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
-        self.userid = userid
     }
     
-//    static func getPlaces() -> [Place] {
-//        //guard let path =
-//        
-//        var places = [Place]()
-//        
-////        for item in array {
-////           
-////        }
-//        
-//        return places as [Place]
-//    }
 }
-
 extension Place: MKAnnotation { }

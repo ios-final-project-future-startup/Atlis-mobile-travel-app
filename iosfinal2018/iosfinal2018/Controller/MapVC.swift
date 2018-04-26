@@ -4,7 +4,6 @@ import GoogleMaps
 import GooglePlaces
 import MapKit
 
-
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate  {
     
     @IBOutlet weak var map: MKMapView!
@@ -98,22 +97,24 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         }
     }
     func displayAllMarkers(){ Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.childAdded, with: { (snapshot) in
-        let value = snapshot.value as? [String:Any]
-        let latitude = value?["lat"] as? Double ?? 0
-        let longitude = value?["long"] as? Double ?? 0
-//          let address = value["address"] as? String
+            let value = snapshot.value as? [String:Any]
+            let latitude = value?["lat"] as? Double ?? 0
+            let longitude = value?["long"] as? Double ?? 0
+            let address = value!["address"] as? String
             let friend = value?["from"] as? String ?? ""
             let name = value?["name"] as? String ?? ""
-//                let price = value["price"] as? NSInteger
-//                let rating = value["rating"] as? Double
+            let price_level = value?["price_level"] as? Double
+            let rating = value?["rating"] as? Double
         
-        print(latitude," ", longitude, " ", friend, " ", name)
-                //make annotation
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                annotation.title = name
-                annotation.subtitle = friend
-                self.map.addAnnotation(annotation)
+            //make annotation
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let annotation = Place(coordinate:coordinate )
+            annotation.address = address
+            annotation.name = name
+            annotation.subtitle = friend
+            annotation.price_level = price_level
+            annotation.rating = rating
+            self.map.addAnnotation(annotation)
 
         })}
     
