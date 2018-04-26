@@ -80,7 +80,7 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 						nameOfFrom = snap.val(); 
 						console.log(nameOfFrom); 
 					});
-
+					
 					//data will now be stored, set will replace old data if given same placeID
 					//notice the ref query string and how it is stores in the userID
 					db.ref("/users/"+userID+"/saved_recommendations/"+placeID).set({
