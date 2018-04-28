@@ -73,26 +73,32 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 					var userID = numbers[number]; //the userID where we will store this data (one that requested it)
 
 					var placeID = place["id"]; //the ID of the place given by google, using this as the identifier in the dictionary
-					// var nameOfFrom = getNamefromNumber(userID, whoFrom); 
+					//console.log("coo coo: "+getNamefromNumber(userID, whoFrom)); 
+					
+					
+					
+					
 					var nameOfFrom = ""; 
 					var ref2 = db.ref("/users/"+userID+"/requesting_to/"+whoFrom);
 					ref2.once("value",function(snap){
 						nameOfFrom = snap.val(); 
-						console.log(nameOfFrom); 
+						//console.log(nameOfFrom);
+						
+						//data will now be stored, set will replace old data if given same placeID
+						//notice the ref query string and how it is stores in the userID
+						db.ref("/users/"+userID+"/saved_recommendations/"+placeID).set({
+							"name": place["name"],
+							"address": place["formatted_address"],
+							"icon": place["icon"] || -1, 
+							"price_level": place["price_level"] || -1,
+							"lat": place["geometry"]["location"]["lat"],
+							"lon" : place["geometry"]["location"]["lng"],
+							"rating" : place["rating"] || -1,
+							"from" : nameOfFrom || ""
+						});
 					});
 					
-					//data will now be stored, set will replace old data if given same placeID
-					//notice the ref query string and how it is stores in the userID
-					db.ref("/users/"+userID+"/saved_recommendations/"+placeID).set({
-						   "name": place["name"],
-						   "address": place["formatted_address"],
-						   "icon": place["icon"] || -1, 
-						   "price_level": place["price_level"] || -1,
-						   "lat": place["geometry"]["location"]["lat"],
-						   "lon" : place["geometry"]["location"]["lng"],
-						   "rating" : place["rating"] || -1,
-						   "from" : nameOfFrom || "ZK"
-					});
+					
 	
 				}
 			}
@@ -126,11 +132,13 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 //FIX: NOT SURE WHY THIS IS RETURNING NULL 
 //returns the full name of the user, given their phone number 
 function getNamefromNumber(userId, number){
-	var db = admin.database();
-	var ref = db.ref("/users/"+userId+"/requesting_to/"+number) 
+	const db = admin.database();
+	const ref = db.ref("/users/"+userId+"/requesting_to/"+number) 
+	let val = ""; 
 	ref.once("value",function(snap){
-		const val = snap.val(); 
+		val = snap.val(); 
 		console.log(val); 
 		return val; 
 	});
+	return val;
 }
