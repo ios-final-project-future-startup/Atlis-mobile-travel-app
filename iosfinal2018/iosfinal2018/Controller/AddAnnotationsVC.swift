@@ -16,6 +16,9 @@ class AddAnnotationsVC: FormViewController, MKMapViewDelegate,
 CLLocationManagerDelegate{
     @IBOutlet weak var addLabel: UILabel!
      var user: User!
+    var name: String = ""
+    var address: String = ""
+    var titleBox: String? = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,19 +26,24 @@ CLLocationManagerDelegate{
             
             <<< TextRow(){ row in
                 row.title = "Name of Place"
-            }
+                }.onChange({ (row) in
+                    self.name = row.value != nil ? row.value! : ""
+                })
             <<< TextRow() { row in
                 row.title = "Address/ City"
-            }
+                }.onChange({ (row) in
+                    self.address = row.value != nil ? row.value! : ""
+                })
             <<< TextRow() { row in
                 row.title = "Recommended by"
-        }
+                }.onChange({ (row) in
+                    self.titleBox = row.value != nil ? row.value! : ""
+                })
         <<< ButtonRow() {
             $0.title = "Add"
             }
             .onCellSelection {  cell, row in
-                let formvalues = self.form.values()
-                print(formvalues)
+                print(self.name)
 //               self.performSegue(withIdentifier: "MapVC", sender: nil)
         }
     }
