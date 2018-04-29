@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,30 +15,43 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Elegant_Background-7" translatesAutoresizingMaskIntoConstraints="NO" id="vB9-LK-NzN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="1app_icon_big" translatesAutoresizingMaskIntoConstraints="NO" id="vB9-LK-NzN">
+                                <rect key="frame" x="122" y="355" width="131" height="103"/>
+                                <color key="backgroundColor" red="0.92550951242446899" green="0.39643460512161255" blue="0.41174083948135376" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <viewLayoutGuide key="safeArea" id="4Em-YX-xlC"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your clique's city." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUw-ag-GXI">
+                                <rect key="frame" x="40" y="466" width="294" height="47"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="19"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="1app_icon_big" translatesAutoresizingMaskIntoConstraints="NO" id="ZKy-P9-c7q">
+                                <rect key="frame" x="67" y="599" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
+                        <color key="backgroundColor" red="0.92550951240000001" green="0.3964346051" blue="0.41174083950000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vB9-LK-NzN" secondAttribute="trailing" id="QDO-53-PIb"/>
-                            <constraint firstItem="vB9-LK-NzN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qfm-Gu-CIn"/>
-                            <constraint firstItem="vB9-LK-NzN" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Vb1-KF-sGz"/>
+                            <constraint firstItem="vB9-LK-NzN" firstAttribute="centerX" secondItem="oUw-ag-GXI" secondAttribute="centerX" id="8eg-GU-KdP"/>
+                            <constraint firstItem="vB9-LK-NzN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="N4L-ro-iec"/>
+                            <constraint firstItem="vB9-LK-NzN" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="OxK-i2-I3k"/>
+                            <constraint firstItem="vB9-LK-NzN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="311" id="Z3e-8Y-1Jr"/>
+                            <constraint firstItem="oUw-ag-GXI" firstAttribute="top" secondItem="vB9-LK-NzN" secondAttribute="bottom" constant="8" symbolic="YES" id="agl-VP-pDz"/>
                             <constraint firstItem="vB9-LK-NzN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ggH-yu-sPa"/>
-                            <constraint firstItem="vB9-LK-NzN" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="bottom" id="nty-YJ-hlr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="52" y="374.6305418719212"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Elegant_Background-7" width="1920" height="1080"/>
+        <image name="1app_icon_big" width="1024" height="1024"/>
     </resources>
 </document>

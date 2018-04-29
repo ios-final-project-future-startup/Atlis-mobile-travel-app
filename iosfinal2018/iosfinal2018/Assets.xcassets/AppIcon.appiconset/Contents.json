@@ -3,77 +3,77 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "Icon-App-20x20@2x.png",
+      "filename" : "AppIconSmall@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "Icon-App-20x20@3x.png",
+      "filename" : "AppIconSmall@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Icon-App-29x29@1x.png",
+      "filename" : "AppIconSpotlight.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Icon-App-29x29@2x.png",
+      "filename" : "AppIconSpotlight@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "Icon-App-29x29@3x.png",
+      "filename" : "AppIconSpotlight@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Icon-App-40x40@2x.png",
+      "filename" : "AppIconThird@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "Icon-App-40x40@3x.png",
+      "filename" : "AppIconThird@3x.png",
       "scale" : "3x"
     },
     {
-      "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "Icon-App-57x57@1x.png",
+      "size" : "57x57",
       "scale" : "1x"
     },
     {
-      "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "Icon-App-57x57@2x.png",
+      "size" : "57x57",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Icon-App-60x60@2x.png",
+      "filename" : "AppIcon@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Icon-App-60x60@3x.png",
+      "filename" : "AppIcon@3x.png",
       "scale" : "3x"
     },
     {
-      "idiom" : "ipad",
       "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "AppIconSmall.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "AppIconThird-1.png",
       "scale" : "2x"
     },
     {
@@ -112,147 +112,15 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ios-marketing",
       "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "app_icon_big.png",
       "scale" : "1x"
     },
     {
-      "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "ItunesArtwork@2x.png",
+      "size" : "512x512",
       "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-20x20@1x.png",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-app-27x20@1x.png",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-72x72@2x.png",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-app-27x20@2x.png",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-76x76@3x.png",
-      "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-app-27x20@3x.png",
-      "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-40x40@1x.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-60x60@1x.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-72x72@1x.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-76x76@1x.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-app-iPhone-60x45@1x.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-app-store-1024x768.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-transcript-32x24@1x.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-Small-50x50@1x.png",
-      "unassigned" : true,
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-76x76@2x.png",
-      "unassigned" : true,
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-App-83.5x83.5@2x.png",
-      "unassigned" : true,
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-app-iPadAir-67x50@2x.png",
-      "unassigned" : true,
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-app-iPadAir-74x55@2x.png",
-      "unassigned" : true,
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-app-iPhone-60x45@2x.png",
-      "unassigned" : true,
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-transcript-32x24@2x.png",
-      "unassigned" : true,
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "Icon-Small-50x50@2x.png",
-      "unassigned" : true,
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-app-iPhone-60x45@3x.png",
-      "unassigned" : true,
-      "scale" : "3x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "icon-messages-transcript-32x24@3x.png",
-      "unassigned" : true,
-      "scale" : "3x"
     }
   ],
   "info" : {

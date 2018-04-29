@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var phoneNumberTextfield: UITextField!
   
   override func viewDidLoad() {
+    self.navigationController?.setNavigationBarHidden(true, animated: false)
     super.viewDidLoad()
     
   }
