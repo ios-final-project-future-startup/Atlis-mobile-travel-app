@@ -49,7 +49,7 @@ CLLocationManagerDelegate{
                 
                 let userID = self.user.uid
                 
-                let query = "\(name)&\(address)"
+                let query = "\(self.name)&\(self.address)"
                 let link = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(query)&key=AIzaSyBiDY9xYSfMh_VKXZ9cvo4BBItW96aqqig"
                 
                 //api request for json
