@@ -36,11 +36,14 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
       
     }
 
+    //this function generates our contacts from our device for our table view
     func fetchContacts(){
       let key = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
       
       let request = CNContactFetchRequest(keysToFetch: key)
-      
+        request.sortOrder = CNContactSortOrder.givenName; //sort by first name
+        
+        
       try! contactStore.enumerateContacts(with: request, usingBlock: { (contact, stoppablePointer) in
         let name = contact.givenName
         let familyname = contact.familyName
@@ -82,21 +85,12 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     }
     
     @IBAction func sendBtnPressed(_ sender: Any) {
-        //var contactsSelected = [ContactCell]()
-//        for cell in contactsTableView.visibleCells as! [ContactCell]{
-//            if(cell.isSelected){
-//                contactsSelected.append(cell)
-//            }
-//        }
         self.performSegue(withIdentifier: "SendScreenVC", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SendScreenVC {
             destination.selectedContacts = self.selectedContacts
-//            if let chosen = sender as! [ContactCell]?{
-//                destination.contacts = chosen
-//            }
         }
     }
     
