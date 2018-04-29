@@ -51,7 +51,7 @@
 		DCAD2E5A20966981000244DE /* PlaceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotationView.swift; sourceTree = "<group>"; };
 		DCE074EC208524AF00D06CEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E05304532085068200597236 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		E05B592D207DB1680047B41E /* iosfinal2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosfinal2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E05B592D207DB1680047B41E /* Atlis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Atlis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05B5930207DB1680047B41E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05B5932207DB1680047B41E /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		E05B5935207DB1680047B41E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		E05B592E207DB1680047B41E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E05B592D207DB1680047B41E /* iosfinal2018.app */,
+				E05B592D207DB1680047B41E /* Atlis.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,7 +212,7 @@
 			);
 			name = iosfinal2018;
 			productName = iosfinal2018;
-			productReference = E05B592D207DB1680047B41E /* iosfinal2018.app */;
+			productReference = E05B592D207DB1680047B41E /* Atlis.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -528,7 +528,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Atlis;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -551,7 +551,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Atlis;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
