@@ -222,24 +222,30 @@
                     <connections>
                         <outlet property="addPlace" destination="gto-h2-xSf" id="Syw-fy-pgc"/>
                         <outlet property="map" destination="Ya5-oW-aWT" id="L7t-rQ-NRh"/>
-                        <segue destination="lun-Lw-daK" kind="presentation" identifier="add" id="gHe-nD-WE4"/>
+                        <segue destination="BLS-NS-e1e" kind="presentation" identifier="add" id="gHe-nD-WE4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRP-an-JZR" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="317.60000000000002" y="673.89162561576359"/>
         </scene>
-        <!--Map-->
+        <!--Add AnnotationsVC-->
         <scene sceneID="qZh-tg-7Wz">
             <objects>
                 <viewController storyboardIdentifier="add" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lun-Lw-daK" customClass="AddAnnotationsVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="8fA-06-iBe"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bHi-J3-bqe">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="WJX-gC-udz" userLabel="Cancel">
+                            <connections>
+                                <action selector="cancel:" destination="lun-Lw-daK" id="4hN-sP-FIo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aH-T4-G47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141.5999999999999" y="671.67487684729065"/>
+            <point key="canvasLocation" x="2084" y="671.67487684729065"/>
         </scene>
         <!--Map-->
         <scene sceneID="7u6-4p-fco">
@@ -260,6 +266,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1er-Wc-ley" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-519" y="674"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="lad-CL-Ooo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BLS-NS-e1e" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="8fA-06-iBe"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fEv-Hu-9DG">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lun-Lw-daK" kind="relationship" relationship="rootViewController" id="IH6-G5-Xcq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ber-oJ-LGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1141.5999999999999" y="671.67487684729065"/>
         </scene>
     </scenes>
     <resources>
