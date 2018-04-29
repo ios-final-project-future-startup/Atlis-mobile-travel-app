@@ -7,7 +7,10 @@ import MapKit
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate  {
     
     @IBOutlet weak var map: MKMapView!
-    var user: User!
+
+        var user: User!
+    @IBOutlet weak var addPlace: UIBarButtonItem!
+
     var searchController: UISearchController!
     var localSearchRequest: MKLocalSearchRequest!
     var localSearch: MKLocalSearch!
@@ -55,6 +58,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         super.viewWillAppear(animated)
         activityIndicator.center = self.view.center
     }
+    @IBAction func addClick(_ sender: Any) {
+        performSegue(withIdentifier: "add", sender: nil)
+    }
+    
     // MARK: - UISearchBarDelegate
     
     @objc func searchButtonAction(_ button: UIBarButtonItem) {
@@ -92,7 +99,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             
             let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
             self!.map.centerCoordinate = pointAnnotation.coordinate
-            self!.map.addAnnotation(pinAnnotationView.annotation!)
+          //  self!.map.addAnnotation(pinAnnotationView.annotation!)
+//            self!.map.removeAnnotation(pinAnnotationView.annotation!)
         }
     }
     
