@@ -18,46 +18,51 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     var annotation: MKAnnotation!
     var locationManager: CLLocationManager!
     var activityIndicator: UIActivityIndicatorView!
+    var centeredMap: Bool!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.definesPresentationContext = true
-        
-        user = Auth.auth().currentUser
-        
-        if locationManager == nil {
-            locationManager = CLLocationManager()
-        }
-        locationManager?.requestWhenInUseAuthorization()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-        
-        let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MapVC.searchButtonAction(_:)))
-        self.navigationItem.rightBarButtonItem = searchButton
-        
-        self.map.delegate = self
-        
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-        activityIndicator.hidesWhenStopped = true
-        self.view.addSubview(activityIndicator)
-        self.locationManager.stopUpdatingLocation()
-        
+        setUpVC()
+        handleUserLocation()
         displayAllMarkers()
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         activityIndicator.center = self.view.center
     }
+    
+    func setUpVC() {
+        user = Auth.auth().currentUser // create firebase user
+        self.definesPresentationContext = true
+        // Handle location manager
+        if locationManager == nil { locationManager = CLLocationManager() }
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        // Handle search button set up
+        let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MapVC.searchButtonAction(_:)))
+        self.navigationItem.rightBarButtonItem = searchButton
+        self.map.delegate = self
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func handleUserLocation() {
+        if CLLocationManager.locationServicesEnabled() {
+            self.centeredMap = false
+            self.map.showsUserLocation = true
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     @IBAction func addClick(_ sender: Any) {
         performSegue(withIdentifier: "add", sender: nil)
     }
@@ -147,10 +152,11 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             annotation = self.map.annotations[0]
             self.map.removeAnnotation(annotation)
         }
-        let pointAnnotation = MKPointAnnotation()
-        pointAnnotation.coordinate = location!.coordinate
-        pointAnnotation.title = ""
-        map.addAnnotation(pointAnnotation)
+        
+//        let pointAnnotation = MKPointAnnotation()
+//        pointAnnotation.coordinate = location!.coordinate
+//        pointAnnotation.title = ""
+//        map.addAnnotation(pointAnnotation)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
