@@ -97,11 +97,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             
             let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
             self!.map.centerCoordinate = pointAnnotation.coordinate
-            self!.map.addAnnotation(pinAnnotationView.annotation!)
+          //  self!.map.addAnnotation(pinAnnotationView.annotation!)
+//            self!.map.removeAnnotation(pinAnnotationView.annotation!)
         }
     }
-    func displayAllMarkers(){ Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.childAdded, with: { (snapshot) in
+    func displayAllMarkers(){     Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.value, with: { (snapshot) in
             let value = snapshot.value as? [String:Any]
+        print(value)
             let latitude = value?["lat"] as? Double ?? 0
             let longitude = value?["long"] as? Double ?? 0
             let address = value!["address"] as? String
