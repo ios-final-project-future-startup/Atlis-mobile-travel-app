@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6544974F208F8BDF00A6BADA /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6544974E208F8BDF00A6BADA /* AnnotationView.swift */; };
 		65449751208F8CBE00A6BADA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449750208F8CBE00A6BADA /* Place.swift */; };
+		657DA02C2092913700255A7D /* PlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657DA02B2092913600255A7D /* PlaceView.xib */; };
+		657DA02E209292FC00255A7D /* CustomPlaceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DA02D209292FC00255A7D /* CustomPlaceAnnotationView.swift */; };
+		657DA0302096162A00255A7D /* AddAnnotationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DA02F2096162A00255A7D /* AddAnnotationsVC.swift */; };
 		65BE4C5F208D067F00515768 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BE4C5E208D067F00515768 /* ContactCell.swift */; };
 		A976413C6AD26F1BFCB9F094 /* Pods_iosfinal2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */; };
 		DC59C2BE208E7718005B9E41 /* TwilioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC59C2BD208E7718005B9E41 /* TwilioManager.swift */; };
@@ -33,6 +36,9 @@
 		1FCFD2729F005FF850930173 /* Pods-iosfinal2018.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosfinal2018.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018.debug.xcconfig"; sourceTree = "<group>"; };
 		6544974E208F8BDF00A6BADA /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		65449750208F8CBE00A6BADA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		657DA02B2092913600255A7D /* PlaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceView.xib; sourceTree = "<group>"; };
+		657DA02D209292FC00255A7D /* CustomPlaceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlaceAnnotationView.swift; sourceTree = "<group>"; };
+		657DA02F2096162A00255A7D /* AddAnnotationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnnotationsVC.swift; sourceTree = "<group>"; };
 		65BE4C5E208D067F00515768 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosfinal2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC370AF0208525AC0066120A /* iosfinal2018.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosfinal2018.entitlements; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 				E05B5942207DBB930047B41E /* AdviceVC.swift */,
 				E05B5932207DB1680047B41E /* MapVC.swift */,
 				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
+				657DA02F2096162A00255A7D /* AddAnnotationsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -131,6 +138,8 @@
 			children = (
 				65BE4C5E208D067F00515768 /* ContactCell.swift */,
 				6544974E208F8BDF00A6BADA /* AnnotationView.swift */,
+				657DA02B2092913600255A7D /* PlaceView.xib */,
+				657DA02D209292FC00255A7D /* CustomPlaceAnnotationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,6 +260,7 @@
 				DC97BD6220853024009F5B95 /* Login.storyboard in Resources */,
 				E05B5949207E5FA50047B41E /* GoogleService-Info.plist in Resources */,
 				E05B5947207E5B320047B41E /* Podfile in Resources */,
+				657DA02C2092913700255A7D /* PlaceView.xib in Resources */,
 				E05B5936207DB1680047B41E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,10 +355,12 @@
 			files = (
 				DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */,
 				DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */,
+				657DA02E209292FC00255A7D /* CustomPlaceAnnotationView.swift in Sources */,
 				E05B5945207DBC470047B41E /* SendScreenVC.swift in Sources */,
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
 				65449751208F8CBE00A6BADA /* Place.swift in Sources */,
 				DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */,
+				657DA0302096162A00255A7D /* AddAnnotationsVC.swift in Sources */,
 				6544974F208F8BDF00A6BADA /* AnnotationView.swift in Sources */,
 				65BE4C5F208D067F00515768 /* ContactCell.swift in Sources */,
 				DC59C2BE208E7718005B9E41 /* TwilioManager.swift in Sources */,

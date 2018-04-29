@@ -189,14 +189,11 @@
                         <viewControllerLayoutGuide type="bottom" id="qRO-JO-eRJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="L3X-Ou-COz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-oW-aWT">
-                                <rect key="frame" x="0.0" y="160" width="375" height="510"/>
-                                <connections>
-                                    <outlet property="delegate" destination="zaG-KJ-XqK" id="mOp-HH-1aZ"/>
-                                </connections>
+                                <rect key="frame" x="0.0" y="153" width="375" height="510"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -209,15 +206,46 @@
                         <viewLayoutGuide key="safeArea" id="7K9-rr-bvB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="uFw-6P-Dc7"/>
-                    <navigationItem key="navigationItem" id="DRX-1t-5h2"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="DRX-1t-5h2">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="GAy-Xu-ofa">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1vH-ZO-hcc">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <connections>
+                                <action selector="addClick:" destination="zaG-KJ-XqK" id="29r-Pe-oP7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="map" destination="Ya5-oW-aWT" id="35B-nn-K0m"/>
+                        <outlet property="addPlace" destination="1vH-ZO-hcc" id="qcn-kC-emH"/>
+                        <outlet property="map" destination="Ya5-oW-aWT" id="L7t-rQ-NRh"/>
+                        <segue destination="lun-Lw-daK" kind="presentation" id="gHe-nD-WE4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRP-an-JZR" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="317.60000000000002" y="673.89162561576359"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="qZh-tg-7Wz">
+            <objects>
+                <viewController storyboardIdentifier="add" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lun-Lw-daK" customClass="AddAnnotationsVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="add" id="Fk7-fZ-8G6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cUX-bm-7Gk"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="8fA-06-iBe"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9aH-T4-G47" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1143" y="673"/>
         </scene>
         <!--Map-->
         <scene sceneID="7u6-4p-fco">

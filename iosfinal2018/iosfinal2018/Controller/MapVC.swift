@@ -8,6 +8,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     @IBOutlet weak var map: MKMapView!
         var user: User!
+    @IBOutlet weak var addPlace: UIButton!
     
     var searchController: UISearchController!
     var localSearchRequest: MKLocalSearchRequest!
@@ -56,6 +57,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         super.viewWillAppear(animated)
         activityIndicator.center = self.view.center
     }
+    @IBAction func addClick(_ sender: Any) {
+        performSegue(withIdentifier: "add", sender: sender)
+    }
+    
     // MARK: - UISearchBarDelegate
     
     @objc func searchButtonAction(_ button: UIBarButtonItem) {
@@ -110,7 +115,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             let annotation = Place(coordinate:coordinate )
             annotation.address = address
-            annotation.name = name
+            annotation.title = name
             annotation.subtitle = friend
             annotation.price_level = price_level
             annotation.rating = rating
