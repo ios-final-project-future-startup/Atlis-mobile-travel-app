@@ -137,7 +137,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
     
     // MARK: Segue
-    @IBAction func unwindToMap(segue: UIStoryboardSegue) {}
-    }    
+    @IBAction func unwindToMap(segue: UIStoryboardSegue) {}    
 }
 
