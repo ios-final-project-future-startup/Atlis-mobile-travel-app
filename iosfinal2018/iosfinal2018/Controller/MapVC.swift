@@ -8,8 +8,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     @IBOutlet weak var map: MKMapView!
         var user: User!
-    @IBOutlet weak var addPlace: UIButton!
-    
+    @IBOutlet weak var addPlace: UIBarButtonItem!
     var searchController: UISearchController!
     var localSearchRequest: MKLocalSearchRequest!
     var localSearch: MKLocalSearch!
@@ -58,7 +57,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         activityIndicator.center = self.view.center
     }
     @IBAction func addClick(_ sender: Any) {
-        performSegue(withIdentifier: "add", sender: sender)
+        performSegue(withIdentifier: "add", sender: nil)
     }
     
     // MARK: - UISearchBarDelegate

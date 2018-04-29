@@ -208,22 +208,19 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="uFw-6P-Dc7"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="DRX-1t-5h2">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="GAy-Xu-ofa">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1vH-ZO-hcc">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" title="Add Place" style="plain" id="gto-h2-xSf">
+                            <inset key="imageInsets" minX="-120" minY="-1" maxX="0.0" maxY="0.0"/>
+                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                             <connections>
-                                <action selector="addClick:" destination="zaG-KJ-XqK" id="29r-Pe-oP7"/>
+                                <action selector="addClick:" destination="zaG-KJ-XqK" id="R1t-kt-2Qg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addPlace" destination="1vH-ZO-hcc" id="qcn-kC-emH"/>
+                        <outlet property="addPlace" destination="gto-h2-xSf" id="Syw-fy-pgc"/>
                         <outlet property="map" destination="Ya5-oW-aWT" id="L7t-rQ-NRh"/>
-                        <segue destination="lun-Lw-daK" kind="presentation" id="gHe-nD-WE4"/>
+                        <segue destination="lun-Lw-daK" kind="presentation" identifier="add" id="gHe-nD-WE4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRP-an-JZR" sceneMemberID="firstResponder"/>
@@ -237,15 +234,27 @@
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="add" id="Fk7-fZ-8G6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gor-7K-Us4" userLabel="Add Place">
+                                <rect key="frame" x="130" y="94" width="118" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cUX-bm-7Gk"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="8fA-06-iBe"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addLabel" destination="gor-7K-Us4" id="ceD-HA-nGb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9aH-T4-G47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1143" y="673"/>
+            <point key="canvasLocation" x="1141.5999999999999" y="671.67487684729065"/>
         </scene>
         <!--Map-->
         <scene sceneID="7u6-4p-fco">
