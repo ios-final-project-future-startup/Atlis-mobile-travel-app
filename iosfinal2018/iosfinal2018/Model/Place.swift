@@ -12,6 +12,7 @@ class Place: NSObject {
     var coordinate: CLLocationCoordinate2D
     var title: String? //name of place
     var address: String?
+    var name: String?
     var subtitle: String? //will link to a friend and be the subtitle of the annotation
     var icon: String?
     var price_level: Double?

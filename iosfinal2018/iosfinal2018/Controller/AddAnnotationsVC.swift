@@ -44,7 +44,6 @@ CLLocationManagerDelegate{
             $0.title = "Add"
             }
             .onCellSelection {  cell, row in
-                print(self.name)
 //               self.performSegue(withIdentifier: "MapVC", sender: nil)
                 
                 
@@ -53,8 +52,8 @@ CLLocationManagerDelegate{
                 //prep data for query to include "+" instead of " "
                 let queryName  = self.name.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
                 let queryAddress = self.address.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
-                
                 let query = "\(queryName)&\(queryAddress)"
+                
                 let link = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(query)&key=AIzaSyBiDY9xYSfMh_VKXZ9cvo4BBItW96aqqig"
                 
                 //get JSON and save it in database properly
@@ -82,4 +81,7 @@ CLLocationManagerDelegate{
         }
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
