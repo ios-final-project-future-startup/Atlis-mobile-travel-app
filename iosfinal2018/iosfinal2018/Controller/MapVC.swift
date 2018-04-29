@@ -1,21 +1,13 @@
-
-//
-//  ViewController.swift
-//  iosfinal2018
-//
-//  Created by Zachary Kimelheim on 4/10/18.
-//  Copyright © 2018 Zachary Kimelheim. All rights reserved.
-//
 import UIKit
 import Firebase
 import GoogleMaps
 import GooglePlaces
 import MapKit
 
-
-class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate  {
     
     @IBOutlet weak var map: MKMapView!
+        var user: User!
     
     var searchController: UISearchController!
     var localSearchRequest: MKLocalSearchRequest!
@@ -25,13 +17,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     var locationManager: CLLocationManager!
     var activityIndicator: UIActivityIndicatorView!
     
-    //let places = Place.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.definesPresentationContext = true
         
-        //Configure Firebase app
+        user = Auth.auth().currentUser
+        
         if locationManager == nil {
             locationManager = CLLocationManager()
         }
@@ -51,7 +43,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.view.addSubview(activityIndicator)
         self.locationManager.stopUpdatingLocation()
         
-        //addAnnotations()
+        displayAllMarkers()
         
     }
     
@@ -64,6 +56,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         super.viewWillAppear(animated)
         activityIndicator.center = self.view.center
     }
+    // MARK: - UISearchBarDelegate
+    
     @objc func searchButtonAction(_ button: UIBarButtonItem) {
         if searchController == nil {
             searchController = UISearchController(searchResultsController: nil)
@@ -72,9 +66,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
     }
-    
-    // MARK: - UISearchBarDelegate
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         dismiss(animated: true, completion: nil)
@@ -104,27 +96,29 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             self!.map.addAnnotation(pinAnnotationView.annotation!)
         }
     }
-    func addAnnotations() {
-        //mapView?.delegate = self
-        //mapView?.addAnnotations(places)
-    }
-    
-    //MARK: - Add multiple Annotations
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
-        }
-            
-        else {
-            let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
-            annotationView.image = UIImage(named: "place icon")
-            return annotationView
-        }
-    }
-    
+    func displayAllMarkers(){ Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.childAdded, with: { (snapshot) in
+            let value = snapshot.value as? [String:Any]
+            let latitude = value?["lat"] as? Double ?? 0
+            let longitude = value?["long"] as? Double ?? 0
+            let address = value!["address"] as? String
+            let friend = value?["from"] as? String ?? ""
+            let name = value?["name"] as? String ?? ""
+            let price_level = value?["price_level"] as? Double
+            let rating = value?["rating"] as? Double
+        
+            //make annotation
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let annotation = Place(coordinate:coordinate )
+            annotation.address = address
+            annotation.name = name
+            annotation.subtitle = friend
+            annotation.price_level = price_level
+            annotation.rating = rating
+            self.map.addAnnotation(annotation)
+
+        })}
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
@@ -144,5 +138,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     // MARK: Segue
     @IBAction func unwindToMap(segue: UIStoryboardSegue) {}
+    }    
 }
 
