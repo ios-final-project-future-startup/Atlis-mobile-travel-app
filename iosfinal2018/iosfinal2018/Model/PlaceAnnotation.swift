@@ -8,7 +8,7 @@
 
 import MapKit
 
-class Place: NSObject {
+class PlaceAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String? //name of place
     var address: String?
@@ -17,10 +17,12 @@ class Place: NSObject {
     var icon: String?
     var price_level: Double?
     var rating: Double?
+    var recommendedBy: String?
     
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
+        super.init()
     }
     
 }
-extension Place: MKAnnotation { }
+

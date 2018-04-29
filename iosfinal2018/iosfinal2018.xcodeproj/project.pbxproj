@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6544974F208F8BDF00A6BADA /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6544974E208F8BDF00A6BADA /* AnnotationView.swift */; };
-		65449751208F8CBE00A6BADA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449750208F8CBE00A6BADA /* Place.swift */; };
-		657DA02C2092913700255A7D /* PlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 657DA02B2092913600255A7D /* PlaceView.xib */; };
-		657DA02E209292FC00255A7D /* CustomPlaceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DA02D209292FC00255A7D /* CustomPlaceAnnotationView.swift */; };
+		65449751208F8CBE00A6BADA /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65449750208F8CBE00A6BADA /* PlaceAnnotation.swift */; };
 		657DA0302096162A00255A7D /* AddAnnotationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657DA02F2096162A00255A7D /* AddAnnotationsVC.swift */; };
 		65BE4C5F208D067F00515768 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BE4C5E208D067F00515768 /* ContactCell.swift */; };
 		A976413C6AD26F1BFCB9F094 /* Pods_iosfinal2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */; };
@@ -19,6 +16,10 @@
 		DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */; };
 		DC97BD6220853024009F5B95 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC97BD6120853024009F5B95 /* Login.storyboard */; };
 		DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */; };
+		DC9D68A42096638E00CE2188 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D68A32096638E00CE2188 /* File.swift */; };
+		DC9D68A62096643B00CE2188 /* PlaceCallOutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC9D68A52096643B00CE2188 /* PlaceCallOutView.xib */; };
+		DC9D68A8209664F700CE2188 /* PlaceCallOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9D68A7209664F700CE2188 /* PlaceCallOutView.swift */; };
+		DCAD2E5B20966981000244DE /* PlaceAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAD2E5A20966981000244DE /* PlaceAnnotationView.swift */; };
 		DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE074EC208524AF00D06CEF /* LoginViewController.swift */; };
 		E05304542085068200597236 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05304532085068200597236 /* Contact.swift */; };
 		E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05B5930207DB1680047B41E /* AppDelegate.swift */; };
@@ -34,10 +35,7 @@
 
 /* Begin PBXFileReference section */
 		1FCFD2729F005FF850930173 /* Pods-iosfinal2018.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosfinal2018.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iosfinal2018/Pods-iosfinal2018.debug.xcconfig"; sourceTree = "<group>"; };
-		6544974E208F8BDF00A6BADA /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
-		65449750208F8CBE00A6BADA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		657DA02B2092913600255A7D /* PlaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceView.xib; sourceTree = "<group>"; };
-		657DA02D209292FC00255A7D /* CustomPlaceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlaceAnnotationView.swift; sourceTree = "<group>"; };
+		65449750208F8CBE00A6BADA /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		657DA02F2096162A00255A7D /* AddAnnotationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnnotationsVC.swift; sourceTree = "<group>"; };
 		65BE4C5E208D067F00515768 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosfinal2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +45,10 @@
 		DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utilties + Extensions.swift"; sourceTree = "<group>"; };
 		DC97BD6120853024009F5B95 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DC97BD6320853969009F5B95 /* ConfirmPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPhoneViewController.swift; sourceTree = "<group>"; };
+		DC9D68A32096638E00CE2188 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		DC9D68A52096643B00CE2188 /* PlaceCallOutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCallOutView.xib; sourceTree = "<group>"; };
+		DC9D68A7209664F700CE2188 /* PlaceCallOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCallOutView.swift; sourceTree = "<group>"; };
+		DCAD2E5A20966981000244DE /* PlaceAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotationView.swift; sourceTree = "<group>"; };
 		DCE074EC208524AF00D06CEF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E05304532085068200597236 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		E05B592D207DB1680047B41E /* iosfinal2018.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosfinal2018.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,9 +139,9 @@
 			isa = PBXGroup;
 			children = (
 				65BE4C5E208D067F00515768 /* ContactCell.swift */,
-				6544974E208F8BDF00A6BADA /* AnnotationView.swift */,
-				657DA02B2092913600255A7D /* PlaceView.xib */,
-				657DA02D209292FC00255A7D /* CustomPlaceAnnotationView.swift */,
+				DCAD2E5A20966981000244DE /* PlaceAnnotationView.swift */,
+				DC9D68A7209664F700CE2188 /* PlaceCallOutView.swift */,
+				DC9D68A52096643B00CE2188 /* PlaceCallOutView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -148,7 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				E05304532085068200597236 /* Contact.swift */,
-				65449750208F8CBE00A6BADA /* Place.swift */,
+				65449750208F8CBE00A6BADA /* PlaceAnnotation.swift */,
+				DC9D68A32096638E00CE2188 /* File.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -256,11 +259,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E05B593B207DB16B0047B41E /* LaunchScreen.storyboard in Resources */,
+				DC9D68A62096643B00CE2188 /* PlaceCallOutView.xib in Resources */,
 				E05B5938207DB16B0047B41E /* Assets.xcassets in Resources */,
 				DC97BD6220853024009F5B95 /* Login.storyboard in Resources */,
 				E05B5949207E5FA50047B41E /* GoogleService-Info.plist in Resources */,
 				E05B5947207E5B320047B41E /* Podfile in Resources */,
-				657DA02C2092913700255A7D /* PlaceView.xib in Resources */,
 				E05B5936207DB1680047B41E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,19 +360,20 @@
 			files = (
 				DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */,
 				DCE074ED208524AF00D06CEF /* LoginViewController.swift in Sources */,
-				657DA02E209292FC00255A7D /* CustomPlaceAnnotationView.swift in Sources */,
 				E05B5945207DBC470047B41E /* SendScreenVC.swift in Sources */,
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
-				65449751208F8CBE00A6BADA /* Place.swift in Sources */,
+				DC9D68A42096638E00CE2188 /* File.swift in Sources */,
+				65449751208F8CBE00A6BADA /* PlaceAnnotation.swift in Sources */,
 				DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */,
 				657DA0302096162A00255A7D /* AddAnnotationsVC.swift in Sources */,
-				6544974F208F8BDF00A6BADA /* AnnotationView.swift in Sources */,
 				65BE4C5F208D067F00515768 /* ContactCell.swift in Sources */,
 				DC59C2BE208E7718005B9E41 /* TwilioManager.swift in Sources */,
 				E05304542085068200597236 /* Contact.swift in Sources */,
 				DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */,
 				E05B5931207DB1680047B41E /* AppDelegate.swift in Sources */,
+				DC9D68A8209664F700CE2188 /* PlaceCallOutView.swift in Sources */,
 				E05B5943207DBB930047B41E /* AdviceVC.swift in Sources */,
+				DCAD2E5B20966981000244DE /* PlaceAnnotationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,7 +523,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -539,7 +546,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
