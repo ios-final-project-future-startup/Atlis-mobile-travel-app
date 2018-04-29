@@ -34,6 +34,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
     
     func setUpVC() {
+        self.title = "Your Map"
         user = Auth.auth().currentUser // create firebase user
         self.definesPresentationContext = true
         // Handle location manager
@@ -64,6 +65,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
     
     @IBAction func addClick(_ sender: Any) {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
         performSegue(withIdentifier: "add", sender: nil)
     }
     

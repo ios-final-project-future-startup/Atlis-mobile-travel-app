@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Request advice from who?-->
+        <!--Advice-->
         <scene sceneID="Srn-VU-b7y">
             <objects>
                 <viewController storyboardIdentifier="AdviceVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2XP-oy-Nyq" customClass="AdviceVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,7 +83,7 @@
                         <viewLayoutGuide key="safeArea" id="aEB-qy-W9J"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Advice" image="collaboration" id="ldd-pm-BkM"/>
-                    <navigationItem key="navigationItem" title="Request advice from who?" id="Dpx-dQ-rCK"/>
+                    <navigationItem key="navigationItem" title="Advice" id="Dpx-dQ-rCK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="contactsTableView" destination="HoS-MR-3hM" id="ZtC-Mz-bmb"/>
@@ -210,7 +210,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map_marker" id="uFw-6P-Dc7"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="DRX-1t-5h2">
-                        <barButtonItem key="leftBarButtonItem" title="Add Place" style="plain" id="gto-h2-xSf">
+                        <barButtonItem key="leftBarButtonItem" title="+" style="plain" id="gto-h2-xSf">
                             <inset key="imageInsets" minX="-120" minY="-1" maxX="0.0" maxY="0.0"/>
                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                             <connections>
