@@ -140,6 +140,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         pointAnnotation.coordinate = location!.coordinate
         pointAnnotation.title = ""
         map.addAnnotation(pointAnnotation)
-    }    
+    }
+    
+    // MARK: Segue
+    @IBAction func unwindToMap(segue: UIStoryboardSegue) {}
 }
 
