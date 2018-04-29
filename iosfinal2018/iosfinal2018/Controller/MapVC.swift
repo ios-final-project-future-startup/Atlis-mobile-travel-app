@@ -7,8 +7,7 @@ import MapKit
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate  {
     
     @IBOutlet weak var map: MKMapView!
-        var user: User!
-    
+    var user: User!
     var searchController: UISearchController!
     var localSearchRequest: MKLocalSearchRequest!
     var localSearch: MKLocalSearch!
@@ -96,28 +95,36 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             self!.map.addAnnotation(pinAnnotationView.annotation!)
         }
     }
-    func displayAllMarkers(){ Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.childAdded, with: { (snapshot) in
-            let value = snapshot.value as? [String:Any]
-            let latitude = value?["lat"] as? Double ?? 0
-            let longitude = value?["long"] as? Double ?? 0
-            let address = value!["address"] as? String
-            let friend = value?["from"] as? String ?? ""
-            let name = value?["name"] as? String ?? ""
-            let price_level = value?["price_level"] as? Double
-            let rating = value?["rating"] as? Double
-        
-            //make annotation
-            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let annotation = Place(coordinate:coordinate )
-            annotation.address = address
-            annotation.name = name
-            annotation.subtitle = friend
-            annotation.price_level = price_level
-            annotation.rating = rating
-            self.map.addAnnotation(annotation)
-
-        })}
     
+    func displayAllMarkers(){
+        Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.value, with: { (snapshot) in
+            print("Testing: \(self.user.uid)")
+            //var longitude: Double
+            let value = snapshot.value as! [String:[String:Any]]
+            for (_, v) in value {
+                let address = v["address"] as? String ?? "Unknown"
+                let friend = v["from"] as? String ?? "Unknown"
+                let name = v["name"] as? String ?? "Unknown"
+                // make annotation
+                if let latitude = v["lat"] as? Double {
+                    if let longitude = v["lon"] as? Double {
+                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        let annotation = Place(coordinate:coordinate)
+                        annotation.address = address
+                        annotation.name = name
+                        annotation.subtitle = friend
+                        if let price_level = v["price_level"] as? Double {
+                            annotation.price_level = price_level
+                        }
+                        if let rating = v["rating"] as? Double {
+                            annotation.rating = rating
+                        }
+                        self.map.addAnnotation(annotation)
+                    }
+                }
+            }
+        })}
+ 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last

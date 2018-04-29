@@ -13,7 +13,6 @@ import Firebase
 class SendScreenVC: UIViewController, UITextFieldDelegate {
     // Properties
     var user: User!
-    //var contacts = [ContactCell]() // selected contacts
     var selectedContacts = [Contact]()
     var phoneNumbers = [String]()
     var contacts = [String:String]()
@@ -26,9 +25,19 @@ class SendScreenVC: UIViewController, UITextFieldDelegate {
         setUpViewController()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        resetArrays()
+    }
+    
     func setUpViewController() {
         user = Auth.auth().currentUser
         whereAreYouGoingTextField.delegate = self
+    }
+    
+    func resetArrays() {
+        self.phoneNumbers.removeAll()
+        self.contacts.removeAll()
     }
     
     func formatContactStrings() {
