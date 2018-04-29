@@ -13,9 +13,11 @@ import Firebase
 class SendScreenVC: UIViewController, UITextFieldDelegate {
     // Properties
     var user: User!
-    var contacts = [ContactCell]() // selected contacts
+    //var contacts = [ContactCell]() // selected contacts
     var selectedContacts = [Contact]()
     var phoneNumbers = [String]()
+    var contacts = [String:String]()
+    
     // Outlets
     @IBOutlet weak var whereAreYouGoingTextField: UITextField!
     
@@ -31,19 +33,29 @@ class SendScreenVC: UIViewController, UITextFieldDelegate {
     
     func formatContactStrings() {
         for contact in selectedContacts {
+            // Phone Number
             let contactNumber = contact.number
             let newNumber = contactNumber.components(separatedBy: CharacterSet.decimalDigits.inverted)
             var finalNumber = newNumber.joined(separator: "")
             if finalNumber.hasPrefix("1") { finalNumber.remove(at: finalNumber.startIndex) } // get rid of the 1 at beginning of #
             finalNumber = "+1" + finalNumber
-            phoneNumbers.append(finalNumber) // add to array of strings that we give to Twilio
+            // Name
+            let name = contact.first + " " + contact.last
+            // Add data
+            self.phoneNumbers.append(finalNumber) // we use the array for twilio
+            contacts[name] = finalNumber // we use the dictionary for saving to firebase
         }
     }
     
-    func saveOutgoingRequestsToDatabase(phoneNumbers: [String]) {
-        let ref = Database.database().reference().child("outgoing_requests")
-        for phoneNumber in phoneNumbers {
-            ref.updateChildValues([phoneNumber: user.uid]) // add to the database
+    // MARK: Firebase
+    func saveToDatabase(contacts: [String:String]) {
+        let outgoingRef = Database.database().reference().child("outgoing_requests")
+        let requestingToRef = Database.database().reference().child("users").child(user.uid).child("requesting_to")
+        for (key, value) in contacts {
+            let name = key
+            let phoneNumber = value
+            outgoingRef.updateChildValues([phoneNumber: user.uid]) // save outgoing request
+            requestingToRef.updateChildValues([phoneNumber:name]) // save requesting value
         }
     }
     
@@ -64,13 +76,21 @@ class SendScreenVC: UIViewController, UITextFieldDelegate {
             var userName: String?
             let userRef = Database.database().reference().child("users").child(user.uid)
             userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                // Firebase
                 let value = snapshot.value as? NSDictionary
                 userName = value?["name"] as? String ?? "" // get user value
                 let twilioManager = TwilioManager()
                 twilioManager.sendMessage(userName: userName!, city: city, phoneNumbers: self.phoneNumbers)
-                self.saveOutgoingRequestsToDatabase(phoneNumbers: self.phoneNumbers) // save outgoing requests to database
+                self.saveToDatabase(contacts: self.contacts) // save outgoing requests to database
+                // Alert + Unwind
+                let alert = UIAlertController(title: "Success!", message: "Your requests have been sent to your friends, we'll let you know when it's automatically updated on your map!", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: { (_)in
+                    self.performSegue(withIdentifier: "unwindToMap", sender: self) // unwind segue
+                })
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
             }) { (error) in
-                print(error.localizedDescription)
+                self.showAlert(withTitle: "Error", message: error.localizedDescription)
             }
         } else {
             print("No city added.")
@@ -82,8 +102,5 @@ class SendScreenVC: UIViewController, UITextFieldDelegate {
             formatContactStrings() // make sure contacts are formatted
             sendTwilioMessage() // send twilio message with contacts
         }
-        
     }
-    
-
 }
