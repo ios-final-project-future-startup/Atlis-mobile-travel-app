@@ -29,10 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //      GMSPlacesClient.provideAPIKey("AIzaSyDjNSgs6Wj56_wF5gvr9zlWCuVXNU-V1C8")
 
       
-      /*
-       Testing:
-       try! Auth.auth().signOut()
-      */
+      
+      // Testing:
+//        try! Auth.auth().signOut()
+ 
       
       // Check if user is authorized
       if Auth.auth().currentUser == nil { // there is no current user

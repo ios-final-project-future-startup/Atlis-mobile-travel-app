@@ -14,7 +14,6 @@ class Place: NSObject {
     var address: String?
     var subtitle: String? //will link to a friend and be the subtitle of the annotation
     var icon: String?
-    var name: String?
     var price_level: Double?
     var rating: Double?
     

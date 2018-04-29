@@ -8,7 +8,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     
     @IBOutlet weak var map: MKMapView!
         var user: User!
-    
+    @IBOutlet weak var addPlace: UIBarButtonItem!
     var searchController: UISearchController!
     var localSearchRequest: MKLocalSearchRequest!
     var localSearch: MKLocalSearch!
@@ -56,6 +56,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         super.viewWillAppear(animated)
         activityIndicator.center = self.view.center
     }
+    @IBAction func addClick(_ sender: Any) {
+        performSegue(withIdentifier: "add", sender: nil)
+    }
+    
     // MARK: - UISearchBarDelegate
     
     @objc func searchButtonAction(_ button: UIBarButtonItem) {
@@ -93,11 +97,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             
             let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
             self!.map.centerCoordinate = pointAnnotation.coordinate
-            self!.map.addAnnotation(pinAnnotationView.annotation!)
+          //  self!.map.addAnnotation(pinAnnotationView.annotation!)
+//            self!.map.removeAnnotation(pinAnnotationView.annotation!)
         }
     }
-    func displayAllMarkers(){ Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.childAdded, with: { (snapshot) in
+    func displayAllMarkers(){     Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.value, with: { (snapshot) in
             let value = snapshot.value as? [String:Any]
+        print(value)
             let latitude = value?["lat"] as? Double ?? 0
             let longitude = value?["long"] as? Double ?? 0
             let address = value!["address"] as? String
@@ -110,7 +116,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             let annotation = Place(coordinate:coordinate )
             annotation.address = address
-            annotation.name = name
+            annotation.title = name
             annotation.subtitle = friend
             annotation.price_level = price_level
             annotation.rating = rating
