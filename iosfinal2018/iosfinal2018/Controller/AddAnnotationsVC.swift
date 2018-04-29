@@ -43,9 +43,12 @@ CLLocationManagerDelegate{
             $0.title = "Add"
             }
             .onCellSelection {  cell, row in
-                print(self.name)
-//               self.performSegue(withIdentifier: "MapVC", sender: nil)
+                
+               self.performSegue(withIdentifier: "MapVC", sender: nil)
         }
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
