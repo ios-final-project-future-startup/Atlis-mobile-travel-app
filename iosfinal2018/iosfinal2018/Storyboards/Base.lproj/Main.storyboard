@@ -14,7 +14,7 @@
         <!--Advice-->
         <scene sceneID="Srn-VU-b7y">
             <objects>
-                <viewController storyboardIdentifier="AdviceVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2XP-oy-Nyq" customClass="AdviceVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AdviceVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2XP-oy-Nyq" customClass="AdviceVC" customModule="Atlis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vCR-1O-dJC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,10 +23,10 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" rowHeight="83" id="0Al-Ww-fIT" customClass="ContactCell" customModule="iosfinal2018" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" rowHeight="83" id="0Al-Ww-fIT" customClass="ContactCell" customModule="Atlis" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Al-Ww-fIT" id="vHE-ik-0WO" customClass="ContactCell" customModule="iosfinal2018" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Al-Ww-fIT" id="vHE-ik-0WO" customClass="ContactCell" customModule="Atlis" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="82.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -97,7 +97,7 @@
         <!--Send ScreenVC-->
         <scene sceneID="RPl-GE-C6i">
             <objects>
-                <viewController id="eub-IC-P9t" customClass="SendScreenVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eub-IC-P9t" customClass="SendScreenVC" customModule="Atlis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="01Z-ta-Eqr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,7 +185,7 @@
         <!--Map-->
         <scene sceneID="PGe-wT-UTG">
             <objects>
-                <viewController storyboardIdentifier="MapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zaG-KJ-XqK" customClass="MapVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zaG-KJ-XqK" customClass="MapVC" customModule="Atlis" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ilo-as-1cd"/>
                         <viewControllerLayoutGuide type="bottom" id="qRO-JO-eRJ"/>
@@ -195,8 +195,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-oW-aWT">
-                                <rect key="frame" x="0.0" y="153" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="152" width="375" height="510"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l33-xh-xBo" userLabel="Filter">
+                                <rect key="frame" x="6" y="88" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Filter"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -221,18 +226,28 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addPlace" destination="gto-h2-xSf" id="Syw-fy-pgc"/>
+                        <outlet property="filterBtn" destination="l33-xh-xBo" id="sSP-bU-cDQ"/>
                         <outlet property="map" destination="Ya5-oW-aWT" id="L7t-rQ-NRh"/>
+                        <outlet property="searchDisplayController" destination="5sy-Sh-Isz" id="Uxa-2X-po3"/>
                         <segue destination="BLS-NS-e1e" kind="presentation" identifier="add" id="gHe-nD-WE4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRP-an-JZR" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="5sy-Sh-Isz">
+                    <connections>
+                        <outlet property="delegate" destination="zaG-KJ-XqK" id="Frd-kB-hrJ"/>
+                        <outlet property="searchContentsController" destination="zaG-KJ-XqK" id="DXH-CZ-Pjq"/>
+                        <outlet property="searchResultsDataSource" destination="zaG-KJ-XqK" id="MVB-v5-7Bh"/>
+                        <outlet property="searchResultsDelegate" destination="zaG-KJ-XqK" id="lVA-D7-8Iw"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="317.60000000000002" y="673.89162561576359"/>
         </scene>
         <!--Add AnnotationsVC-->
         <scene sceneID="qZh-tg-7Wz">
             <objects>
-                <viewController storyboardIdentifier="add" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lun-Lw-daK" customClass="AddAnnotationsVC" customModule="iosfinal2018" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="add" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lun-Lw-daK" customClass="AddAnnotationsVC" customModule="Atlis" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="bHi-J3-bqe">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="WJX-gC-udz" userLabel="Cancel">
