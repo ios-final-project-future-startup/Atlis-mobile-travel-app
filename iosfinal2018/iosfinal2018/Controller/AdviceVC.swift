@@ -9,85 +9,29 @@
 import UIKit
 import Firebase
 import Contacts
+import SwiftMultiSelect
 
-class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
-    
-    @IBOutlet weak var contactsTableView: UITableView!
+class AdviceVC: UIViewController  {
     
     var contactStore = CNContactStore()
     var contacts = [Contact]()
     var selectedContacts = [Contact]()
-    
+    var items:[SwiftMultiSelectItem] = [SwiftMultiSelectItem]()
+    var selectedItems:[SwiftMultiSelectItem] = [SwiftMultiSelectItem]()
+    var initialValues:[SwiftMultiSelectItem] = [SwiftMultiSelectItem]()
 
     override func viewDidLoad() {
-      super.viewDidLoad()
-      setUpVC()
+        super.viewDidLoad()
+        setUpVC()
     }
     
     func setUpVC() {
+        // SwiftMultiSelect
+        SwiftMultiSelect.delegate = self
+        SwiftMultiSelect.dataSource = self
+        SwiftMultiSelect.dataSourceType = .phone
         // Nav Bar
         self.title = "Advice"
-        // Contacts TableView
-        contactsTableView.delegate = self
-        contactsTableView.dataSource = self
-        contactStore.requestAccess(for: .contacts, completionHandler: { (success, error) in
-            if ( success ) { self.fetchContacts() }
-        })
-        contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "A")
-    }
-
-    //this function generates our contacts from our device for our table view
-    func fetchContacts(){
-      let key = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey] as [CNKeyDescriptor]
-      
-      let request = CNContactFetchRequest(keysToFetch: key)
-        request.sortOrder = CNContactSortOrder.givenName; //sort by first name
-        
-      try! contactStore.enumerateContacts(with: request, usingBlock: { (contact, stoppablePointer) in
-        let name = contact.givenName
-        let familyname = contact.familyName
-        let number = contact.phoneNumbers.first?.value.stringValue
-        if ( name != "" && number != nil ) {
-          let contactToAppend = Contact(first: name, last: familyname, number: number!)
-          self.contacts.append(contactToAppend)
-        }
-      })
-      DispatchQueue.main.async { self.contactsTableView.reloadData() } // execute this once block finishes
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contacts.count
-        
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-        if let cell: ContactCell = tableView.dequeueReusableCell(withIdentifier: "ContactCell") as? ContactCell{
-            let contact = contacts[indexPath.row]
-            cell.nameLbl.text = contact.first + " " + contact.last
-            cell.phoneNumberLbl.text = contact.number
-            return cell
-        }
-        else {
-            return UITableViewCell()
-        }
-
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let cell = contactsTableView.cellForRow(at: indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
-        
-        let contact = contacts[indexPath.row] // use the value of the indexPath to get contact
-        selectedContacts.append(contact)
-
-    }
-    
-    @IBAction func sendBtnPressed(_ sender: Any) {
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
-        self.performSegue(withIdentifier: "SendScreenVC", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -96,4 +40,74 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
+    @IBAction func selectContactsBtnTapped(_ sender: Any) {
+        SwiftMultiSelect.Show(to: self)
+    }
+    
 }
+
+//MARK: - SwiftMultiSelectDelegate
+extension AdviceVC: SwiftMultiSelectDelegate {
+    func userDidSearch(searchString: String) {
+        if searchString == "" {
+            selectedItems = items
+        } else {
+            selectedItems = items.filter({$0.title.lowercased().contains(searchString.lowercased()) || ($0.description != nil && $0.description!.lowercased().contains(searchString.lowercased())) })
+        }
+    }
+    
+    func numberOfItemsInSwiftMultiSelect() -> Int {
+        return selectedItems.count
+    }
+    
+    func swiftMultiSelect(didUnselectItem item: SwiftMultiSelectItem) {
+        print("row: \(item.title) has been deselected!")
+    }
+    
+    func swiftMultiSelect(didSelectItem item: SwiftMultiSelectItem) {
+        print("item: \(item.title) has been selected!")
+    }
+    
+    func didCloseSwiftMultiSelect() {
+        //badge.isHidden = true
+        //badge.text = ""
+    }
+    
+    func swiftMultiSelect(itemAtRow row: Int) -> SwiftMultiSelectItem {
+        return selectedItems[row]
+    }
+    
+    func swiftMultiSelect(didSelectItems items: [SwiftMultiSelectItem]) {
+        initialValues   = items
+        if items.count > 0 {
+            for item in items {
+                if let contact = item.userInfo as? CNContact {
+                    let name = contact.givenName
+                    let familyname = contact.familyName
+                    let number = contact.phoneNumbers.first?.value.stringValue
+                    if ( name != "" && number != nil ) {
+                        let contactToAppend = Contact(first: name, last: familyname, number: number!)
+                        self.selectedContacts.append(contactToAppend)
+                    }
+                }
+            }
+            self.performSegue(withIdentifier: "sendScreenVC", sender: nil)
+        }
+    }
+}
+
+extension AdviceVC: SwiftMultiSelectDataSource {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+

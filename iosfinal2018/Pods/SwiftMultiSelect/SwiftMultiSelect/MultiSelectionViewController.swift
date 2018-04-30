@@ -98,8 +98,8 @@ class MultiSelecetionViewController: UIViewController,UIGestureRecognizerDelegat
     var navBarHeight:CGFloat{
         get{
             if (self.navigationController != nil) {
-                return self.navigationController!.navigationBar.frame.size.height + (UIApplication.shared.isStatusBarHidden ? 0 : 20)
-            }else{
+                return self.navigationController!.navigationBar.frame.size.height + UIApplication.shared.statusBarFrame.height
+            } else {
                 return 0
             }
         }

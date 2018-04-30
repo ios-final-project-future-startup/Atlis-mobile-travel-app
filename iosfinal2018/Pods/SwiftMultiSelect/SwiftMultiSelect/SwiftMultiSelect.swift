@@ -80,6 +80,9 @@ public class SwiftMultiSelect{
         ContactsLibrary.getContacts { (success, data) in
             
             self.items = data!
+            self.items?.sort(by: { (c1, c2) -> Bool in
+                return c1.title < c2.title
+            })
             
         }
     }
@@ -97,9 +100,9 @@ public struct Config {
     /// Background of main view
     public static var mainBackground        :   UIColor    = UIColor.white
     /// View's title
-    public static var viewTitle             :   String     = "Swift Multiple Select"
+    public static var viewTitle             :   String     = "Select Contacts"
     /// Title for done button
-    public static var doneString            :   String     = "Done"
+    public static var doneString            :   String     = "Next"
     //Placeholder image during lazy load
     public static var placeholder_image     :   UIImage     = SwiftMultiSelect.image(named: "user_blank")!
     /// Array of colors to use in initials
