@@ -78,17 +78,19 @@ class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManager
                     case .success(let value):
                         let json = JSON(value)
                         let place = json["results"][0]
-                        print(place)
-                        let data = ["name":place["name"].string!,
-                                    "address":place["formatted_address"].string!,
-                                    "icon":place["icon"].string!,
-                                    "lat":place["geometry"]["location"]["lat"].double!,
-                                    "lon":place["geometry"]["location"]["lng"].double!,
-                                    "rating":place["rating"].double!,
-                                    "price_level":place["price_level"] as? Double ?? -1,
-                                    "from":self.titleBox] as [String : Any]
-                        Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").updateChildValues(data)
-                        print("JSON: \(json)")
+                        if place != JSON.null {
+                            let data = ["name":place["name"].string!,
+                                        "address":place["formatted_address"].string!,
+                                        "icon":place["icon"].string!,
+                                        "lat":place["geometry"]["location"]["lat"].double!,
+                                        "lon":place["geometry"]["location"]["lng"].double!,
+                                        "rating":place["rating"].double!,
+                                        "price_level":place["price_level"] as? Double ?? -1,
+                                        "from":self.titleBox] as [String : Any]
+                        let ref = Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").childByAutoId()
+                            ref.setValue(data)
+                            print("JSON: \(json)")
+                        }
                     case .failure(let error):
                         print(error)
                     }
