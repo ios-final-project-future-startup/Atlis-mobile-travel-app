@@ -47,6 +47,7 @@ CLLocationManagerDelegate{
             $0.title = "Add"
             }
             .onCellSelection {  cell, row in
+
                 self.doneBtnTapped()
         }
     }

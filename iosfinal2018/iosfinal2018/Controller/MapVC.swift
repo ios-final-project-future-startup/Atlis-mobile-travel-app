@@ -31,6 +31,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         activityIndicator.center = self.view.center
+        
+        //Reload map
+        let allAnnotations = self.map.annotations
+        self.map.removeAnnotations(allAnnotations)
+        
+        displayAllMarkers()
+        
     }
     
     func setUpVC() {
@@ -61,6 +68,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+            self.locationManager.stopUpdatingLocation()
         }
     }
     
@@ -106,10 +114,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             pointAnnotation.title = searchBar.text
             pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude: localSearchResponse!.boundingRegion.center.longitude)
             
-            let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
             self!.map.centerCoordinate = pointAnnotation.coordinate
-          //  self!.map.addAnnotation(pinAnnotationView.annotation!)
-//            self!.map.removeAnnotation(pinAnnotationView.annotation!)
         }
     }
     
