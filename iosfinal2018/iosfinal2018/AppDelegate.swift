@@ -31,9 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       
       // Testing:
-      //try! Auth.auth().signOut()
+      //  try! Auth.auth().signOut()
 
- 
       
       // Check if user is authorized
       if Auth.auth().currentUser == nil { // there is no current user
