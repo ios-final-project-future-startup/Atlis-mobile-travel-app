@@ -18,47 +18,56 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     var annotation: MKAnnotation!
     var locationManager: CLLocationManager!
     var activityIndicator: UIActivityIndicatorView!
+    var centeredMap: Bool!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.definesPresentationContext = true
-        
-        user = Auth.auth().currentUser
-        
-        if locationManager == nil {
-            locationManager = CLLocationManager()
-        }
-        locationManager?.requestWhenInUseAuthorization()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
-        
-        let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MapVC.searchButtonAction(_:)))
-        self.navigationItem.rightBarButtonItem = searchButton
-        
-        map.delegate = self
-        
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-        activityIndicator.hidesWhenStopped = true
-        self.view.addSubview(activityIndicator)
-        self.locationManager.stopUpdatingLocation()
-        
+        setUpVC()
+        handleUserLocation()
         displayAllMarkers()
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         activityIndicator.center = self.view.center
     }
+    
+    func setUpVC() {
+        self.title = "Your Map"
+        user = Auth.auth().currentUser // create firebase user
+        self.definesPresentationContext = true
+        // Handle location manager
+        if locationManager == nil { locationManager = CLLocationManager() }
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        // Handle search button set up
+        let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MapVC.searchButtonAction(_:)))
+        self.navigationItem.rightBarButtonItem = searchButton
+        self.map.delegate = self
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func handleUserLocation() {
+        if CLLocationManager.locationServicesEnabled() {
+            self.centeredMap = false
+            self.map.showsUserLocation = true
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     @IBAction func addClick(_ sender: Any) {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
         performSegue(withIdentifier: "add", sender: nil)
     }
     
@@ -117,9 +126,10 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
                 if let latitude = v["lat"] as? Double {
                     if let longitude = v["lon"] as? Double {
                         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                        let annotation = Place(coordinate:coordinate)
+                        let annotation = PlaceAnnotation(coordinate:coordinate)
                         annotation.address = address
                         annotation.name = name
+                        annotation.recommendedBy = friend
                         annotation.subtitle = friend
                         if let price_level = v["price_level"] as? Double {
                             annotation.price_level = price_level
@@ -132,7 +142,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
                 }
             }
         })}
- 
+    
+    // MARK: MapView Delegate Functions
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last
@@ -145,10 +156,63 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             annotation = self.map.annotations[0]
             self.map.removeAnnotation(annotation)
         }
-        let pointAnnotation = MKPointAnnotation()
-        pointAnnotation.coordinate = location!.coordinate
-        pointAnnotation.title = ""
-        map.addAnnotation(pointAnnotation)
+        
+//        let pointAnnotation = MKPointAnnotation()
+//        pointAnnotation.coordinate = location!.coordinate
+//        pointAnnotation.title = ""
+//        map.addAnnotation(pointAnnotation)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation { return nil } // don't add a user annotation
+        var annotationView = self.map.dequeueReusableAnnotationView(withIdentifier: "Pin")
+        if annotationView == nil { // hasn't been created yet
+            annotationView = PlaceAnnotationView(annotation: annotation, reuseIdentifier: "Pin")
+            annotationView?.canShowCallout = false
+        } else { // use the view already created
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "custom_mark") // set the marker image
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if view.annotation is MKUserLocation { return } // don't display custom calloutview
+        if let placeAnnotation = view.annotation as? PlaceAnnotation {
+            let views = Bundle.main.loadNibNamed("PlaceCallOutView", owner: nil, options: nil)
+            let calloutView = views?[0] as? PlaceCallOutView
+            calloutView?.placeNameLabel.text = placeAnnotation.name
+            calloutView?.recommendedByLabel.text = "from \(placeAnnotation.recommendedBy!)"
+            calloutView?.addressLabel.text = "Address: \(placeAnnotation.address!)"
+            if let priceLevel = placeAnnotation.price_level {
+                calloutView?.priceLabel.text = "Price: \(priceLevel)"
+            } else {
+                calloutView?.priceLabel.text = "Unknown"
+            }
+            if let rating = placeAnnotation.rating {
+                calloutView?.ratingLabel.text = "Rating: \(rating)"
+            } else {
+                calloutView?.ratingLabel.text = "Unknown"
+            }
+            
+            //let button = UIButton(frame: calloutView.starbucksPhone.frame)
+            //button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
+            //calloutView.addSubview(button)
+            
+            let heightValue = -((calloutView?.bounds.size.height)! * 0.52)
+            calloutView?.center = CGPoint(x: view.bounds.size.width / 2, y: heightValue)
+            view.addSubview(calloutView!)
+            mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+        } else {
+            return
+        }
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if view.isKind(of: PlaceAnnotationView.self) {
+            for subview in view.subviews { subview.removeFromSuperview() } // remove all the superviews
+        }
     }
     
     // MARK: Segue

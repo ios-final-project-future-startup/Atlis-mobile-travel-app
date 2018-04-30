@@ -21,19 +21,19 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
     override func viewDidLoad() {
       super.viewDidLoad()
-      contactsTableView.delegate = self
-      contactsTableView.dataSource = self
-      
-      contactStore.requestAccess(for: .contacts, completionHandler: { (success, error) in
-          if ( success ) {
-            print("Authorization successful")
-            self.fetchContacts()
-          }
-      })
+      setUpVC()
+    }
     
-      contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "A")
-      
-      
+    func setUpVC() {
+        // Nav Bar
+        self.title = "Advice"
+        // Contacts TableView
+        contactsTableView.delegate = self
+        contactsTableView.dataSource = self
+        contactStore.requestAccess(for: .contacts, completionHandler: { (success, error) in
+            if ( success ) { self.fetchContacts() }
+        })
+        contactsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "A")
     }
 
     //this function generates our contacts from our device for our table view
@@ -42,7 +42,6 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
       
       let request = CNContactFetchRequest(keysToFetch: key)
         request.sortOrder = CNContactSortOrder.givenName; //sort by first name
-        
         
       try! contactStore.enumerateContacts(with: request, usingBlock: { (contact, stoppablePointer) in
         let name = contact.givenName
@@ -85,6 +84,9 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     }
     
     @IBAction func sendBtnPressed(_ sender: Any) {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
         self.performSegue(withIdentifier: "SendScreenVC", sender: nil)
     }
     
@@ -94,6 +96,4 @@ class AdviceVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
-    
-
 }

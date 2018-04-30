@@ -15,6 +15,7 @@ class FinishSignUpVC: FormViewController {
   var phoneNumber: String!
 
   override func viewDidLoad() {
+    self.navigationController?.setNavigationBarHidden(true, animated: false)
     super.viewDidLoad()
     setUpForm()
   }

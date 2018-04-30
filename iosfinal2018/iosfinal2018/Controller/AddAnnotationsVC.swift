@@ -25,18 +25,20 @@ CLLocationManagerDelegate{
         user = Auth.auth().currentUser
         
         form +++ Section("Add a Place")
-            
             <<< TextRow(){ row in
+                row.tag = "name"
                 row.title = "Name of Place"
                 }.onChange({ (row) in
                     self.name = row.value != nil ? row.value! : ""
                 })
             <<< TextRow() { row in
-                row.title = "Address/ City"
+                row.tag = "address"
+                row.title = "Address/City"
                 }.onChange({ (row) in
                     self.address = row.value != nil ? row.value! : ""
                 })
             <<< TextRow() { row in
+                row.tag = "recommended_by"
                 row.title = "Recommended by"
                 }.onChange({ (row) in
                     self.titleBox = row.value != nil ? row.value! : ""
@@ -45,6 +47,7 @@ CLLocationManagerDelegate{
             $0.title = "Add"
             }
             .onCellSelection {  cell, row in
+<<<<<<< Updated upstream
 
             
                 //prep data for query to include "+" instead of " "
@@ -91,7 +94,46 @@ CLLocationManagerDelegate{
                     }
                 }
                 self.dismiss(animated: true, completion: nil)
+=======
+                self.doneBtnTapped()
         }
+    }
+    
+    func doneBtnTapped() {
+        let values = form.values()
+        if let name = values["name"] as? String {
+            let query = "\(self.name)&\(self.address)"
+            let link = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(query)&key=AIzaSyBiDY9xYSfMh_VKXZ9cvo4BBItW96aqqig"
+            Alamofire.request(link, method: .get).validate().responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    let place = json["results"][0]
+                    print("JSON: \(json)")
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            showAlert(withTitle: "Error", message: "Name field is empty.")
+>>>>>>> Stashed changes
+        }
+        
+        //let userID = self.user.uid
+        
+        
+        
+        //api request for json
+        //                Alamofire.request(link).responseJSON { response in
+        //                    if let result = response.result.value {
+        //                        let json = JSON(result);
+        //
+        //
+        //                    }
+        //                }
+        
+        
     }
     
     @IBAction func cancel(_ sender: Any) {

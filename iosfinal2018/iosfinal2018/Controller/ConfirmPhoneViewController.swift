@@ -16,6 +16,8 @@ class ConfirmPhoneViewController: UIViewController {
   @IBOutlet weak var confirmationCodeTextfield: UITextField!
   
   override func viewDidLoad() {
+    self.navigationController?.setNavigationBarHidden(true, animated: false)
+
     super.viewDidLoad()
   }
   
