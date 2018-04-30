@@ -30,12 +30,6 @@ exports.sendMessage = functions.https.onRequest((req,res)=> {
 	const city = req.body.city;
 
 	const questionText = 'Hey! This is ' + userName + "'s personal travel bot. " + userName + " is taking a trip to " + city + " soon and wanted a recommendation from you. What's your favorite 'hidden gem' of " + city + "? Respond like this--> recommendation, city. For example: Joe's Pizza, New York City" 
-	const phoneNumber = '+19739862294'
-	// const textMessage = {
-	// 	body: questionText,
-	// 	to: phoneNumber,
-	// 	from: twilioPhoneNumber
-	// }
 	
 	Promise.all(
 		phoneNumbers.map(number => {
@@ -76,8 +70,6 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 	})
 	.then (function(responseAsJSON){
 		var place = responseAsJSON.results[0]; //this object stores all the data that we want
-		//console.log(x["rating"]);
-		//console.log(place);
 		
 		var ref = db.ref("/outgoing_requests/"); 
 		ref.on("value",function(snap){
@@ -89,16 +81,11 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 					var userID = numbers[number]; //the userID where we will store this data (one that requested it)
 
 					var placeID = place["id"]; //the ID of the place given by google, using this as the identifier in the dictionary
-					//console.log("coo coo: "+getNamefromNumber(userID, whoFrom)); 
-					
-					
-					
 					
 					var nameOfFrom = ""; 
 					var ref2 = db.ref("/users/"+userID+"/requesting_to/"+whoFrom);
 					ref2.once("value",function(snap){
 						nameOfFrom = snap.val(); 
-						//console.log(nameOfFrom);
 						
 						//data will now be stored, set will replace old data if given same placeID
 						//notice the ref query string and how it is stores in the userID
@@ -113,9 +100,6 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 							"from" : nameOfFrom || ""
 						});
 					});
-					
-					
-	
 				}
 			}
 		});  
@@ -125,13 +109,13 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 		console.log('Looks like there was a problem: \n', error);
 	});
 	
-	const filterOpts = {
-		to: whoFrom,
-	  };
+	// const filterOpts = {
+	// 	to: whoFrom,
+	//   };
 	
-	var messages = []; 
-	client.messages.each(filterOpts, (message) => messages.append(message.body));
-	client.messages.each(filterOpts, (message) => console.log(message.body));
+	// var messages = []; 
+	// client.messages.each(filterOpts, (message) => messages.append(message.body));
+	// client.messages.each(filterOpts, (message) => console.log(message.body));
 
 	//respond back to sender thanking them for their response 
 	const responseText = 'Ah. ' + recommendation + ' is a sick recommendation. Thank you.' 
