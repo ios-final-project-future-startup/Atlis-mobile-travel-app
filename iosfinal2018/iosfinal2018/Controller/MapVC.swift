@@ -117,30 +117,32 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.value, with: { (snapshot) in
             print("Testing: \(self.user.uid)")
             //var longitude: Double
-            let value = snapshot.value as! [String:[String:Any]]
-            for (_, v) in value {
-                let address = v["address"] as? String ?? "Unknown"
-                let friend = v["from"] as? String ?? "Unknown"
-                let name = v["name"] as? String ?? "Unknown"
-                // make annotation
-                if let latitude = v["lat"] as? Double {
-                    if let longitude = v["lon"] as? Double {
-                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                        let annotation = PlaceAnnotation(coordinate:coordinate)
-                        annotation.address = address
-                        annotation.name = name
-                        annotation.recommendedBy = friend
-                        annotation.subtitle = friend
-                        if let price_level = v["price_level"] as? Double {
-                            annotation.price_level = price_level
+            if let value = snapshot.value as? [String:[String:Any]]{
+                for (_, v) in value {
+                    let address = v["address"] as? String ?? "Unknown"
+                    let friend = v["from"] as? String ?? "Unknown"
+                    let name = v["name"] as? String ?? "Unknown"
+                    // make annotation
+                    if let latitude = v["lat"] as? Double {
+                        if let longitude = v["lon"] as? Double {
+                            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                            let annotation = PlaceAnnotation(coordinate:coordinate)
+                            annotation.address = address
+                            annotation.name = name
+                            annotation.recommendedBy = friend
+                            annotation.subtitle = friend
+                            if let price_level = v["price_level"] as? Double {
+                                annotation.price_level = price_level
+                            }
+                            if let rating = v["rating"] as? Double {
+                                annotation.rating = rating
+                            }
+                            self.map.addAnnotation(annotation)
                         }
-                        if let rating = v["rating"] as? Double {
-                            annotation.rating = rating
-                        }
-                        self.map.addAnnotation(annotation)
                     }
                 }
             }
+           
         })}
     
     // MARK: MapView Delegate Functions

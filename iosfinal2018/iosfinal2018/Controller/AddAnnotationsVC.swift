@@ -47,54 +47,6 @@ CLLocationManagerDelegate{
             $0.title = "Add"
             }
             .onCellSelection {  cell, row in
-<<<<<<< Updated upstream
-
-            
-                //prep data for query to include "+" instead of " "
-                let queryName  = self.name.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
-                let queryAddress = self.address.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
-                let query = "\(queryName)+\(queryAddress)"
-                
-                let link = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(query)&key=AIzaSyBiDY9xYSfMh_VKXZ9cvo4BBItW96aqqig"
-                
-                //get JSON and save it in database properly
-                Alamofire.request(link, method: .get).validate().responseJSON { response in
-                    switch response.result {
-                    case .success(let value):
-                        let json = JSON(value)
-                        let place = json["results"][0]
-                        //print(place)
-                        //print("place of place", place["place_id"])
-                        //saving to users -> userid -> saved_recommendations -> *placeID -> *
-                    
-                        
-                        print(place["name"].string!)
-//                        print(place["rating"].double!)
-                        
-                        print(Database.database().reference().child("users").child(self.user.uid))
-                        
-                        
-                        
-                        
-                        let ref = Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").child(place["place_id"].string!)
-                        
-                        let data = ["name":place["name"].string!,
-                                    "address":place["formatted_address"].string!,
-                                    "icon":place["icon"].string!,
-                                    "lat":place["geometry"]["location"]["lat"].double!,
-                                    "lon":place["geometry"]["location"]["lng"].double!,
-                                    "rating":place["rating"].double!,
-                                    "price_level":place["price_level"] as? Double ?? -1,
-                                    "from":self.titleBox] as [String : Any]
-                        ref.setValue(data)
-                        
-                        print("JSON: \(json)")
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-                self.dismiss(animated: true, completion: nil)
-=======
                 self.doneBtnTapped()
         }
     }
@@ -102,13 +54,31 @@ CLLocationManagerDelegate{
     func doneBtnTapped() {
         let values = form.values()
         if let name = values["name"] as? String {
-            let query = "\(self.name)&\(self.address)"
+            //prep data for query to include "+" instead of " "
+            let queryName  = self.name.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+            let queryAddress = self.address.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+            let query = "\(queryName)+\(queryAddress)"
             let link = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=\(query)&key=AIzaSyBiDY9xYSfMh_VKXZ9cvo4BBItW96aqqig"
+            //get JSON and save it in database properly
+            //saving to users -> userid -> saved_recommendations -> *placeID -> *
             Alamofire.request(link, method: .get).validate().responseJSON { response in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
                     let place = json["results"][0]
+                    //print(place)
+                    //print(Database.database().reference().child("users").child(self.user.uid))
+                    
+                    let ref = Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").child(place["place_id"].string!)
+                    let data = ["name":place["name"].string!,
+                                "address":place["formatted_address"].string!,
+                                "icon":place["icon"].string!,
+                                "lat":place["geometry"]["location"]["lat"].double!,
+                                "lon":place["geometry"]["location"]["lng"].double!,
+                                "rating":place["rating"].double!,
+                                "price_level":place["price_level"] as? Double ?? -1,
+                                "from":self.titleBox] as [String : Any]
+                    ref.setValue(data)
                     print("JSON: \(json)")
                 case .failure(let error):
                     print(error)
@@ -117,23 +87,7 @@ CLLocationManagerDelegate{
             self.dismiss(animated: true, completion: nil)
         } else {
             showAlert(withTitle: "Error", message: "Name field is empty.")
->>>>>>> Stashed changes
         }
-        
-        //let userID = self.user.uid
-        
-        
-        
-        //api request for json
-        //                Alamofire.request(link).responseJSON { response in
-        //                    if let result = response.result.value {
-        //                        let json = JSON(result);
-        //
-        //
-        //                    }
-        //                }
-        
-        
     }
     
     @IBAction func cancel(_ sender: Any) {

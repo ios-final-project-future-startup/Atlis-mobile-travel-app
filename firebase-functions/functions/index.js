@@ -22,17 +22,33 @@ const twilioPhoneNumber = '+16506812714' // phone number that twilio gives us
 //3. Call the Google Places API and get the JSON of the place and store values in an object
 //4. Then, go through users dictionary to each user and add this object to their recommendations field
 exports.sendMessage = functions.https.onRequest((req,res)=> {
+
+	const phoneNumbers = req.body.phoneNumbers; //array of phone numbers to send to 
+	console.log(phoneNumbers); 
+
 	const userName = req.body.userName; 
 	const city = req.body.city;
-	const questionText = 'Hey! This is ' + userName + "'s personal travel bot. " + userName + " is taking a trip to " + city + " soon and wanted a recommendation from you. What's your favorite 'hidden gem' of " + city + "? Just respond back with the name!" 
+
+	const questionText = 'Hey! This is ' + userName + "'s personal travel bot. " + userName + " is taking a trip to " + city + " soon and wanted a recommendation from you. What's your favorite 'hidden gem' of " + city + "? Respond like this--> recommendation, city. For example: Joe's Pizza, New York City" 
 	const phoneNumber = '+19739862294'
-	const textMessage = {
-		body: questionText,
-		to: phoneNumber,
-		from: twilioPhoneNumber
-	}
-	return client.messages.create(textMessage)
-	.then(message => console.log(message.sid, 'success'))
+	// const textMessage = {
+	// 	body: questionText,
+	// 	to: phoneNumber,
+	// 	from: twilioPhoneNumber
+	// }
+	
+	Promise.all(
+		phoneNumbers.map(number => {
+			console.log(number); 
+		  return client.messages.create({
+			to: number,
+			from: twilioPhoneNumber,
+			body: questionText
+		  });
+		})
+	  )
+	// return client.messages.create(textMessage)
+	.then(message => console.log(message.to, 'Promise sent to all!'))
 	.catch(err => console.log(err))
 });
 
@@ -69,7 +85,7 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 			for (var number in numbers){
 				if(number === whoFrom){
 					console.log("match");
-
+					
 					var userID = numbers[number]; //the userID where we will store this data (one that requested it)
 
 					var placeID = place["id"]; //the ID of the place given by google, using this as the identifier in the dictionary
