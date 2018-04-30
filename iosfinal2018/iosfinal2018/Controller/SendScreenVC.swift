@@ -95,6 +95,7 @@ class SendScreenVC: UIViewController, UITextFieldDelegate {
                 let alert = UIAlertController(title: "Success!", message: "Your requests have been sent to your friends, we'll let you know when it's automatically updated on your map!", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .default, handler: { (_)in
                     self.performSegue(withIdentifier: "unwindToMap", sender: self) // unwind segue
+                    self.navigationController?.popToRootViewController(animated: false)
                 })
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)

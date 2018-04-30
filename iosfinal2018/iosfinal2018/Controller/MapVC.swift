@@ -26,26 +26,20 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         super.viewDidLoad()
         setUpVC()
         handleUserLocation()
-        displayAllMarkers()
+        //displayAllMarkers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         activityIndicator.center = self.view.center
-        
-        //Reload map
-        let allAnnotations = self.map.annotations
-        self.map.removeAnnotations(allAnnotations)
-        
         displayAllMarkers()
-        
     }
     
     func setUpVC() {
         self.title = "Your Map"
         user = Auth.auth().currentUser // create firebase user
         self.definesPresentationContext = true
-        // Handle location manager
+        // Handle location manager + map
         if locationManager == nil { locationManager = CLLocationManager() }
         locationManager?.requestWhenInUseAuthorization()
         locationManager.delegate = self
@@ -57,6 +51,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
         self.locationManager.stopUpdatingLocation()
+        self.map.showsCompass = false;
         // Search Bar Button
         var searchBtnImage = UIImage(named: "Search.png")
         searchBtnImage = searchBtnImage?.withRenderingMode(.alwaysOriginal)
@@ -125,10 +120,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
     
     func displayAllMarkers(){
+        //Reload map
+        let allAnnotations = self.map.annotations
+        self.map.removeAnnotations(allAnnotations)
+        // Firebase
         Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.value, with: { (snapshot) in
-            print("Testing: \(self.user.uid)")
-            //var longitude: Double
-            if let value = snapshot.value as? [String:[String:Any]]{
+            if let value = snapshot.value as? [String:[String:Any]] {
                 for (_, v) in value {
                     let address = v["address"] as? String ?? "Unknown"
                     let friend = v["from"] as? String ?? "Unknown"
@@ -143,17 +140,15 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
                             annotation.recommendedBy = friend
                             annotation.subtitle = friend
                             if let price_level = v["price_level"] as? Double {
-                                annotation.price_level = price_level
+                                if price_level < 0 { annotation.price_level = 3.0 }
+                                else { annotation.price_level = price_level }
                             }
-                            if let rating = v["rating"] as? Double {
-                                annotation.rating = rating
-                            }
+                            if let rating = v["rating"] as? Double { annotation.rating = rating }
                             self.map.addAnnotation(annotation)
                         }
                     }
                 }
             }
-           
         })}
     
     // MARK: MapView Delegate Functions
@@ -170,10 +165,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             self.map.removeAnnotation(annotation)
         }
         
-//        let pointAnnotation = MKPointAnnotation()
-//        pointAnnotation.coordinate = location!.coordinate
-//        pointAnnotation.title = ""
-//        map.addAnnotation(pointAnnotation)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -198,12 +189,12 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             calloutView?.recommendedByLabel.text = "from \(placeAnnotation.recommendedBy!)"
             calloutView?.addressLabel.text = "Address: \(placeAnnotation.address!)"
             if let priceLevel = placeAnnotation.price_level {
-                calloutView?.priceLabel.text = "Price: \(priceLevel)"
+                calloutView?.priceLabel.text = "Price: \(priceLevel)/5"
             } else {
                 calloutView?.priceLabel.text = "Unknown"
             }
             if let rating = placeAnnotation.rating {
-                calloutView?.ratingLabel.text = "Rating: \(rating)"
+                calloutView?.ratingLabel.text = "Rating: \(rating)/5"
             } else {
                 calloutView?.ratingLabel.text = "Unknown"
             }
@@ -211,7 +202,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             //let button = UIButton(frame: calloutView.starbucksPhone.frame)
             //button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
             //calloutView.addSubview(button)
-            
+
             let heightValue = -((calloutView?.bounds.size.height)! * 0.52)
             calloutView?.center = CGPoint(x: view.bounds.size.width / 2, y: heightValue)
             view.addSubview(calloutView!)
