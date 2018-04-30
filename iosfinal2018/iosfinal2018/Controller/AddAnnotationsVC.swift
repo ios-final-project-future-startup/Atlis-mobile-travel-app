@@ -83,7 +83,7 @@ CLLocationManagerDelegate{
                                     "icon":place["icon"].string!,
                                     "lat":place["geometry"]["location"]["lat"].double!,
                                     "lon":place["geometry"]["location"]["lng"].double!,
-                                    "rating":place["rating"].double!,
+                                    "rating":place["rating"] as? Double ?? -1,
                                     "price_level":place["price_level"] as? Double ?? -1,
                                     "from":self.titleBox] as [String : Any]
                         ref.setValue(data)
