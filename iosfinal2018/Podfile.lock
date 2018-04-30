@@ -86,6 +86,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
+  - SwiftMultiSelect (0.2.4)
   - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
@@ -97,6 +98,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - GoogleMaps
   - GooglePlaces
+  - SwiftMultiSelect
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
@@ -122,6 +124,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - SwiftMultiSelect
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -146,8 +149,9 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  SwiftMultiSelect: 50e4c628935492d30d3c45ab88901502c3eb52f4
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 0a3e7988d3fcb8e070fd13245c20ac5d241f55f5
+PODFILE CHECKSUM: d99991a73807b72ee08bfd7e6376a800df26008b
 
 COCOAPODS: 1.5.0
