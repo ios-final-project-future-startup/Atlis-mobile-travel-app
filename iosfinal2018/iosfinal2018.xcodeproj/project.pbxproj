@@ -12,6 +12,7 @@
 		65BE4C5F208D067F00515768 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BE4C5E208D067F00515768 /* ContactCell.swift */; };
 		A976413C6AD26F1BFCB9F094 /* Pods_iosfinal2018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */; };
 		DC59C2BE208E7718005B9E41 /* TwilioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC59C2BD208E7718005B9E41 /* TwilioManager.swift */; };
+		DC5FC5A62097982500BF17D7 /* SelectContactsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5FC5A52097982500BF17D7 /* SelectContactsVC.swift */; };
 		DC90FA62208CE43E009E728B /* FinishSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */; };
 		DC97BD6020852F2F009F5B95 /* Utilties + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */; };
 		DC97BD6220853024009F5B95 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC97BD6120853024009F5B95 /* Login.storyboard */; };
@@ -41,6 +42,7 @@
 		8C0A0745C51EBA12D4CBBE08 /* Pods_iosfinal2018.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosfinal2018.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC370AF0208525AC0066120A /* iosfinal2018.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosfinal2018.entitlements; sourceTree = "<group>"; };
 		DC59C2BD208E7718005B9E41 /* TwilioManager.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = TwilioManager.swift; sourceTree = "<group>"; tabWidth = 4; };
+		DC5FC5A52097982500BF17D7 /* SelectContactsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContactsVC.swift; sourceTree = "<group>"; };
 		DC90FA61208CE43E009E728B /* FinishSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishSignUpVC.swift; sourceTree = "<group>"; };
 		DC97BD5F20852F2F009F5B95 /* Utilties + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utilties + Extensions.swift"; sourceTree = "<group>"; };
 		DC97BD6120853024009F5B95 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				E05B5932207DB1680047B41E /* MapVC.swift */,
 				E05B5944207DBC470047B41E /* SendScreenVC.swift */,
 				657DA02F2096162A00255A7D /* AddAnnotationsVC.swift */,
+				DC5FC5A52097982500BF17D7 /* SelectContactsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				E05B5945207DBC470047B41E /* SendScreenVC.swift in Sources */,
 				E05B5933207DB1680047B41E /* MapVC.swift in Sources */,
 				DC9D68A42096638E00CE2188 /* File.swift in Sources */,
+				DC5FC5A62097982500BF17D7 /* SelectContactsVC.swift in Sources */,
 				65449751208F8CBE00A6BADA /* PlaceAnnotation.swift in Sources */,
 				DC97BD6420853969009F5B95 /* ConfirmPhoneViewController.swift in Sources */,
 				657DA0302096162A00255A7D /* AddAnnotationsVC.swift in Sources */,
@@ -525,7 +529,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
 				PRODUCT_NAME = Atlis;
 				PROVISIONING_PROFILE = "";
@@ -545,7 +552,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZF9TRQNRJ;
 				INFOPLIST_FILE = iosfinal2018/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.nyclabs.travelbot;
 				PRODUCT_NAME = Atlis;
 				PROVISIONING_PROFILE = "";
