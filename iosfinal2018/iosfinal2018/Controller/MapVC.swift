@@ -5,11 +5,12 @@ import GooglePlaces
 import MapKit
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate  {
-    
+    // Outlets
     @IBOutlet weak var map: MKMapView!
-
+    @IBOutlet weak var filterBtn: UIButton!
+    
         var user: User!
-    @IBOutlet weak var addPlace: UIBarButtonItem!
+
 
     var searchController: UISearchController!
     var localSearchRequest: MKLocalSearchRequest!
@@ -51,14 +52,20 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
-        // Handle search button set up
-        let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(MapVC.searchButtonAction(_:)))
-        self.navigationItem.rightBarButtonItem = searchButton
         self.map.delegate = self
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
         self.locationManager.stopUpdatingLocation()
+        // Search Bar Button
+        var searchBtnImage = UIImage(named: "Search.png")
+        searchBtnImage = searchBtnImage?.withRenderingMode(.alwaysOriginal)
+        let searchButton = UIBarButtonItem(image: searchBtnImage, style:.plain, target: self, action: #selector(MapVC.searchButtonAction(_:)))
+        self.navigationItem.leftBarButtonItem = searchButton
+        // Add Bar Button
+        var addBtnImage = UIImage(named: "Icon.png")
+        addBtnImage = addBtnImage?.withRenderingMode(.alwaysOriginal)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: addBtnImage, style:.plain, target: self, action: #selector(addBtnClicked))
     }
     
     func handleUserLocation() {
@@ -72,7 +79,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         }
     }
     
-    @IBAction func addClick(_ sender: Any) {
+    @objc func addBtnClicked() {
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
@@ -80,7 +87,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
     
     // MARK: - UISearchBarDelegate
-    
     @objc func searchButtonAction(_ button: UIBarButtonItem) {
         if searchController == nil {
             searchController = UISearchController(searchResultsController: nil)
