@@ -87,6 +87,7 @@ PODS:
   - nanopb/encode (0.3.8)
   - Popover (1.2.0)
   - Protobuf (3.5.0)
+  - SkyFloatingLabelTextField (3.4.1)
   - SwiftMultiSelect (0.2.4)
   - SwiftyJSON (4.1.0)
 
@@ -99,6 +100,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - GoogleMaps
   - GooglePlaces
+  - SkyFloatingLabelTextField (~> 3.0)
   - Popover
   - SwiftMultiSelect
   - SwiftyJSON (~> 4.0)
@@ -127,6 +129,7 @@ SPEC REPOS:
     - nanopb
     - Popover
     - Protobuf
+    - SkyFloatingLabelTextField
     - SwiftMultiSelect
     - SwiftyJSON
 
@@ -153,9 +156,11 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Popover: 28c1ac8e937ab2b3965bd2da7dd18324357abc41
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  SkyFloatingLabelTextField: 8085f20f57f74a00cfcae58099299faa1a971035
   SwiftMultiSelect: 50e4c628935492d30d3c45ab88901502c3eb52f4
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 9c403340ab6445d40ee8a9e073e70a3a7f19a11d
+PODFILE CHECKSUM: 869c2b8d70c203539276f80883834891f6236f24
+
 
 COCOAPODS: 1.5.0

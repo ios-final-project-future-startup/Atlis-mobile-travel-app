@@ -81,7 +81,40 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 					var userID = numbers[number]; //the userID where we will store this data (one that requested it)
 
 					var placeID = place["id"]; //the ID of the place given by google, using this as the identifier in the dictionary
-					
+					var types = place["types"]
+					var type = ""
+
+					//loop through types to get category of place for filtering
+					for (var i=0; i<types.length; i++){
+						if (types[i] === "restaurant" || types[i] === "food" || types[i] === "meal_delivery" || types[i] === "meal_delivery" || types[i] === "meal_takeaway" || types[i] === "supermarket"){
+							type = "food"
+							break;
+						}
+						else if (types[i]=== "point_of_interest"){
+							type = "point_of_interest"
+							break;
+						}
+						else if (types[i]=== "bar" || types[i]==="night_club"){
+							type = "night_life"
+							break;
+						}
+						else if (types[i]=== "bakery"){
+							type = "bakery"
+							break;
+						}
+						else if (types[i]=== "cafe"){
+							type = "cafe"
+							break;
+						}
+						else if (types[i]=== "clothing_store"||types[i]=== "store"||types[i]=== "department_store" ||types[i]=== "shoe_store" ||types[i]=== "clothing_store"||types[i]=== "jewelry_store" ||types[i]=== "furniture_store"||types[i]=== "home_goods_store"){
+							type = "shopping"
+							break;
+						}
+						else if (types[i]=== "lodging" || types[i]=== "lodging"){
+							type = "accommodation"
+							break;
+						}	
+					}
 					var nameOfFrom = ""; 
 					var ref2 = db.ref("/users/"+userID+"/requesting_to/"+whoFrom);
 					ref2.once("value",function(snap){
@@ -97,6 +130,7 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 							"lat": place["geometry"]["location"]["lat"],
 							"lon" : place["geometry"]["location"]["lng"],
 							"rating" : place["rating"] || -1,
+							"category" : type,
 							"from" : nameOfFrom || ""
 						});
 					});
@@ -109,14 +143,6 @@ exports.receiveMessage = functions.https.onRequest((req,res)=> {
 		console.log('Looks like there was a problem: \n', error);
 	});
 	
-	// const filterOpts = {
-	// 	to: whoFrom,
-	//   };
-	
-	// var messages = []; 
-	// client.messages.each(filterOpts, (message) => messages.append(message.body));
-	// client.messages.each(filterOpts, (message) => console.log(message.body));
-
 	//respond back to sender thanking them for their response 
 	const responseText = 'Ah. ' + recommendation + ' is a sick recommendation. Thank you.' 
 	const textMessage = {
