@@ -18,6 +18,7 @@ class PlaceAnnotation: NSObject, MKAnnotation {
     var price_level: Double?
     var rating: Double?
     var recommendedBy: String?
+    var category: String?
     
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
