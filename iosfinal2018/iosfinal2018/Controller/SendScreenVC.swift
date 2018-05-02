@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SkyFloatingLabelTextField
 
 
 class SendScreenVC: UIViewController, UITextFieldDelegate {
@@ -23,6 +24,7 @@ class SendScreenVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewController()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
