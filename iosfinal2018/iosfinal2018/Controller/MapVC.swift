@@ -1,17 +1,14 @@
 import UIKit
+import MapKit
+import Popover
 import Firebase
 import GoogleMaps
 import GooglePlaces
-import MapKit
+
 
 class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate  {
-    // Outlets
-    @IBOutlet weak var map: MKMapView!
-    @IBOutlet weak var filterBtn: UIButton!
-    
-        var user: User!
-
-
+    // Properties
+    var user: User!
     var searchController: UISearchController!
     var localSearchRequest: MKLocalSearchRequest!
     var localSearch: MKLocalSearch!
@@ -20,13 +17,33 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     var locationManager: CLLocationManager!
     var activityIndicator: UIActivityIndicatorView!
     var centeredMap: Bool!
+    // Annotation Properties
+    var filterBool = false
+    var accomodationAnnotations = [MKAnnotation]()
+    var bakeryAnnotations = [MKAnnotation]()
+    var cafeAnnotations = [MKAnnotation]()
+    var foodAnnotations = [MKAnnotation]()
+    var nightLifeAnnotations = [MKAnnotation]()
+    var pointsOfInterestAnnotations = [MKAnnotation]()
+    var shoppingAnnotations = [MKAnnotation]()
+    var unknownAnnotations = [MKAnnotation]()
+    // Popover Properties
+    fileprivate var pop: Popover!
+    var point: CGPoint?
+    var selectedRows = [Int]()
+    var tableViewHolder: UIView?
+    var tableView: UITableView?
+    var themes = ["Accomodation 🏠", "Bakeries 🥐", "Cafes ☕️", "Food 🍽", "Night Life 🍻🍾", "Point of Interest 🌎",
+                  "Shopping 🛍"]
+    // Outlets
+    @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var filterBtn: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpVC()
         handleUserLocation()
-        //displayAllMarkers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +69,16 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.view.addSubview(activityIndicator)
         self.locationManager.stopUpdatingLocation()
         self.map.showsCompass = false;
+        // Popover Set Up
+        point = CGPoint(x: self.filterBtn.center.x, y: self.filterBtn.center.y)
+        tableViewHolder = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/1.4, height: self.view.frame.height/2.35))
+        self.tableView = UITableView(frame: CGRect(x: 0, y: 10, width: self.view.frame.width/1.4, height: self.view.frame.height/2.35))
+        self.tableView?.delegate = self
+        self.tableView?.dataSource = self
+        self.tableView?.allowsMultipleSelection = true
+        self.tableView?.isScrollEnabled = true
+        tableViewHolder?.addSubview(tableView!)
+        tableView?.tableFooterView = UIView() // hide empty cells from footer
         // Search Bar Button
         var searchBtnImage = UIImage(named: "Search.png")
         searchBtnImage = searchBtnImage?.withRenderingMode(.alwaysOriginal)
@@ -120,9 +147,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     }
     
     func displayAllMarkers(){
-        //Reload map
-        let allAnnotations = self.map.annotations
-        self.map.removeAnnotations(allAnnotations)
         // Firebase
         Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.value, with: { (snapshot) in
             if let value = snapshot.value as? [String:[String:Any]] {
@@ -130,7 +154,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
                     let address = v["address"] as? String ?? "Unknown"
                     let friend = v["from"] as? String ?? "Unknown"
                     let name = v["name"] as? String ?? "Unknown"
-                    // make annotation
+                    // Make annotation
                     if let latitude = v["lat"] as? Double {
                         if let longitude = v["lon"] as? Double {
                             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -144,10 +168,34 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
                                 else { annotation.price_level = price_level }
                             }
                             if let rating = v["rating"] as? Double { annotation.rating = rating }
-                            self.map.addAnnotation(annotation)
+                            if let category = v["category"] as? String {
+                                annotation.category = category
+                                // add to arrays for filtering
+                                if category == "accomodation" {
+                                    self.accomodationAnnotations.append(annotation)
+                                } else if category == "bakery" {
+                                    self.bakeryAnnotations.append(annotation)
+                                } else if category == "cafe" {
+                                    self.cafeAnnotations.append(annotation)
+                                } else if category == "food" {
+                                    self.foodAnnotations.append(annotation)
+                                } else if category == "night_life" {
+                                    self.nightLifeAnnotations.append(annotation)
+                                } else if category == "point_of_interest" {
+                                    self.pointsOfInterestAnnotations.append(annotation)
+                                } else if category == "shopping" {
+                                    self.shoppingAnnotations.append(annotation)
+                                }
+                            } else {
+                                annotation.category = "unknown"
+                                self.unknownAnnotations.append(annotation)
+                            }
+                            print("Testing: \(annotation.category ?? "no category")")
+                            //self.map.addAnnotation(annotation)
                         }
                     }
                 }
+                self.addAllAnnotationsToMap()
             }
         })}
     
@@ -219,7 +267,106 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         }
     }
     
+    func addAllAnnotationsToMap() {
+        self.map.removeAnnotations(map.annotations) // remove all annotations from map
+        // MARK: TODO -- could use dictionary for arrays and loop thru
+        self.map.addAnnotations(accomodationAnnotations)
+        self.map.addAnnotations(bakeryAnnotations)
+        self.map.addAnnotations(cafeAnnotations)
+        self.map.addAnnotations(foodAnnotations)
+        self.map.addAnnotations(nightLifeAnnotations)
+        self.map.addAnnotations(pointsOfInterestAnnotations)
+        self.map.addAnnotations(shoppingAnnotations)
+        self.map.addAnnotations(unknownAnnotations)
+    }
+    
+    func annotationFilter() {
+        if filterBool == false { // check if first time filtered
+            // Remove all annotations
+            let allAnnotations = self.map.annotations
+            self.map.removeAnnotations(allAnnotations)
+            // Add selected annotations
+            if selectedRows.contains(0) { self.map.addAnnotations(accomodationAnnotations) } // Accomodation
+            if selectedRows.contains(1) { self.map.addAnnotations(bakeryAnnotations) } // Bakeries
+            if selectedRows.contains(2) { self.map.addAnnotations(cafeAnnotations) } // Cafes
+            if selectedRows.contains(3) { self.map.addAnnotations(foodAnnotations) } // Food
+            if selectedRows.contains(4) { self.map.addAnnotations(nightLifeAnnotations) } // Night Life
+            if selectedRows.contains(5) { self.map.addAnnotations(pointsOfInterestAnnotations) } // POIs
+            if selectedRows.contains(6) { self.map.addAnnotations(shoppingAnnotations) } // Shopping
+            filterBool = true
+        } else {
+            if selectedRows.count == 0 {
+                addAllAnnotationsToMap()
+            } else {
+                // Remove all annotations
+                let allAnnotations = self.map.annotations
+                self.map.removeAnnotations(allAnnotations)
+                // Add selected annotations
+                if selectedRows.contains(0) { self.map.addAnnotations(accomodationAnnotations) } // Accomodation
+                if selectedRows.contains(1) { self.map.addAnnotations(bakeryAnnotations) } // Bakeries
+                if selectedRows.contains(2) { self.map.addAnnotations(cafeAnnotations) } // Cafes
+                if selectedRows.contains(3) { self.map.addAnnotations(foodAnnotations) } // Food
+                if selectedRows.contains(4) { self.map.addAnnotations(nightLifeAnnotations) } // Night Life
+                if selectedRows.contains(5) { self.map.addAnnotations(pointsOfInterestAnnotations) } // POIs
+                if selectedRows.contains(6) { self.map.addAnnotations(shoppingAnnotations) } // Shopping
+            }
+        }
+    }
+    
+    // MARK: IBActions
+    @IBAction func filterBtnTapped(_ sender: Any) {
+        let options = [
+            .type(.down),
+            .animationIn(0.3),
+            .blackOverlayColor(UIColor(white: 0.0, alpha: 0.6))
+            //.arrowSize(CGSize.zero)
+            ] as [PopoverOption]
+        self.pop = Popover(options: options, showHandler: nil, dismissHandler: nil)
+        self.pop.show(tableViewHolder!, point: point!)
+    }
+    
+    
     // MARK: Segue
     @IBAction func unwindToMap(segue: UIStoryboardSegue) {}    
+}
+
+// MARK: TableViewDelegate
+extension MapVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        //cell?.selectionStyle = .none // don't show the standard gray selection color
+        cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+        selectedRows.append(indexPath.row)
+        annotationFilter()
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = UITableViewCellAccessoryType.none
+        selectedRows = selectedRows.filter {$0 != indexPath.row}
+        annotationFilter()
+    }
+}
+// MARK: TableViewDataSource
+extension MapVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        
+        if selectedRows.contains(indexPath.row) {
+            cell.accessoryType = UITableViewCellAccessoryType.checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.none
+        }
+        
+        cell.textLabel?.text = self.themes[(indexPath as NSIndexPath).row]
+        cell.textLabel?.font = AvenirNext(size: 17.0)
+        return cell
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return themes.count
+    }
+    
 }
 

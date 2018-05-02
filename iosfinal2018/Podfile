@@ -3,6 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'iosfinal2018' do
 use_frameworks!
 pod 'Eureka'
+pod 'Popover'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'Alamofire', '~> 4.7'
