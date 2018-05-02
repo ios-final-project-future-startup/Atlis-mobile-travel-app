@@ -5,7 +5,6 @@
 //  Created by Denisa Vataksi on 4/29/18.
 //  Copyright © 2018 Zachary Kimelheim. All rights reserved.
 //
-
 import UIKit
 import Firebase
 import MapKit
@@ -15,7 +14,7 @@ import SwiftyJSON
 
 class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var addLabel: UILabel!
-     var user: User!
+    var user: User!
     var name: String = ""
     var address: String = ""
     var titleBox: String? = ""
@@ -85,11 +84,11 @@ class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManager
                                         "icon":place["icon"].string!,
                                         "lat":place["geometry"]["location"]["lat"].double!,
                                         "lon":place["geometry"]["location"]["lng"].double!,
-                                        "rating":place["rating"].double!,
+                                        "rating":place["rating"] as? Double ?? -1,
                                         "price_level":place["price_level"] as? Double ?? -1,
-                                        "category": place["types"].arrayObject,
+                                        "category": self.getCategory(types: place["types"].arrayObject as! [String]),
                                         "from":self.titleBox] as [String : Any]
-                        let ref = Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").childByAutoId()
+                            let ref = Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").childByAutoId()
                             ref.setValue(data)
                             print("JSON: \(json)")
                         }
@@ -106,6 +105,33 @@ class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManager
         }
     }
     
+    func getCategory(types:[String]) -> String{
+        let res = "Unkown"
+        for type in types{
+            if (type == "restaurant" || type == "food" || type == "meal_delivery" || type == "meal_delivery" || type == "meal_takeaway" || type == "supermarket"){
+                return "food"
+            }
+            else if (type == "point_of_interest"){
+                return "point_of_interest"
+            }
+            else if (type == "bar" || type == "night_club"){
+                return "night_life"
+            }
+            else if (type == "bakery"){
+                return "bakery"
+            }
+            else if (type == "cafe"){
+                return "cafe"
+            }
+            else if (type == "clothing_store" || type == "store"||type == "jewelry_store"||type == "furniture_store"||type == "home_goods_store" || type == "shoe_store" || type == "department_store"){
+                return "shopping"
+            }
+            else if (type == "lodging" || type == "lodging"){
+                return "accommodation"
+            }
+        }
+        return res
+    }
     @IBAction func doneBtnPressed(_ sender: Any) {
         self.doneBtnTapped()
     }
