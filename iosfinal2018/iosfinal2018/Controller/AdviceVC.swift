@@ -25,6 +25,17 @@ class AdviceVC: UIViewController  {
         setUpVC()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(false)
+        
+        //remove everything in here
+        self.selectedContacts.removeAll()
+        self.items.removeAll()
+        self.selectedItems.removeAll()
+        self.initialValues.removeAll()
+        
+    }
+    
     func setUpVC() {
         // SwiftMultiSelect
         SwiftMultiSelect.delegate = self

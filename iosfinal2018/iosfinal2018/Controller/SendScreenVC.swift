@@ -21,8 +21,10 @@ class SendScreenVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var whereAreYouGoingTextField: UITextField!
     
     override func viewDidLoad() {
+        print(self.selectedContacts.count)
         super.viewDidLoad()
         setUpViewController()
+        self.phoneNumbers.removeAll()
     }
     
     override func viewDidAppear(_ animated: Bool) {
