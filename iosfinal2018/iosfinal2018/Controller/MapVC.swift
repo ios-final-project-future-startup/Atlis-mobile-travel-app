@@ -33,13 +33,15 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     var selectedRows = [Int]()
     var tableViewHolder: UIView?
     var tableView: UITableView?
+    
+    //Narrowed down the categories into the following themes
     var themes = ["Accomodation 🏠", "Bakeries 🥐", "Cafes ☕️", "Food 🍽", "Night Life 🍻🍾", "Point of Interest 🌎",
                   "Shopping 🛍"]
     // Outlets
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var filterBtn: UIButton!
     
-    
+    //map defaults to user's current location on load
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpVC()
@@ -56,6 +58,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.title = "Your Map"
         user = Auth.auth().currentUser // create firebase user
         self.definesPresentationContext = true
+        
         // Handle location manager + map
         if locationManager == nil { locationManager = CLLocationManager() }
         locationManager?.requestWhenInUseAuthorization()
@@ -69,6 +72,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         self.view.addSubview(activityIndicator)
         self.locationManager.stopUpdatingLocation()
         self.map.showsCompass = false;
+        
         // Popover Set Up
         point = CGPoint(x: self.filterBtn.center.x, y: self.filterBtn.center.y)
         tableViewHolder = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/1.4, height: self.view.frame.height/2.35))
@@ -132,6 +136,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         localSearch = MKLocalSearch(request: localSearchRequest)
         localSearch.start { [weak self] (localSearchResponse, error) -> Void in
             
+            //check the search
             if localSearchResponse == nil {
                 let alert = UIAlertView(title: nil, message: "Place not found", delegate: self, cancelButtonTitle: "Try again")
                 alert.show()
@@ -149,12 +154,14 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
     func displayAllMarkers(){
         // Firebase
         Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").observe(.value, with: { (snapshot) in
+            //go through each database entry
             if let value = snapshot.value as? [String:[String:Any]] {
+                //query the data
                 for (_, v) in value {
                     let address = v["address"] as? String ?? "Unknown"
                     let friend = v["from"] as? String ?? "Unknown"
                     let name = v["name"] as? String ?? "Unknown"
-                    // Make annotation
+                    // Make annotation off of queries
                     if let latitude = v["lat"] as? Double {
                         if let longitude = v["lon"] as? Double {
                             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -167,7 +174,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
                                 if price_level < 0 { annotation.price_level = 3.0 }
                                 else { annotation.price_level = price_level }
                             }
+                            //add default values to annotation if value is null
                             if let rating = v["rating"] as? Double { annotation.rating = rating }
+                            //Separate categories
                             if let category = v["category"] as? String {
                                 annotation.category = category
                                 // add to arrays for filtering
@@ -228,6 +237,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         return annotationView
     }
     
+    //Callouts
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if view.annotation is MKUserLocation { return } // don't display custom calloutview
         if let placeAnnotation = view.annotation as? PlaceAnnotation {
@@ -246,11 +256,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
             } else {
                 calloutView?.ratingLabel.text = "Unknown"
             }
-            
-            //let button = UIButton(frame: calloutView.starbucksPhone.frame)
-            //button.addTarget(self, action: #selector(ViewController.callPhoneNumber(sender:)), for: .touchUpInside)
-            //calloutView.addSubview(button)
-
             let heightValue = -((calloutView?.bounds.size.height)! * 0.52)
             calloutView?.center = CGPoint(x: view.bounds.size.width / 2, y: heightValue)
             view.addSubview(calloutView!)
@@ -261,12 +266,14 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIS
         
     }
     
+    
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         if view.isKind(of: PlaceAnnotationView.self) {
             for subview in view.subviews { subview.removeFromSuperview() } // remove all the superviews
         }
     }
     
+    //Populate map with annotations
     func addAllAnnotationsToMap() {
         self.map.removeAnnotations(map.annotations) // remove all annotations from map
         // MARK: TODO -- could use dictionary for arrays and loop thru

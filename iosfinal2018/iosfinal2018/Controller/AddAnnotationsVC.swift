@@ -13,6 +13,7 @@ import Eureka
 import Alamofire
 import SwiftyJSON
 
+
 class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var addLabel: UILabel!
      var user: User!
@@ -38,7 +39,9 @@ class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManager
             cell.textLabel?.font = AvenirNext(size: 20.0)
             cell.textLabel?.textColor = UIColor(rgb: 0x060A78).withAlphaComponent(1.0)
         }
-        form +++ Section("Add a Place")
+        
+        //Uses Eureka's form layout
+        form +++ Section("Add a Place") //Add text fields and placeholders to guide user
             <<< TextRow(){ row in
                 row.tag = "name"
                 row.title = "Name of Place"
@@ -80,6 +83,7 @@ class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManager
                         let place = json["results"][0]
                         print(place["types"])
                         if place != JSON.null {
+                            //search for the data
                             let data = ["name":place["name"].string!,
                                         "address":place["formatted_address"].string!,
                                         "icon":place["icon"].string!,
@@ -89,10 +93,12 @@ class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManager
                                         "price_level":place["price_level"] as? Double ?? -1,
                                         "category": place["types"].arrayObject,
                                         "from":self.titleBox] as [String : Any]
-                        let ref = Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").childByAutoId()
+                        //add new data to database
+                            let ref = Database.database().reference().child("users").child(self.user.uid).child("saved_recommendations").childByAutoId()
                             ref.setValue(data)
-                            print("JSON: \(json)")
+                            print("JSON: \(json)") //debugging
                         }
+                        //Check for errors!
                     case .failure(let error):
                         print(error)
                     }
@@ -110,6 +116,7 @@ class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManager
         self.doneBtnTapped()
     }
     
+    //Dismiss the view when canceling
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
