@@ -16,7 +16,7 @@ import SwiftyJSON
 
 class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var addLabel: UILabel!
-     var user: User!
+    var user: User!
     var name: String = ""
     var address: String = ""
     var titleBox: String? = ""
@@ -90,7 +90,7 @@ class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManager
                                         "lat":place["geometry"]["location"]["lat"].double!,
                                         "lon":place["geometry"]["location"]["lng"].double!,
                                         "rating":place["rating"].double!,
-                                        "price_level":place["price_level"] as? Double ?? -1,
+                                        "price_level":place["price_level"] as? Double ?? 2,
                                         "category": place["types"].arrayObject,
                                         "from":self.titleBox] as [String : Any]
                         //add new data to database
