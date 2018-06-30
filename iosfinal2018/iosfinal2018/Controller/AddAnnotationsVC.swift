@@ -16,7 +16,7 @@ import SwiftyJSON
 
 class AddAnnotationsVC: FormViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var addLabel: UILabel!
-     var user: User!
+    var user: User!
     var name: String = ""
     var address: String = ""
     var titleBox: String? = ""
